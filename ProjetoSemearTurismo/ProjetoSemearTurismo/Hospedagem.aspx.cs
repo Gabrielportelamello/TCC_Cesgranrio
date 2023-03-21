@@ -15,13 +15,13 @@ namespace ProjetoSemearTurismo.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //GridViewClientes.SelectedIndex = -1;
+            //GridViewHospedagems.SelectedIndex = -1;
             if (!IsPostBack)
             {
 
-                GridViewClientes.SelectedIndex = -1;
+                GridViewHospedagems.SelectedIndex = -1;
 
-                if (TbxPesquisarGridClientes.Text != "")
+                if (TbxPesquisarGridHospedagems.Text != "")
                 {
                     GVBingSearch();
                 }
@@ -35,64 +35,79 @@ namespace ProjetoSemearTurismo.Views
 
         protected void GVBing()
         {
+      //      SELECT[SEQ_HOSPEDAGEM]
+      //,[Nome]
+      //,[Endereco]
+      //,[CNPJ]
+      //,[Telefones]
+      //,[Email]
+      //,[CEP]
+      //,[qtd_quartos]
+      //,[qtd_camas]
+      //,[tipo_cama]
+      //,[pacote_incluso]
+      //,[data_checkin]
+      //,[data_checkout]
+      //,[preco]
+      //      FROM[dbo].[SEMEAR_HOSPEDAGEM]
 
             SqlConnection conn = new SqlConnection(connectionString);
 
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA ORDER BY NOME", conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_HOSPEDAGEM ORDER BY NOME", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
             a.Fill(ds);
 
-            GridViewClientes.DataSource = ds;
-            GridViewClientes.DataBind();
+            GridViewHospedagems.DataSource = ds;
+            GridViewHospedagems.DataBind();
 
             conn.Close();
             conn.Dispose();
 
         }
 
-        protected void GridViewClientes_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void GridViewHospedagems_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            if (TbxPesquisarGridClientes.Text != "")
+            if (TbxPesquisarGridHospedagems.Text != "")
             {
                 GVBingSearch();
-                GridViewClientes.PageIndex = e.NewPageIndex;
-                GridViewClientes.DataBind();
+                GridViewHospedagems.PageIndex = e.NewPageIndex;
+                GridViewHospedagems.DataBind();
             }
             else
             {
                 GVBing();
-                GridViewClientes.PageIndex = e.NewPageIndex;
-                GridViewClientes.DataBind();
+                GridViewHospedagems.PageIndex = e.NewPageIndex;
+                GridViewHospedagems.DataBind();
             }
 
         }
 
-        protected void GridViewClientes_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        protected void GridViewHospedagems_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
         }
 
-        protected void GridViewClientes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        protected void GridViewHospedagems_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
 
         }
 
-        protected void GridViewClientes_SelectedIndexChanged(object sender, EventArgs e)
+        protected void GridViewHospedagems_SelectedIndexChanged(object sender, EventArgs e)
         {
 
 
-            string sIndiceRegistro = GridViewClientes.SelectedDataKey.Value.ToString();
+            string sIndiceRegistro = GridViewHospedagems.SelectedDataKey.Value.ToString();
 
             preencheFrmEdicao(sIndiceRegistro);
 
-            MPEClientesGRID.Show();
+            MPEHospedagemsGRID.Show();
 
-            BtnCadastrarPopupClienteCadastro.Visible = false;
-            BtnEditarCadastroPopupClienteCadastro.Visible = true;
-            btnLimparPopupClienteCadastro.Visible = false;
+            BtnCadastrarPopupHospedagemCadastro.Visible = false;
+            BtnEditarCadastroPopupHospedagemCadastro.Visible = true;
+            btnLimparPopupHospedagemCadastro.Visible = false;
 
 
         }
@@ -111,97 +126,77 @@ namespace ProjetoSemearTurismo.Views
             //limpaCadastroEdicao();
             string oradb = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
             SqlConnection conn = new SqlConnection(oradb);
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA where SQ_PESSOA = " + sIndiceRegistro, conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_Hospedagem where SQ_Hospedagem = " + sIndiceRegistro, conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
-            a.Fill(ds, "SEMEAR_PESSOA");
+            a.Fill(ds, "SEMEAR_Hospedagem");
             //continnuar daqui.
-            foreach (DataRow r in ds.Tables["SEMEAR_PESSOA"].Rows)
+            foreach (DataRow r in ds.Tables["SEMEAR_Hospedagem"].Rows)
             {
 
-                //          SELECT TOP(1000) [Nome]
-                //,[Telefone]
-                //,[Email]
-                //,[Data_Nascimento]
-                //,[CPF]
-                //,[Passaporte]
-                //,[emissao_passaporte]
-                //,[Validade_Passaporte]
-                //,[RG]
+               
 
+                TbxNomePopupHospedagemCadastro.Text = r["NOME"].ToString();
 
-                TbxNomePopupClienteCadastro.Text = r["NOME"].ToString();
+                //TbxTel1PopupHospedagemCadastro.Text = r["Telefone"].ToString();
 
-                TbxTel1PopupClienteCadastro.Text = r["Telefone"].ToString();
+                //TbxEmailPopupHospedagemCadastro.Text = r["Email"].ToString();
 
-                TbxEmailPopupClienteCadastro.Text = r["Email"].ToString();
+                //if (r["Data_Nascimento"].ToString() != "")
+                //{
+                //    TbxNascimentoPopupHospedagemCadastro.Text = r["Data_Nascimento"].ToString().Substring(6, 4) + "-" + r["Data_Nascimento"].ToString().Substring(3, 2) + "-" + r["Data_Nascimento"].ToString().Substring(0, 2);
 
-                if (r["Data_Nascimento"].ToString() != "")
-                {
-                    TbxNascimentoPopupClienteCadastro.Text = r["Data_Nascimento"].ToString().Substring(6, 4) + "-" + r["Data_Nascimento"].ToString().Substring(3, 2) + "-" + r["Data_Nascimento"].ToString().Substring(0, 2);
+                //}
 
-                }
+                //TbxCPFPopupHospedagemCadastro.Text = r["CPF"].ToString();
+                //TbxNumPassPopupHospedagemCadastro.Text = r["Passaporte"].ToString();
 
-                TbxCPFPopupClienteCadastro.Text = r["CPF"].ToString();
-                TbxNumPassPopupClienteCadastro.Text = r["Passaporte"].ToString();
+                //if (r["emissao_passaporte"].ToString() != "")
+                //{
+                //    TbxDataEmissPassPopupHospedagemCadastro.Text = r["emissao_passaporte"].ToString().Substring(6, 4) + "-" + r["emissao_passaporte"].ToString().Substring(3, 2) + "-" + r["emissao_passaporte"].ToString().Substring(0, 2);
 
-                if (r["emissao_passaporte"].ToString() != "")
-                {
-                    TbxDataEmissPassPopupClienteCadastro.Text = r["emissao_passaporte"].ToString().Substring(6, 4) + "-" + r["emissao_passaporte"].ToString().Substring(3, 2) + "-" + r["emissao_passaporte"].ToString().Substring(0, 2);
+                //}
+                //if (r["Validade_Passaporte"].ToString() != "")
+                //{
+                //    TbxDataValiPassPopupHospedagemCadastro.Text = r["Validade_Passaporte"].ToString().Substring(6, 4) + "-" + r["Validade_Passaporte"].ToString().Substring(3, 2) + "-" + r["Validade_Passaporte"].ToString().Substring(0, 2);
 
-                }
-                if (r["Validade_Passaporte"].ToString() != "")
-                {
-                    TbxDataValiPassPopupClienteCadastro.Text = r["Validade_Passaporte"].ToString().Substring(6, 4) + "-" + r["Validade_Passaporte"].ToString().Substring(3, 2) + "-" + r["Validade_Passaporte"].ToString().Substring(0, 2);
+                //}
 
-                }
+                //TbxNumRGPopupHospedagemCadastro.Text = r["RG"].ToString();
+                ////,[orgao_emissor_RG]
+                ////,[data_emissao_RG]
+                ////,[Perfil_Acesso]
+                ////,[salario]
+                ////,[Saldo]
+                ////,[FL_FUNCIONARIO]
+                ////,[FL_EXCLUIDO]
+                ////,[bairro_endereco]
+                ////,[cidade_endereco]
+                ////,[uf_endereco]
+                ////,[rua_endereco]
+                ////,[CEP]
+                ////,[SQ_Hospedagem]
+                ////          FROM[tailandia].[dbo].[SEMEAR_Hospedagem]
+                //TbxOrgaoEmissorPopupHospedagemCadastro.Text = r["orgao_emissor_RG"].ToString();
+                //string resulta = r["data_emissao_RG"].ToString();
 
-                TbxNumRGPopupClienteCadastro.Text = r["RG"].ToString();
-                //,[orgao_emissor_RG]
-                //,[data_emissao_RG]
-                //,[Perfil_Acesso]
-                //,[salario]
-                //,[Saldo]
-                //,[FL_FUNCIONARIO]
-                //,[FL_EXCLUIDO]
-                //,[bairro_endereco]
-                //,[cidade_endereco]
-                //,[uf_endereco]
-                //,[rua_endereco]
-                //,[CEP]
-                //,[SQ_PESSOA]
-                //          FROM[tailandia].[dbo].[SEMEAR_PESSOA]
-                TbxOrgaoEmissorPopupClienteCadastro.Text = r["orgao_emissor_RG"].ToString();
-                string resulta = r["data_emissao_RG"].ToString();
+                //if (r["data_emissao_RG"].ToString() != "")
+                //{
+                //    TbxDataEmissRGPopupHospedagemCadastro.Text = r["data_emissao_RG"].ToString().Substring(6, 4) + "-" + r["data_emissao_RG"].ToString().Substring(3, 2) + "-" + r["data_emissao_RG"].ToString().Substring(0, 2);
+                //}
 
-                if (r["data_emissao_RG"].ToString() != "")
-                {
-                    TbxDataEmissRGPopupClienteCadastro.Text = r["data_emissao_RG"].ToString().Substring(6, 4) + "-" + r["data_emissao_RG"].ToString().Substring(3, 2) + "-" + r["data_emissao_RG"].ToString().Substring(0, 2);
-                }
-
-                //TbxNumRGPopupClienteCadastro.Text = r["Saldo"].ToString();
-                DropDownListFuncionarioPopupClienteCadastro.SelectedValue = r["FL_FUNCIONARIO"].ToString();
-                //.Text = r["FL_EXCLUIDO"].ToString();
-                TbxBairroPopupClienteCadastro.Text = r["bairro_endereco"].ToString();
-                TbxCidadePopupClienteCadastro.Text = r["cidade_endereco"].ToString();
-                TbxUFPopupClienteCadastro.Text = r["uf_endereco"].ToString();
-                TbxRuaPopupClienteCadastro.Text = r["rua_endereco"].ToString();
-                TbxCEPPopupClienteCadastro.Text = r["CEP"].ToString();
+                ////TbxNumRGPopupHospedagemCadastro.Text = r["Saldo"].ToString();
+                //DropDownListFuncionarioPopupHospedagemCadastro.SelectedValue = r["FL_FUNCIONARIO"].ToString();
+                ////.Text = r["FL_EXCLUIDO"].ToString();
+                TbxBairroPopupHospedagemCadastro.Text = r["bairro_endereco"].ToString();
+                TbxCidadePopupHospedagemCadastro.Text = r["cidade_endereco"].ToString();
+                TbxUFPopupHospedagemCadastro.Text = r["uf_endereco"].ToString();
+                TbxRuaPopupHospedagemCadastro.Text = r["rua_endereco"].ToString();
+                TbxCEPPopupHospedagemCadastro.Text = r["CEP"].ToString();
 
 
 
-                //DropDownListOrgaos.SelectedValue = r["CO_ORGAO"].ToString() + " - " + r["DE_ORGAO"].ToString();
-                //DropDownListSistemas.SelectedValue = r["NU_APLICATIVO"].ToString() + " - " + r["DE_APLICATIVO"].ToString();
-                //tbxPergunta.Text = r["DE_PERGUNTA"].ToString();
-                //tbxResposta.Text = r["DE_RESPOSTA"].ToString();
-                //lblNumeroRegistro.Text = r["SQ_FAQ"].ToString();
-                //DropDownListFLExcluidos.SelectedValue = r["FL_EXCLUIDO"].ToString();
-
-
-                //imgBanner1.ImageUrl = GetImage((byte[])r["IM_FAQ1"]);
-                //imgBanner2.ImageUrl = GetImage((byte[])r["IM_FAQ2"]);
-                //imgBanner3.ImageUrl = GetImage((byte[])r["IM_FAQ3"]);
             }
 
 
@@ -215,13 +210,13 @@ namespace ProjetoSemearTurismo.Views
         }
 
 
-        protected void BtnCadastrarClienteModal_Click(object sender, EventArgs e)
+        protected void BtnCadastrarHospedagemModal_Click(object sender, EventArgs e)
         {
-            if (TbxNomePopupClienteCadastro.Text != "" && TbxCPFPopupClienteCadastro.Text != ""
-                && TbxTel1PopupClienteCadastro.Text != "")
+            if (TbxNomePopupHospedagemCadastro.Text != "" && TbxCNPJPopupHospedagemCadastro.Text != ""
+                && TbxTel1PopupHospedagemCadastro.Text != "")
             {
-                RealizaCadastroCliente();
-                RealizaCadastroImagensCliente();
+                RealizaCadastroHospedagem();
+                RealizaCadastroImagensHospedagem();
             }
             else
             {
@@ -239,37 +234,41 @@ namespace ProjetoSemearTurismo.Views
 
         }
 
-        private void RealizaCadastroImagensCliente()
+        private void RealizaCadastroImagensHospedagem()
         {
 
         }
 
-        private void RealizaCadastroCliente()
+        private void RealizaCadastroHospedagem()
         {
-
+           
             using (SqlConnection openCon = new SqlConnection(connectionString))
             {
-                string saveStaff = " INSERT INTO " +
-                    "[dbo].[SEMEAR_PESSOA] " +
-                    " ([Nome]  " +
-                    ",[Telefone] " +
-                    ",[Email]" +
-                    "  ,[Data_Nascimento] " +
-                    " ,[CPF],[Passaporte] ,[emissao_passaporte],[Validade_Passaporte] ,[RG] " +
-                    ",[orgao_emissor_RG] ,[data_emissao_RG] ,[Perfil_Acesso] ,[salario] ,[Saldo] ,[FL_FUNCIONARIO] " +
-                    ",[FL_EXCLUIDO] ,[bairro_endereco],[cidade_endereco] ,[uf_endereco] ,[rua_endereco] ,[CEP])  " +
-                    " VALUES ('" + TbxNomePopupClienteCadastro.Text + "', '" +
-                    "" + TbxTel1PopupClienteCadastro.Text +
-                    "', '" + TbxEmailPopupClienteCadastro.Text +
-                    "', (Select CONVERT(datetime,'" + TbxNascimentoPopupClienteCadastro.Text + "',20)) ,'"
-                    + TbxCPFPopupClienteCadastro.Text +
-                    "', '" + TbxNumPassPopupClienteCadastro.Text +
-                    "', (Select CONVERT(datetime,'" + TbxDataEmissPassPopupClienteCadastro.Text + "',20)),(Select CONVERT(datetime,'" + TbxDataValiPassPopupClienteCadastro.Text + "',20)),'" + TbxNumRGPopupClienteCadastro.Text + "" +
-                    "', '" + TbxOrgaoEmissorPopupClienteCadastro.Text + "',(Select CONVERT(datetime,'" + TbxDataEmissRGPopupClienteCadastro.Text + "',20))," + DropDownListFuncionarioPopupClienteCadastro.SelectedValue + " ," + TbxSalarioFuncionaroPopupClienteCadastro.Text + "," + TbxSaldoPopupClienteCadastro.Text + ","
-                    + DropDownListFuncionarioPopupClienteCadastro.SelectedValue
-                    + " ," + DropDownListFlagExcluidoPopupClienteCadastro.SelectedValue + " ,'" + TbxBairroPopupClienteCadastro.Text + "','"
-                    + TbxCidadePopupClienteCadastro.Text + "','" + TbxUFPopupClienteCadastro.Text
-                    + "' ,'" + TbxRuaPopupClienteCadastro.Text + "','" + TbxCEPPopupClienteCadastro.Text + "') ";
+                string saveStaff = "INSERT INTO[dbo].[SEMEAR_HOSPEDAGEM] " +
+           "(" +
+         "[Nome]" +
+         ",[Endereco]" +
+         ",[CNPJ]" +
+         ",[Telefones]" +
+         ",[Email]" +
+         ",[CEP]" +
+         ",[qtd_quartos]" +
+         ",[data_checkin]" +
+         ",[data_checkout]" +
+         ",[preco])" +
+    " VALUES " +
+         "(" +
+         "'"+TbxNomePopupHospedagemCadastro.Text+"'" +
+         " ,'"+TbxRuaPopupHospedagemCadastro.Text+"'" +
+         " ,'"+TbxCNPJPopupHospedagemCadastro.Text+"'" +
+         " ,'"+TbxTel1PopupHospedagemCadastro.Text+"'" +
+         " ,'"+TbxEmailPopupHospedagemCadastro.Text+"'" +
+          ",'"+TbxCEPPopupHospedagemCadastro.Text+"'" +
+          ","+TbxQTDQuartosPopupHospedagemCadastro.Text+
+        ",(Select CONVERT(datetime,'" + TbxChekinPopupHospedagemCadastro.Text + "',20)) "+
+        ", (Select CONVERT(datetime,'" + TbxChekoutPopupHospedagemCadastro.Text + "',20))" +
+          ","+TbxPrecoPopupHospedagemCadastro.Text+")";
+
 
 
                 using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
@@ -289,28 +288,40 @@ namespace ProjetoSemearTurismo.Views
 
             GVBing();
         }
-        private void RealizaEdicaoCadastroCliente(string indiceRegistro)
+        private void RealizaEdicaoCadastroHospedagem(string indiceRegistro)
         {
-
+  //          UPDATE[dbo].[SEMEAR_HOSPEDAGEM]
+  // SET[SEQ_HOSPEDAGEM] = < SEQ_HOSPEDAGEM, bigint,>
+  //    ,[Nome] = < Nome, varchar(250),>
+  //    ,[Endereco] = < Endereco, varchar(max),>
+  //    ,[CNPJ] = < CNPJ, varchar(50),>
+  //    ,[Telefones] = < Telefones, varchar(50),>
+  //    ,[Email] = < Email, varchar(max),>
+  //    ,[CEP] = < CEP, varchar(50),>
+  //    ,[qtd_quartos] = < qtd_quartos, int,>
+  //    ,[qtd_camas] = < qtd_camas, int,>
+  //    ,[tipo_cama] = < tipo_cama, smallint,>
+  //    ,[pacote_incluso] = < pacote_incluso, varchar(max),>
+  //    ,[data_checkin] = < data_checkin, datetime,>
+  //    ,[data_checkout] = < data_checkout, datetime,>
+  //    ,[preco] = < preco, float,>
+  //WHERE < Critérios de Pesquisa,,>
             using (SqlConnection openCon = new SqlConnection(connectionString))
             {
-                string saveStaff = " UPDATE[dbo].[SEMEAR_PESSOA] SET[Nome] = '" + TbxNomePopupClienteCadastro.Text + "' ," +
-                    "[Telefone] = '" + TbxTel1PopupClienteCadastro.Text + "',[Email] = '" + TbxEmailPopupClienteCadastro.Text + "'" +
-                    ",[Data_Nascimento] = (Select CONVERT(datetime, '" + TbxNascimentoPopupClienteCadastro.Text + "', 20)) ,[CPF] = " +
-                    "'" + TbxCPFPopupClienteCadastro.Text + "'      ,[Passaporte] = '" + TbxNumPassPopupClienteCadastro.Text + "' " +
-                    ",[emissao_passaporte] = (Select CONVERT(datetime, '" + TbxDataEmissPassPopupClienteCadastro.Text + "', 20))" +
-                    ",[Validade_Passaporte] = (Select CONVERT(datetime, '" + TbxDataValiPassPopupClienteCadastro.Text + "', 20))" +
-                    ",[RG] = '" + TbxNumRGPopupClienteCadastro.Text + "'" +
-                    ",[orgao_emissor_RG] = '" + TbxOrgaoEmissorPopupClienteCadastro.Text + "',[data_emissao_RG] = " +
-                    "(Select CONVERT(datetime, '" + TbxDataEmissRGPopupClienteCadastro.Text + "', 20)) ,[Perfil_Acesso] =" +
-                    " " + DropDownListFuncionarioPopupClienteCadastro.SelectedValue + ",[salario] = "
-                    + TbxSalarioFuncionaroPopupClienteCadastro.Text + " ,[Saldo] = " + TbxSaldoPopupClienteCadastro.Text + "" +
-                    ",[FL_FUNCIONARIO] = " + DropDownListFuncionarioPopupClienteCadastro.SelectedValue + "" +
-                    ",[FL_EXCLUIDO] = " + DropDownListFlagExcluidoPopupClienteCadastro.SelectedValue + "" +
-                    ",[bairro_endereco] = '" + TbxBairroPopupClienteCadastro.Text + "',[cidade_endereco] = " +
-                    "'" + TbxCidadePopupClienteCadastro.Text + "',[uf_endereco] = '" + TbxUFPopupClienteCadastro.Text + "'" +
-                    ",[rua_endereco] = '" + TbxRuaPopupClienteCadastro.Text + "',[CEP] = '" + TbxCEPPopupClienteCadastro.Text +
-                    "' WHERE SQ_PESSOA = " + indiceRegistro + " ";
+                string saveStaff = "UPDATE[dbo].[SEMEAR_HOSPEDAGEM] "+
+                                    "SET[SEQ_HOSPEDAGEM] = < SEQ_HOSPEDAGEM, bigint,> "+
+                                       ",[Nome] = '"+TbxNomePopupHospedagemCadastro.Text+"' "+
+                                       ",[Endereco] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
+                                       ",[CNPJ] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
+                                       ",[Telefones] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
+                                      ",[Email] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
+                                      ",[CEP] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
+                                      ",[qtd_quartos] = "+TbxQTDQuartosPopupHospedagemCadastro +
+                                       ",[data_checkin] = (Select CONVERT(datetime,'" + TbxChekinPopupHospedagemCadastro.Text + "',20)) " +
+                                       ",[data_checkout] = (Select CONVERT(datetime,'" + TbxChekoutPopupHospedagemCadastro.Text + "',20)) " +
+                                       ",[preco] = " + TbxPrecoPopupHospedagemCadastro.Text+
+
+                " WHERE SQ_Hospedagem = " + indiceRegistro ;
 
 
                 using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
@@ -327,7 +338,7 @@ namespace ProjetoSemearTurismo.Views
             }
 
 
-            if (TbxPesquisarGridClientes.Text != "")
+            if (TbxPesquisarGridHospedagems.Text != "")
             {
                 GVBingSearch();
             }
@@ -346,9 +357,9 @@ namespace ProjetoSemearTurismo.Views
 
         }
 
-        protected void ImgBtnPesquisarGridClientes_Click(object sender, ImageClickEventArgs e)
+        protected void ImgBtnPesquisarGridHospedagems_Click(object sender, ImageClickEventArgs e)
         {
-            if (TbxPesquisarGridClientes.Text != "")
+            if (TbxPesquisarGridHospedagems.Text != "")
             {
                 GVBingSearch();
             }
@@ -362,55 +373,37 @@ namespace ProjetoSemearTurismo.Views
 
             SqlConnection conn = new SqlConnection(connectionString);
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA where Nome LIKE '%" + TbxPesquisarGridClientes.Text + "%' ORDER BY Nome", conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_Hospedagem where Nome LIKE '%" + TbxPesquisarGridHospedagems.Text + "%' ORDER BY Nome", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
             a.Fill(ds);
 
-            GridViewClientes.DataSource = ds;
-            GridViewClientes.DataBind();
+            GridViewHospedagems.DataSource = ds;
+            GridViewHospedagems.DataBind();
 
             conn.Close();
             conn.Dispose();
 
         }
 
-        protected void DropDownListFuncionarioPopupClienteCadastro_SelectedIndexChanged(object sender, EventArgs e)
+        protected void DropDownListFuncionarioPopupHospedagemCadastro_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (DropDownListFuncionarioPopupClienteCadastro.SelectedValue == "0")
-            {
-                LblSalarioFuncionaroPopupClienteCadastro.Visible = false;
-                TbxSalarioFuncionaroPopupClienteCadastro.Visible = false;
-            }
-            else
-            {
-                LblSalarioFuncionaroPopupClienteCadastro.Visible = true;
-                TbxSalarioFuncionaroPopupClienteCadastro.Visible = true;
-            }
+            
 
         }
 
-        protected void DropDownListFuncionarioPopupClienteCadastro_TextChanged(object sender, EventArgs e)
+        protected void DropDownListFuncionarioPopupHospedagemCadastro_TextChanged(object sender, EventArgs e)
         {
-            if (DropDownListFuncionarioPopupClienteCadastro.SelectedValue == "0")
-            {
-                LblSalarioFuncionaroPopupClienteCadastro.Visible = false;
-                TbxSalarioFuncionaroPopupClienteCadastro.Visible = false;
-            }
-            else
-            {
-                LblSalarioFuncionaroPopupClienteCadastro.Visible = true;
-                TbxSalarioFuncionaroPopupClienteCadastro.Visible = true;
-            }
+          
         }
 
-        protected void BtnEditarCadastroPopupClienteCadastro_Click(object sender, EventArgs e)
+        protected void BtnEditarCadastroPopupHospedagemCadastro_Click(object sender, EventArgs e)
         {
-            string sIndiceRegistro = GridViewClientes.SelectedDataKey.Value.ToString();
-            RealizaEdicaoCadastroCliente(sIndiceRegistro);
+            string sIndiceRegistro = GridViewHospedagems.SelectedDataKey.Value.ToString();
+            RealizaEdicaoCadastroHospedagem(sIndiceRegistro);
 
-            if (TbxPesquisarGridClientes.Text != "")
+            if (TbxPesquisarGridHospedagems.Text != "")
             {
                 GVBingSearch();
             }
@@ -418,22 +411,22 @@ namespace ProjetoSemearTurismo.Views
             {
                 GVBing();
             }
-            GridViewClientes.SelectedIndex = -1;
+            GridViewHospedagems.SelectedIndex = -1;
         }
 
-        protected void BtnModalClientesGRID_Click(object sender, EventArgs e)
+        protected void BtnModalHospedagemsGRID_Click(object sender, EventArgs e)
         {
-            MPEClientesGRID.Show();
-            BtnCadastrarPopupClienteCadastro.Visible = true;
-            BtnEditarCadastroPopupClienteCadastro.Visible = false;
-            btnLimparPopupClienteCadastro.Visible = true;
+            MPEHospedagemsGRID.Show();
+            BtnCadastrarPopupHospedagemCadastro.Visible = true;
+            BtnEditarCadastroPopupHospedagemCadastro.Visible = false;
+            btnLimparPopupHospedagemCadastro.Visible = true;
         }
 
-        protected void btnCancelarPopupClienteCadastro_Click(object sender, EventArgs e)
+        protected void btnCancelarPopupHospedagemCadastro_Click(object sender, EventArgs e)
         {
-            GridViewClientes.SelectedIndex = -1;
+            GridViewHospedagems.SelectedIndex = -1;
 
-            if (BtnEditarCadastroPopupClienteCadastro.Visible == true)
+            if (BtnEditarCadastroPopupHospedagemCadastro.Visible == true)
             {
                 limparCadastro();
 
@@ -442,33 +435,27 @@ namespace ProjetoSemearTurismo.Views
 
         private void limparCadastro()
         {
-            TbxNomePopupClienteCadastro.Text = "";
-            TbxTel1PopupClienteCadastro.Text = "";
-            TbxEmailPopupClienteCadastro.Text = "";
-            TbxNascimentoPopupClienteCadastro.Text = "";
-            TbxCPFPopupClienteCadastro.Text = "";
-            TbxNumPassPopupClienteCadastro.Text = "";
-            TbxDataEmissPassPopupClienteCadastro.Text = "";
-            TbxDataValiPassPopupClienteCadastro.Text = "";
-            TbxNumRGPopupClienteCadastro.Text = "";
-            TbxOrgaoEmissorPopupClienteCadastro.Text = "";
-            TbxDataEmissRGPopupClienteCadastro.Text = "";
-            DropDownListFuncionarioPopupClienteCadastro.SelectedValue = "0";
-            TbxSalarioFuncionaroPopupClienteCadastro.Text = "";
-            TbxSaldoPopupClienteCadastro.Text = "";
-            DropDownListFuncionarioPopupClienteCadastro.SelectedValue = "0";
-            DropDownListFlagExcluidoPopupClienteCadastro.SelectedValue = "0";
-            TbxBairroPopupClienteCadastro.Text = "";
-            TbxCidadePopupClienteCadastro.Text = "";
-            TbxUFPopupClienteCadastro.Text = "";
-            TbxRuaPopupClienteCadastro.Text = "";
-            TbxCEPPopupClienteCadastro.Text = "";
-            GridViewClientes.SelectedIndex = -1;
+            TbxNomePopupHospedagemCadastro.Text = "";
+            TbxTel1PopupHospedagemCadastro.Text = "";
+            TbxEmailPopupHospedagemCadastro.Text = "";
+       
+            TbxChekinPopupHospedagemCadastro.Text = "";
+            TbxChekoutPopupHospedagemCadastro.Text = "";
+            TbxQTDQuartosPopupHospedagemCadastro.Text = "";
+        
+            TbxPrecoPopupHospedagemCadastro.Text = "";
+            DropDownListFlagExcluidoPopupHospedagemCadastro.SelectedValue = "0";
+            TbxBairroPopupHospedagemCadastro.Text = "";
+            TbxCidadePopupHospedagemCadastro.Text = "";
+            TbxUFPopupHospedagemCadastro.Text = "";
+            TbxRuaPopupHospedagemCadastro.Text = "";
+            TbxCEPPopupHospedagemCadastro.Text = "";
+            GridViewHospedagems.SelectedIndex = -1;
 
 
         }
 
-        protected void btnLimparPopupClienteCadastro_Click(object sender, EventArgs e)
+        protected void btnLimparPopupHospedagemCadastro_Click(object sender, EventArgs e)
         {
             limparCadastro();
         }

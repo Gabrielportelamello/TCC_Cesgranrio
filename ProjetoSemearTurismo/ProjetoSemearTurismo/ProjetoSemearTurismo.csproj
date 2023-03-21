@@ -111,9 +111,7 @@
     <Content Include="Cliente.aspx" />
     <Content Include="Hospedagem.aspx" />
     <Content Include="Imagens\kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" />
-    <Content Include="ProjetoFAQ.aspx" />
     <Content Include="Reserva.aspx" />
-    <Content Include="teste.aspx" />
     <Content Include="Transporte.aspx" />
     <Content Include="Viagem.aspx" />
     <Content Include="Content\bootstrap-theme.css" />
@@ -191,26 +189,12 @@
     <Compile Include="Hospedagem.aspx.designer.cs">
       <DependentUpon>Hospedagem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ProjetoFAQ.aspx.cs">
-      <DependentUpon>ProjetoFAQ.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="ProjetoFAQ.aspx.designer.cs">
-      <DependentUpon>ProjetoFAQ.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Reserva.aspx.cs">
       <DependentUpon>Reserva.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Reserva.aspx.designer.cs">
       <DependentUpon>Reserva.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="teste.aspx.cs">
-      <DependentUpon>teste.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="teste.aspx.designer.cs">
-      <DependentUpon>teste.aspx</DependentUpon>
     </Compile>
     <Compile Include="Transporte.aspx.cs">
       <DependentUpon>Transporte.aspx</DependentUpon>
