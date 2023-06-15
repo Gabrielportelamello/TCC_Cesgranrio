@@ -15,490 +15,184 @@ namespace ProjetoSemearTurismo.Views
     {
 
         /// <summary>
-        /// Controle BtnModalClientesGRID.
+        /// Controle BtnModalReservasGRID.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnModalClientesGRID;
+        protected global::System.Web.UI.WebControls.Button BtnModalReservasGRID;
 
         /// <summary>
-        /// Controle hdnBtnModalClientes.
+        /// Controle hdnBtnModalReservas.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button hdnBtnModalClientes;
+        protected global::System.Web.UI.WebControls.Button hdnBtnModalReservas;
 
         /// <summary>
-        /// Controle MPEClientesGRID.
+        /// Controle MPEReservasGRID.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::AjaxControlToolkit.ModalPopupExtender MPEClientesGRID;
+        protected global::AjaxControlToolkit.ModalPopupExtender MPEReservasGRID;
 
         /// <summary>
-        /// Controle PNLClientesGRID.
+        /// Controle PNLReservasGRID.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel PNLClientesGRID;
+        protected global::System.Web.UI.WebControls.Panel PNLReservasGRID;
 
         /// <summary>
-        /// Controle LblClientesPopupClienteCadastro.
+        /// Controle LblReservasPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblClientesPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.Label LblReservasPopupReservaCadastro;
 
         /// <summary>
-        /// Controle LblDadosPessoaisPopupClienteCadastro.
+        /// Controle LblDadosPessoaisPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblDadosPessoaisPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.Label LblDadosPessoaisPopupReservaCadastro;
 
         /// <summary>
-        /// Controle LblNomePopupClienteCadastro.
+        /// Controle LblViagemPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNomePopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.Label LblViagemPopupReservaCadastro;
 
         /// <summary>
-        /// Controle TbxNomePopupClienteCadastro.
+        /// Controle TextBoxViagemPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxNomePopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxViagemPopupReservaCadastro;
 
         /// <summary>
-        /// Controle LblCPFPopupClienteCadastro.
+        /// Controle DropDownListViagemPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblCPFPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListViagemPopupReservaCadastro;
 
         /// <summary>
-        /// Controle TbxCPFPopupClienteCadastro.
+        /// Controle LblClientePopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxCPFPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.Label LblClientePopupReservaCadastro;
 
         /// <summary>
-        /// Controle LblNascimento.
+        /// Controle Label2.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNascimento;
+        protected global::System.Web.UI.WebControls.Label Label2;
 
         /// <summary>
-        /// Controle TbxNascimentoPopupClienteCadastro.
+        /// Controle TextBoxClientePopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxNascimentoPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxClientePopupReservaCadastro;
 
         /// <summary>
-        /// Controle LblFiliacaoPrincipalPopupClienteCadastro.
+        /// Controle DropDownListClientePopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblFiliacaoPrincipalPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListClientePopupReservaCadastro;
 
         /// <summary>
-        /// Controle LblNomePaiPopupClienteCadastro.
+        /// Controle LblTransportePopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNomePaiPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.Label LblTransportePopupReservaCadastro;
 
         /// <summary>
-        /// Controle TbxNomePaiPopupClienteCadastro.
+        /// Controle TextBoxTransportePopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxNomePaiPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.TextBox TextBoxTransportePopupReservaCadastro;
 
         /// <summary>
-        /// Controle LblNomeMaePopupClienteCadastro.
+        /// Controle DropDownListTransportePopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNomeMaePopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListTransportePopupReservaCadastro;
 
         /// <summary>
-        /// Controle TbxNomeMaePopupClienteCadastro.
+        /// Controle LblHospedagemPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxNomeMaePopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.Label LblHospedagemPopupReservaCadastro;
 
         /// <summary>
-        /// Controle LblDocumentosPrincipalPopupClienteCadastro.
+        /// Controle txtSearch.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblDocumentosPrincipalPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.TextBox txtSearch;
 
         /// <summary>
-        /// Controle LblRPrincipalGPopupClienteCadastro.
+        /// Controle DropDownListHospedagemPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblRPrincipalGPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListHospedagemPopupReservaCadastro;
 
         /// <summary>
-        /// Controle LblNumRGPopupClienteCadastro.
+        /// Controle lblPerfilPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNumRGPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxNumRGPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxNumRGPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblOrgaoEmissorPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblOrgaoEmissorPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxOrgaoEmissorPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxOrgaoEmissorPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblDataEmissRGPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblDataEmissRGPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxDataEmissRGPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxDataEmissRGPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblPassaportePrincipalPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblPassaportePrincipalPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblNumPassPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblNumPassPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxNumPassPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxNumPassPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblDataEmissPassPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblDataEmissPassPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxDataEmissPassPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxDataEmissPassPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblDataValiPassPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblDataValiPassPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxDataValiPassPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxDataValiPassPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblContatoPrincipalPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblContatoPrincipalPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblTel1PopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblTel1PopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxTel1PopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxTel1PopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblEmailPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblEmailPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxEmailPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxEmailPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblEnderecoPrincipalPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblEnderecoPrincipalPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblRuaPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblRuaPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxRuaPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxRuaPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblBairroPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblBairroPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxBairroPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxBairroPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblCidadePopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblCidadePopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxCidadePopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxCidadePopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblUFPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblUFPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxUFPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxUFPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblCEPPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblCEPPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxCEPPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxCEPPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle lblPerfilPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPerfilPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle lblFuncao.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFuncao;
-
-        /// <summary>
-        /// Controle DropDownListFuncionarioPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListFuncionarioPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle FilteredTextBoxExtender2.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender2;
-
-        /// <summary>
-        /// Controle LblSalarioFuncionaroPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblSalarioFuncionaroPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxSalarioFuncionaroPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxSalarioFuncionaroPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.Label lblPerfilPopupReservaCadastro;
 
         /// <summary>
         /// Controle Label1.
@@ -510,111 +204,84 @@ namespace ProjetoSemearTurismo.Views
         protected global::System.Web.UI.WebControls.Label Label1;
 
         /// <summary>
-        /// Controle DropDownListFlagExcluidoPopupClienteCadastro.
+        /// Controle DropDownListFlagExcluidoPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListFlagExcluidoPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.DropDownList DropDownListFlagExcluidoPopupReservaCadastro;
 
         /// <summary>
-        /// Controle FilteredTextBoxExtender1.
+        /// Controle BtnCadastrarPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::AjaxControlToolkit.FilteredTextBoxExtender FilteredTextBoxExtender1;
+        protected global::System.Web.UI.WebControls.Button BtnCadastrarPopupReservaCadastro;
 
         /// <summary>
-        /// Controle LblSaldoPopupClienteCadastro.
+        /// Controle BtnEditarCadastroPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblSaldoPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.Button BtnEditarCadastroPopupReservaCadastro;
 
         /// <summary>
-        /// Controle TbxSaldoPopupClienteCadastro.
+        /// Controle btnCancelarPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxSaldoPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.Button btnCancelarPopupReservaCadastro;
 
         /// <summary>
-        /// Controle BtnCadastrarPopupClienteCadastro.
+        /// Controle btnLimparPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnCadastrarPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.Button btnLimparPopupReservaCadastro;
 
         /// <summary>
-        /// Controle BtnEditarCadastroPopupClienteCadastro.
+        /// Controle btnHDNCancelarPopupReservaCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnEditarCadastroPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.Button btnHDNCancelarPopupReservaCadastro;
 
         /// <summary>
-        /// Controle btnCancelarPopupClienteCadastro.
+        /// Controle TbxPesquisarGridReservas.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancelarPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.TextBox TbxPesquisarGridReservas;
 
         /// <summary>
-        /// Controle btnLimparPopupClienteCadastro.
+        /// Controle ImgBtnPesquisarGridReservas.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnLimparPopupClienteCadastro;
+        protected global::System.Web.UI.WebControls.ImageButton ImgBtnPesquisarGridReservas;
 
         /// <summary>
-        /// Controle btnHDNCancelarPopupClienteCadastro.
+        /// Controle GridViewReservas.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnHDNCancelarPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle TbxPesquisarGridClientes.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxPesquisarGridClientes;
-
-        /// <summary>
-        /// Controle ImgBtnPesquisarGridClientes.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ImageButton ImgBtnPesquisarGridClientes;
-
-        /// <summary>
-        /// Controle GridViewClientes.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView GridViewClientes;
+        protected global::System.Web.UI.WebControls.GridView GridViewReservas;
     }
 }

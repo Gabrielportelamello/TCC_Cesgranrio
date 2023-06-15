@@ -15,199 +15,204 @@ namespace ProjetoSemearTurismo.Views
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            //GridViewClientes.SelectedIndex = -1;
+            //GridViewReservas.SelectedIndex = -1;
             if (!IsPostBack)
             {
+                PopularDropdownList();
+                PopularDropdownListClientes();
+                PopularDropdownListHospedagem();
+                PopularDropdownListTransporte();
 
-                GridViewClientes.SelectedIndex = -1;
+                //GridViewReservas.SelectedIndex = -1;
 
-                if (TbxPesquisarGridClientes.Text != "")
-                {
-                    GVBingSearch();
-                }
-                else
-                {
-                    GVBing();
-                }
+                //if (TbxPesquisarGridReservas.Text != "")
+                //{
+                //    GVBingSearch();
+                //}
+                //else
+                //{
+                //    GVBing();
+                //}
             }
         }
 
+     
 
         protected void GVBing()
         {
 
-            SqlConnection conn = new SqlConnection(connectionString);
+            //SqlConnection conn = new SqlConnection(connectionString);
 
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA ORDER BY NOME", conn);
-            conn.Open();
-            SqlCommandBuilder builder = new SqlCommandBuilder(a);
-            DataSet ds = new DataSet();
-            a.Fill(ds);
+            //SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA ORDER BY NOME", conn);
+            //conn.Open();
+            //SqlCommandBuilder builder = new SqlCommandBuilder(a);
+            //DataSet ds = new DataSet();
+            //a.Fill(ds);
 
-            GridViewClientes.DataSource = ds;
-            GridViewClientes.DataBind();
+            //GridViewReservas.DataSource = ds;
+            //GridViewReservas.DataBind();
 
-            conn.Close();
-            conn.Dispose();
+            //conn.Close();
+            //conn.Dispose();
 
         }
 
-        protected void GridViewClientes_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        protected void GridViewReservas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            if (TbxPesquisarGridClientes.Text != "")
-            {
-                GVBingSearch();
-                GridViewClientes.PageIndex = e.NewPageIndex;
-                GridViewClientes.DataBind();
-            }
-            else
-            {
-                GVBing();
-                GridViewClientes.PageIndex = e.NewPageIndex;
-                GridViewClientes.DataBind();
-            }
+            //if (TbxPesquisarGridReservas.Text != "")
+            //{
+            //    GVBingSearch();
+            //    GridViewReservas.PageIndex = e.NewPageIndex;
+            //    GridViewReservas.DataBind();
+            //}
+            //else
+            //{
+            //    GVBing();
+            //    GridViewReservas.PageIndex = e.NewPageIndex;
+            //    GridViewReservas.DataBind();
+            //}
 
         }
 
-        protected void GridViewClientes_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-
-        }
-
-        protected void GridViewClientes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        protected void GridViewReservas_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
         }
 
-        protected void GridViewClientes_SelectedIndexChanged(object sender, EventArgs e)
+        protected void GridViewReservas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
+        {
+
+        }
+
+        protected void GridViewReservas_SelectedIndexChanged(object sender, EventArgs e)
         {
 
 
-            string sIndiceRegistro = GridViewClientes.SelectedDataKey.Value.ToString();
+            //string sIndiceRegistro = GridViewReservas.SelectedDataKey.Value.ToString();
 
-            preencheFrmEdicao(sIndiceRegistro);
+            //preencheFrmEdicao(sIndiceRegistro);
 
-            MPEClientesGRID.Show();
+            //MPEReservasGRID.Show();
 
-            BtnCadastrarPopupClienteCadastro.Visible = false;
-            BtnEditarCadastroPopupClienteCadastro.Visible = true;
-            btnLimparPopupClienteCadastro.Visible = false;
+            //BtnCadastrarPopupReservaCadastro.Visible = false;
+            //BtnEditarCadastroPopupReservaCadastro.Visible = true;
+            //btnLimparPopupReservaCadastro.Visible = false;
 
 
         }
 
         private void preencheFrmEdicao(string sIndiceRegistro)
         {
-            if (sIndiceRegistro != null)
-            {
-                try { preencheFormEdicao(sIndiceRegistro); } catch { }
+            //if (sIndiceRegistro != null)
+            //{
+            //    try { preencheFormEdicao(sIndiceRegistro); } catch { }
 
-            }
+            //}
 
         }
         private void preencheFormEdicao(string sIndiceRegistro)
         {
-            //limpaCadastroEdicao();
-            string oradb = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
-            SqlConnection conn = new SqlConnection(oradb);
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA where SQ_PESSOA = " + sIndiceRegistro, conn);
-            conn.Open();
-            SqlCommandBuilder builder = new SqlCommandBuilder(a);
-            DataSet ds = new DataSet();
-            a.Fill(ds, "SEMEAR_PESSOA");
-            //continnuar daqui.
-            foreach (DataRow r in ds.Tables["SEMEAR_PESSOA"].Rows)
-            {
+            ////limpaCadastroEdicao();
+            //string oradb = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
+            //SqlConnection conn = new SqlConnection(oradb);
+            //SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA where SQ_PESSOA = " + sIndiceRegistro, conn);
+            //conn.Open();
+            //SqlCommandBuilder builder = new SqlCommandBuilder(a);
+            //DataSet ds = new DataSet();
+            //a.Fill(ds, "SEMEAR_PESSOA");
+            ////continnuar daqui.
+            //foreach (DataRow r in ds.Tables["SEMEAR_PESSOA"].Rows)
+            //{
 
-                //          SELECT TOP(1000) [Nome]
-                //,[Telefone]
-                //,[Email]
-                //,[Data_Nascimento]
-                //,[CPF]
-                //,[Passaporte]
-                //,[emissao_passaporte]
-                //,[Validade_Passaporte]
-                //,[RG]
-
-
-                TbxNomePopupClienteCadastro.Text = r["NOME"].ToString();
-
-                TbxTel1PopupClienteCadastro.Text = r["Telefone"].ToString();
-
-                TbxEmailPopupClienteCadastro.Text = r["Email"].ToString();
-
-                if (r["Data_Nascimento"].ToString() != "")
-                {
-                    TbxNascimentoPopupClienteCadastro.Text = r["Data_Nascimento"].ToString().Substring(6, 4) + "-" + r["Data_Nascimento"].ToString().Substring(3, 2) + "-" + r["Data_Nascimento"].ToString().Substring(0, 2);
-
-                }
-
-                TbxCPFPopupClienteCadastro.Text = r["CPF"].ToString();
-                TbxNumPassPopupClienteCadastro.Text = r["Passaporte"].ToString();
-
-                if (r["emissao_passaporte"].ToString() != "")
-                {
-                    TbxDataEmissPassPopupClienteCadastro.Text = r["emissao_passaporte"].ToString().Substring(6, 4) + "-" + r["emissao_passaporte"].ToString().Substring(3, 2) + "-" + r["emissao_passaporte"].ToString().Substring(0, 2);
-
-                }
-                if (r["Validade_Passaporte"].ToString() != "")
-                {
-                    TbxDataValiPassPopupClienteCadastro.Text = r["Validade_Passaporte"].ToString().Substring(6, 4) + "-" + r["Validade_Passaporte"].ToString().Substring(3, 2) + "-" + r["Validade_Passaporte"].ToString().Substring(0, 2);
-
-                }
-
-                TbxNumRGPopupClienteCadastro.Text = r["RG"].ToString();
-                //,[orgao_emissor_RG]
-                //,[data_emissao_RG]
-                //,[Perfil_Acesso]
-                //,[salario]
-                //,[Saldo]
-                //,[FL_FUNCIONARIO]
-                //,[FL_EXCLUIDO]
-                //,[bairro_endereco]
-                //,[cidade_endereco]
-                //,[uf_endereco]
-                //,[rua_endereco]
-                //,[CEP]
-                //,[SQ_PESSOA]
-                //          FROM[tailandia].[dbo].[SEMEAR_PESSOA]
-                TbxOrgaoEmissorPopupClienteCadastro.Text = r["orgao_emissor_RG"].ToString();
-                string resulta = r["data_emissao_RG"].ToString();
-
-                if (r["data_emissao_RG"].ToString() != "")
-                {
-                    TbxDataEmissRGPopupClienteCadastro.Text = r["data_emissao_RG"].ToString().Substring(6, 4) + "-" + r["data_emissao_RG"].ToString().Substring(3, 2) + "-" + r["data_emissao_RG"].ToString().Substring(0, 2);
-                }
-
-                //TbxNumRGPopupClienteCadastro.Text = r["Saldo"].ToString();
-                DropDownListFuncionarioPopupClienteCadastro.SelectedValue = r["FL_FUNCIONARIO"].ToString();
-                //.Text = r["FL_EXCLUIDO"].ToString();
-                TbxBairroPopupClienteCadastro.Text = r["bairro_endereco"].ToString();
-                TbxCidadePopupClienteCadastro.Text = r["cidade_endereco"].ToString();
-                TbxUFPopupClienteCadastro.Text = r["uf_endereco"].ToString();
-                TbxRuaPopupClienteCadastro.Text = r["rua_endereco"].ToString();
-                TbxCEPPopupClienteCadastro.Text = r["CEP"].ToString();
+            //    //          SELECT TOP(1000) [Nome]
+            //    //,[Telefone]
+            //    //,[Email]
+            //    //,[Data_Nascimento]
+            //    //,[CPF]
+            //    //,[Passaporte]
+            //    //,[emissao_passaporte]
+            //    //,[Validade_Passaporte]
+            //    //,[RG]
 
 
+            //    TbxNomePopupReservaCadastro.Text = r["NOME"].ToString();
 
-                //DropDownListOrgaos.SelectedValue = r["CO_ORGAO"].ToString() + " - " + r["DE_ORGAO"].ToString();
-                //DropDownListSistemas.SelectedValue = r["NU_APLICATIVO"].ToString() + " - " + r["DE_APLICATIVO"].ToString();
-                //tbxPergunta.Text = r["DE_PERGUNTA"].ToString();
-                //tbxResposta.Text = r["DE_RESPOSTA"].ToString();
-                //lblNumeroRegistro.Text = r["SQ_FAQ"].ToString();
-                //DropDownListFLExcluidos.SelectedValue = r["FL_EXCLUIDO"].ToString();
+            //    TbxTel1PopupReservaCadastro.Text = r["Telefone"].ToString();
 
+            //    TbxEmailPopupReservaCadastro.Text = r["Email"].ToString();
 
-                //imgBanner1.ImageUrl = GetImage((byte[])r["IM_FAQ1"]);
-                //imgBanner2.ImageUrl = GetImage((byte[])r["IM_FAQ2"]);
-                //imgBanner3.ImageUrl = GetImage((byte[])r["IM_FAQ3"]);
-            }
+            //    if (r["Data_Nascimento"].ToString() != "")
+            //    {
+            //        TbxNascimentoPopupReservaCadastro.Text = r["Data_Nascimento"].ToString().Substring(6, 4) + "-" + r["Data_Nascimento"].ToString().Substring(3, 2) + "-" + r["Data_Nascimento"].ToString().Substring(0, 2);
+
+            //    }
+
+            //    TbxCPFPopupReservaCadastro.Text = r["CPF"].ToString();
+            //    TbxNumPassPopupReservaCadastro.Text = r["Passaporte"].ToString();
+
+            //    if (r["emissao_passaporte"].ToString() != "")
+            //    {
+            //        TbxDataEmissPassPopupReservaCadastro.Text = r["emissao_passaporte"].ToString().Substring(6, 4) + "-" + r["emissao_passaporte"].ToString().Substring(3, 2) + "-" + r["emissao_passaporte"].ToString().Substring(0, 2);
+
+            //    }
+            //    if (r["Validade_Passaporte"].ToString() != "")
+            //    {
+            //        TbxDataValiPassPopupReservaCadastro.Text = r["Validade_Passaporte"].ToString().Substring(6, 4) + "-" + r["Validade_Passaporte"].ToString().Substring(3, 2) + "-" + r["Validade_Passaporte"].ToString().Substring(0, 2);
+
+            //    }
+
+            //    TbxNumRGPopupReservaCadastro.Text = r["RG"].ToString();
+            //    //,[orgao_emissor_RG]
+            //    //,[data_emissao_RG]
+            //    //,[Perfil_Acesso]
+            //    //,[salario]
+            //    //,[Saldo]
+            //    //,[FL_FUNCIONARIO]
+            //    //,[FL_EXCLUIDO]
+            //    //,[bairro_endereco]
+            //    //,[cidade_endereco]
+            //    //,[uf_endereco]
+            //    //,[rua_endereco]
+            //    //,[CEP]
+            //    //,[SQ_PESSOA]
+            //    //          FROM[tailandia].[dbo].[SEMEAR_PESSOA]
+            //    TbxOrgaoEmissorPopupReservaCadastro.Text = r["orgao_emissor_RG"].ToString();
+            //    string resulta = r["data_emissao_RG"].ToString();
+
+            //    if (r["data_emissao_RG"].ToString() != "")
+            //    {
+            //        TbxDataEmissRGPopupReservaCadastro.Text = r["data_emissao_RG"].ToString().Substring(6, 4) + "-" + r["data_emissao_RG"].ToString().Substring(3, 2) + "-" + r["data_emissao_RG"].ToString().Substring(0, 2);
+            //    }
+
+            //    //TbxNumRGPopupReservaCadastro.Text = r["Saldo"].ToString();
+            //    DropDownListFuncionarioPopupReservaCadastro.SelectedValue = r["FL_FUNCIONARIO"].ToString();
+            //    //.Text = r["FL_EXCLUIDO"].ToString();
+            //    TbxBairroPopupReservaCadastro.Text = r["bairro_endereco"].ToString();
+            //    TbxCidadePopupReservaCadastro.Text = r["cidade_endereco"].ToString();
+            //    TbxUFPopupReservaCadastro.Text = r["uf_endereco"].ToString();
+            //    TbxRuaPopupReservaCadastro.Text = r["rua_endereco"].ToString();
+            //    TbxCEPPopupReservaCadastro.Text = r["CEP"].ToString();
 
 
 
-            conn.Close();
-            conn.Dispose();
+            //    //DropDownListOrgaos.SelectedValue = r["CO_ORGAO"].ToString() + " - " + r["DE_ORGAO"].ToString();
+            //    //DropDownListSistemas.SelectedValue = r["NU_APLICATIVO"].ToString() + " - " + r["DE_APLICATIVO"].ToString();
+            //    //tbxPergunta.Text = r["DE_PERGUNTA"].ToString();
+            //    //tbxResposta.Text = r["DE_RESPOSTA"].ToString();
+            //    //lblNumeroRegistro.Text = r["SQ_FAQ"].ToString();
+            //    //DropDownListFLExcluidos.SelectedValue = r["FL_EXCLUIDO"].ToString();
+
+
+            //    //imgBanner1.ImageUrl = GetImage((byte[])r["IM_FAQ1"]);
+            //    //imgBanner2.ImageUrl = GetImage((byte[])r["IM_FAQ2"]);
+            //    //imgBanner3.ImageUrl = GetImage((byte[])r["IM_FAQ3"]);
+            //}
+
+
+
+            //conn.Close();
+            //conn.Dispose();
         }
         public string GetImage(object img)
         {
@@ -215,18 +220,18 @@ namespace ProjetoSemearTurismo.Views
         }
 
 
-        protected void BtnCadastrarClienteModal_Click(object sender, EventArgs e)
+        protected void BtnCadastrarReservaModal_Click(object sender, EventArgs e)
         {
-            if (TbxNomePopupClienteCadastro.Text != "" && TbxCPFPopupClienteCadastro.Text != ""
-                && TbxTel1PopupClienteCadastro.Text != "")
-            {
-                RealizaCadastroCliente();
-                RealizaCadastroImagensCliente();
-            }
-            else
-            {
-                //mbox
-            }
+            //if (TbxNomePopupReservaCadastro.Text != "" && TbxCPFPopupReservaCadastro.Text != ""
+            //    && TbxTel1PopupReservaCadastro.Text != "")
+            //{
+            //    RealizaCadastroReserva();
+            //    RealizaCadastroImagensReserva();
+            //}
+            //else
+            //{
+            //    //mbox
+            //}
         }
 
         private void RealizaCadastroImagensFuncionario()
@@ -239,102 +244,102 @@ namespace ProjetoSemearTurismo.Views
 
         }
 
-        private void RealizaCadastroImagensCliente()
+        private void RealizaCadastroImagensReserva()
         {
 
         }
 
-        private void RealizaCadastroCliente()
+        private void RealizaCadastroReserva()
         {
 
-            using (SqlConnection openCon = new SqlConnection(connectionString))
-            {
-                string saveStaff = " INSERT INTO " +
-                    "[dbo].[SEMEAR_PESSOA] " +
-                    " ([Nome]  " +
-                    ",[Telefone] " +
-                    ",[Email]" +
-                    "  ,[Data_Nascimento] " +
-                    " ,[CPF],[Passaporte] ,[emissao_passaporte],[Validade_Passaporte] ,[RG] " +
-                    ",[orgao_emissor_RG] ,[data_emissao_RG] ,[Perfil_Acesso] ,[salario] ,[Saldo] ,[FL_FUNCIONARIO] " +
-                    ",[FL_EXCLUIDO] ,[bairro_endereco],[cidade_endereco] ,[uf_endereco] ,[rua_endereco] ,[CEP])  " +
-                    " VALUES ('" + TbxNomePopupClienteCadastro.Text + "', '" +
-                    "" + TbxTel1PopupClienteCadastro.Text +
-                    "', '" + TbxEmailPopupClienteCadastro.Text +
-                    "', (Select CONVERT(datetime,'" + TbxNascimentoPopupClienteCadastro.Text + "',20)) ,'"
-                    + TbxCPFPopupClienteCadastro.Text +
-                    "', '" + TbxNumPassPopupClienteCadastro.Text +
-                    "', (Select CONVERT(datetime,'" + TbxDataEmissPassPopupClienteCadastro.Text + "',20)),(Select CONVERT(datetime,'" + TbxDataValiPassPopupClienteCadastro.Text + "',20)),'" + TbxNumRGPopupClienteCadastro.Text + "" +
-                    "', '" + TbxOrgaoEmissorPopupClienteCadastro.Text + "',(Select CONVERT(datetime,'" + TbxDataEmissRGPopupClienteCadastro.Text + "',20))," + DropDownListFuncionarioPopupClienteCadastro.SelectedValue + " ," + TbxSalarioFuncionaroPopupClienteCadastro.Text + "," + TbxSaldoPopupClienteCadastro.Text + ","
-                    + DropDownListFuncionarioPopupClienteCadastro.SelectedValue
-                    + " ," + DropDownListFlagExcluidoPopupClienteCadastro.SelectedValue + " ,'" + TbxBairroPopupClienteCadastro.Text + "','"
-                    + TbxCidadePopupClienteCadastro.Text + "','" + TbxUFPopupClienteCadastro.Text
-                    + "' ,'" + TbxRuaPopupClienteCadastro.Text + "','" + TbxCEPPopupClienteCadastro.Text + "') ";
+            //using (SqlConnection openCon = new SqlConnection(connectionString))
+            //{
+            //    string saveStaff = " INSERT INTO " +
+            //        "[dbo].[SEMEAR_PESSOA] " +
+            //        " ([Nome]  " +
+            //        ",[Telefone] " +
+            //        ",[Email]" +
+            //        "  ,[Data_Nascimento] " +
+            //        " ,[CPF],[Passaporte] ,[emissao_passaporte],[Validade_Passaporte] ,[RG] " +
+            //        ",[orgao_emissor_RG] ,[data_emissao_RG] ,[Perfil_Acesso] ,[salario] ,[Saldo] ,[FL_FUNCIONARIO] " +
+            //        ",[FL_EXCLUIDO] ,[bairro_endereco],[cidade_endereco] ,[uf_endereco] ,[rua_endereco] ,[CEP])  " +
+            //        " VALUES ('" + TbxNomePopupReservaCadastro.Text + "', '" +
+            //        "" + TbxTel1PopupReservaCadastro.Text +
+            //        "', '" + TbxEmailPopupReservaCadastro.Text +
+            //        "', (Select CONVERT(datetime,'" + TbxNascimentoPopupReservaCadastro.Text + "',20)) ,'"
+            //        + TbxCPFPopupReservaCadastro.Text +
+            //        "', '" + TbxNumPassPopupReservaCadastro.Text +
+            //        "', (Select CONVERT(datetime,'" + TbxDataEmissPassPopupReservaCadastro.Text + "',20)),(Select CONVERT(datetime,'" + TbxDataValiPassPopupReservaCadastro.Text + "',20)),'" + TbxNumRGPopupReservaCadastro.Text + "" +
+            //        "', '" + TbxOrgaoEmissorPopupReservaCadastro.Text + "',(Select CONVERT(datetime,'" + TbxDataEmissRGPopupReservaCadastro.Text + "',20))," + DropDownListFuncionarioPopupReservaCadastro.SelectedValue + " ," + TbxSalarioFuncionaroPopupReservaCadastro.Text + "," + TbxSaldoPopupReservaCadastro.Text + ","
+            //        + DropDownListFuncionarioPopupReservaCadastro.SelectedValue
+            //        + " ," + DropDownListFlagExcluidoPopupReservaCadastro.SelectedValue + " ,'" + TbxBairroPopupReservaCadastro.Text + "','"
+            //        + TbxCidadePopupReservaCadastro.Text + "','" + TbxUFPopupReservaCadastro.Text
+            //        + "' ,'" + TbxRuaPopupReservaCadastro.Text + "','" + TbxCEPPopupReservaCadastro.Text + "') ";
 
 
-                using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
-                {
-                    querySaveStaff.Connection = openCon;
+            //    using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
+            //    {
+            //        querySaveStaff.Connection = openCon;
 
-                    openCon.Open();
+            //        openCon.Open();
 
-                    querySaveStaff.ExecuteNonQuery();
+            //        querySaveStaff.ExecuteNonQuery();
 
-                    openCon.Dispose();
-                    openCon.Close();
-                }
+            //        openCon.Dispose();
+            //        openCon.Close();
+            //    }
 
-            }
+            //}
 
 
-            GVBing();
+            //GVBing();
         }
-        private void RealizaEdicaoCadastroCliente(string indiceRegistro)
+        private void RealizaEdicaoCadastroReserva(string indiceRegistro)
         {
 
-            using (SqlConnection openCon = new SqlConnection(connectionString))
-            {
-                string saveStaff = " UPDATE[dbo].[SEMEAR_PESSOA] SET[Nome] = '" + TbxNomePopupClienteCadastro.Text + "' ," +
-                    "[Telefone] = '" + TbxTel1PopupClienteCadastro.Text + "',[Email] = '" + TbxEmailPopupClienteCadastro.Text + "'" +
-                    ",[Data_Nascimento] = (Select CONVERT(datetime, '" + TbxNascimentoPopupClienteCadastro.Text + "', 20)) ,[CPF] = " +
-                    "'" + TbxCPFPopupClienteCadastro.Text + "'      ,[Passaporte] = '" + TbxNumPassPopupClienteCadastro.Text + "' " +
-                    ",[emissao_passaporte] = (Select CONVERT(datetime, '" + TbxDataEmissPassPopupClienteCadastro.Text + "', 20))" +
-                    ",[Validade_Passaporte] = (Select CONVERT(datetime, '" + TbxDataValiPassPopupClienteCadastro.Text + "', 20))" +
-                    ",[RG] = '" + TbxNumRGPopupClienteCadastro.Text + "'" +
-                    ",[orgao_emissor_RG] = '" + TbxOrgaoEmissorPopupClienteCadastro.Text + "',[data_emissao_RG] = " +
-                    "(Select CONVERT(datetime, '" + TbxDataEmissRGPopupClienteCadastro.Text + "', 20)) ,[Perfil_Acesso] =" +
-                    " " + DropDownListFuncionarioPopupClienteCadastro.SelectedValue + ",[salario] = "
-                    + TbxSalarioFuncionaroPopupClienteCadastro.Text + " ,[Saldo] = " + TbxSaldoPopupClienteCadastro.Text + "" +
-                    ",[FL_FUNCIONARIO] = " + DropDownListFuncionarioPopupClienteCadastro.SelectedValue + "" +
-                    ",[FL_EXCLUIDO] = " + DropDownListFlagExcluidoPopupClienteCadastro.SelectedValue + "" +
-                    ",[bairro_endereco] = '" + TbxBairroPopupClienteCadastro.Text + "',[cidade_endereco] = " +
-                    "'" + TbxCidadePopupClienteCadastro.Text + "',[uf_endereco] = '" + TbxUFPopupClienteCadastro.Text + "'" +
-                    ",[rua_endereco] = '" + TbxRuaPopupClienteCadastro.Text + "',[CEP] = '" + TbxCEPPopupClienteCadastro.Text +
-                    "' WHERE SQ_PESSOA = " + indiceRegistro + " ";
+            //using (SqlConnection openCon = new SqlConnection(connectionString))
+            //{
+            //    string saveStaff = " UPDATE[dbo].[SEMEAR_PESSOA] SET[Nome] = '" + TbxNomePopupReservaCadastro.Text + "' ," +
+            //        "[Telefone] = '" + TbxTel1PopupReservaCadastro.Text + "',[Email] = '" + TbxEmailPopupReservaCadastro.Text + "'" +
+            //        ",[Data_Nascimento] = (Select CONVERT(datetime, '" + TbxNascimentoPopupReservaCadastro.Text + "', 20)) ,[CPF] = " +
+            //        "'" + TbxCPFPopupReservaCadastro.Text + "'      ,[Passaporte] = '" + TbxNumPassPopupReservaCadastro.Text + "' " +
+            //        ",[emissao_passaporte] = (Select CONVERT(datetime, '" + TbxDataEmissPassPopupReservaCadastro.Text + "', 20))" +
+            //        ",[Validade_Passaporte] = (Select CONVERT(datetime, '" + TbxDataValiPassPopupReservaCadastro.Text + "', 20))" +
+            //        ",[RG] = '" + TbxNumRGPopupReservaCadastro.Text + "'" +
+            //        ",[orgao_emissor_RG] = '" + TbxOrgaoEmissorPopupReservaCadastro.Text + "',[data_emissao_RG] = " +
+            //        "(Select CONVERT(datetime, '" + TbxDataEmissRGPopupReservaCadastro.Text + "', 20)) ,[Perfil_Acesso] =" +
+            //        " " + DropDownListFuncionarioPopupReservaCadastro.SelectedValue + ",[salario] = "
+            //        + TbxSalarioFuncionaroPopupReservaCadastro.Text + " ,[Saldo] = " + TbxSaldoPopupReservaCadastro.Text + "" +
+            //        ",[FL_FUNCIONARIO] = " + DropDownListFuncionarioPopupReservaCadastro.SelectedValue + "" +
+            //        ",[FL_EXCLUIDO] = " + DropDownListFlagExcluidoPopupReservaCadastro.SelectedValue + "" +
+            //        ",[bairro_endereco] = '" + TbxBairroPopupReservaCadastro.Text + "',[cidade_endereco] = " +
+            //        "'" + TbxCidadePopupReservaCadastro.Text + "',[uf_endereco] = '" + TbxUFPopupReservaCadastro.Text + "'" +
+            //        ",[rua_endereco] = '" + TbxRuaPopupReservaCadastro.Text + "',[CEP] = '" + TbxCEPPopupReservaCadastro.Text +
+            //        "' WHERE SQ_PESSOA = " + indiceRegistro + " ";
 
 
-                using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
-                {
-                    querySaveStaff.Connection = openCon;
+            //    using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
+            //    {
+            //        querySaveStaff.Connection = openCon;
 
-                    openCon.Open();
+            //        openCon.Open();
 
-                    querySaveStaff.ExecuteNonQuery();
+            //        querySaveStaff.ExecuteNonQuery();
 
-                    openCon.Dispose();
-                    openCon.Close();
-                }
-            }
+            //        openCon.Dispose();
+            //        openCon.Close();
+            //    }
+            //}
 
 
-            if (TbxPesquisarGridClientes.Text != "")
-            {
-                GVBingSearch();
-            }
-            else
-            {
-                GVBing();
-            }
+            //if (TbxPesquisarGridReservas.Text != "")
+            //{
+            //    GVBingSearch();
+            //}
+            //else
+            //{
+            //    GVBing();
+            //}
         }
 
         private void preencheVazioComNull()
@@ -346,131 +351,269 @@ namespace ProjetoSemearTurismo.Views
 
         }
 
-        protected void ImgBtnPesquisarGridClientes_Click(object sender, ImageClickEventArgs e)
+        protected void ImgBtnPesquisarGridReservas_Click(object sender, ImageClickEventArgs e)
         {
-            if (TbxPesquisarGridClientes.Text != "")
-            {
-                GVBingSearch();
-            }
-            else
-            {
-                GVBing();
-            }
+            //if (TbxPesquisarGridReservas.Text != "")
+            //{
+            //    GVBingSearch();
+            //}
+            //else
+            //{
+            //    GVBing();
+            //}
         }
         protected void GVBingSearch()
         {
 
-            SqlConnection conn = new SqlConnection(connectionString);
+            //SqlConnection conn = new SqlConnection(connectionString);
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA where Nome LIKE '%" + TbxPesquisarGridClientes.Text + "%' ORDER BY Nome", conn);
-            conn.Open();
-            SqlCommandBuilder builder = new SqlCommandBuilder(a);
-            DataSet ds = new DataSet();
-            a.Fill(ds);
+            //SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA where Nome LIKE '%" + TbxPesquisarGridReservas.Text + "%' ORDER BY Nome", conn);
+            //conn.Open();
+            //SqlCommandBuilder builder = new SqlCommandBuilder(a);
+            //DataSet ds = new DataSet();
+            //a.Fill(ds);
 
-            GridViewClientes.DataSource = ds;
-            GridViewClientes.DataBind();
+            //GridViewReservas.DataSource = ds;
+            //GridViewReservas.DataBind();
 
-            conn.Close();
-            conn.Dispose();
-
-        }
-
-        protected void DropDownListFuncionarioPopupClienteCadastro_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (DropDownListFuncionarioPopupClienteCadastro.SelectedValue == "0")
-            {
-                LblSalarioFuncionaroPopupClienteCadastro.Visible = false;
-                TbxSalarioFuncionaroPopupClienteCadastro.Visible = false;
-            }
-            else
-            {
-                LblSalarioFuncionaroPopupClienteCadastro.Visible = true;
-                TbxSalarioFuncionaroPopupClienteCadastro.Visible = true;
-            }
+            //conn.Close();
+            //conn.Dispose();
 
         }
 
-        protected void DropDownListFuncionarioPopupClienteCadastro_TextChanged(object sender, EventArgs e)
+        protected void DropDownListFuncionarioPopupReservaCadastro_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (DropDownListFuncionarioPopupClienteCadastro.SelectedValue == "0")
-            {
-                LblSalarioFuncionaroPopupClienteCadastro.Visible = false;
-                TbxSalarioFuncionaroPopupClienteCadastro.Visible = false;
-            }
-            else
-            {
-                LblSalarioFuncionaroPopupClienteCadastro.Visible = true;
-                TbxSalarioFuncionaroPopupClienteCadastro.Visible = true;
-            }
+            //if (DropDownListFuncionarioPopupReservaCadastro.SelectedValue == "0")
+            //{
+            //    LblSalarioFuncionaroPopupReservaCadastro.Visible = false;
+            //    TbxSalarioFuncionaroPopupReservaCadastro.Visible = false;
+            //}
+            //else
+            //{
+            //    LblSalarioFuncionaroPopupReservaCadastro.Visible = true;
+            //    TbxSalarioFuncionaroPopupReservaCadastro.Visible = true;
+            //}
+
         }
 
-        protected void BtnEditarCadastroPopupClienteCadastro_Click(object sender, EventArgs e)
+        protected void DropDownListFuncionarioPopupReservaCadastro_TextChanged(object sender, EventArgs e)
         {
-            string sIndiceRegistro = GridViewClientes.SelectedDataKey.Value.ToString();
-            RealizaEdicaoCadastroCliente(sIndiceRegistro);
-
-            if (TbxPesquisarGridClientes.Text != "")
-            {
-                GVBingSearch();
-            }
-            else
-            {
-                GVBing();
-            }
-            GridViewClientes.SelectedIndex = -1;
+            //if (DropDownListFuncionarioPopupReservaCadastro.SelectedValue == "0")
+            //{
+            //    LblSalarioFuncionaroPopupReservaCadastro.Visible = false;
+            //    TbxSalarioFuncionaroPopupReservaCadastro.Visible = false;
+            //}
+            //else
+            //{
+            //    LblSalarioFuncionaroPopupReservaCadastro.Visible = true;
+            //    TbxSalarioFuncionaroPopupReservaCadastro.Visible = true;
+            //}
         }
 
-        protected void BtnModalClientesGRID_Click(object sender, EventArgs e)
+        protected void BtnEditarCadastroPopupReservaCadastro_Click(object sender, EventArgs e)
         {
-            MPEClientesGRID.Show();
-            BtnCadastrarPopupClienteCadastro.Visible = true;
-            BtnEditarCadastroPopupClienteCadastro.Visible = false;
-            btnLimparPopupClienteCadastro.Visible = true;
+            //string sIndiceRegistro = GridViewReservas.SelectedDataKey.Value.ToString();
+            //RealizaEdicaoCadastroReserva(sIndiceRegistro);
+
+            //if (TbxPesquisarGridReservas.Text != "")
+            //{
+            //    GVBingSearch();
+            //}
+            //else
+            //{
+            //    GVBing();
+            //}
+            //GridViewReservas.SelectedIndex = -1;
         }
 
-        protected void btnCancelarPopupClienteCadastro_Click(object sender, EventArgs e)
+        protected void BtnModalReservasGRID_Click(object sender, EventArgs e)
         {
-            GridViewClientes.SelectedIndex = -1;
+            MPEReservasGRID.Show();
+            BtnCadastrarPopupReservaCadastro.Visible = true;
+            BtnEditarCadastroPopupReservaCadastro.Visible = false;
+            btnLimparPopupReservaCadastro.Visible = true;
+        }
 
-            if (BtnEditarCadastroPopupClienteCadastro.Visible == true)
+        protected void btnCancelarPopupReservaCadastro_Click(object sender, EventArgs e)
+        {
+            //GridViewReservas.SelectedIndex = -1;
+
+            //if (BtnEditarCadastroPopupReservaCadastro.Visible == true)
+            //{
+            //    limparCadastro();
+
+            //}
+        }
+
+        protected void PopularDropdownList()
+    {
+        // Define a string de conexão com o banco de dados
+        string connectionString = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
+
+        // Define a consulta SQL para selecionar os dados da tabela
+        string query = "SELECT [NOME_VIAGEM] , [SQ_VIAGEM] FROM [dbo].[SEMEAR_VIAGEM] ";
+
+        // Cria uma conexão com o banco de dados
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            // Cria um comando SQL
+            using (SqlCommand command = new SqlCommand(query, connection))
             {
-                limparCadastro();
+                // Abre a conexão com o banco de dados
+                connection.Open();
 
+                // Executa o comando SQL e obtém um SqlDataReader
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    // Define os campos do DropDownList
+                    DropDownListViagemPopupReservaCadastro.DataTextField = "NOME_VIAGEM";
+                    DropDownListViagemPopupReservaCadastro.DataValueField = "SQ_VIAGEM";
+
+                        // Preenche o DropDownList com os dados da tabela
+                        DropDownListViagemPopupReservaCadastro.DataSource = reader;
+                        DropDownListViagemPopupReservaCadastro.DataBind();
+                }
+            }
+        }
+    }
+        private void PopularDropdownListClientes()
+        {
+            //SELECT[Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM[dbo].[SEMEAR_PESSOA]
+            // Define a string de conexão com o banco de dados
+            string connectionString = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
+
+            // Define a consulta SQL para selecionar os dados da tabela
+            string query = "SELECT [Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM [dbo].[SEMEAR_PESSOA] ";
+
+            // Cria uma conexão com o banco de dados
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Cria um comando SQL
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Abre a conexão com o banco de dados
+                    connection.Open();
+
+                    // Executa o comando SQL e obtém um SqlDataReader
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        // Define os campos do DropDownList
+                        DropDownListClientePopupReservaCadastro.DataTextField = "NomeCompleto";
+                        DropDownListClientePopupReservaCadastro.DataValueField = "SQ_PESSOA";
+
+                        // Preenche o DropDownList com os dados da tabela
+                        DropDownListClientePopupReservaCadastro.DataSource = reader;
+                        DropDownListClientePopupReservaCadastro.DataBind();
+                    }
+                }
+            }
+        }
+         private void PopularDropdownListHospedagem()
+        {
+            //SELECT[Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM[dbo].[SEMEAR_PESSOA]
+            // Define a string de conexão com o banco de dados
+            string connectionString = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
+
+            // Define a consulta SQL para selecionar os dados da tabela
+            string query = "SELECT [SEQ_HOSPEDAGEM] , [Nome] FROM [dbo].[SEMEAR_HOSPEDAGEM]";
+
+            // Cria uma conexão com o banco de dados
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Cria um comando SQL
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Abre a conexão com o banco de dados
+                    connection.Open();
+
+                    // Executa o comando SQL e obtém um SqlDataReader
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        // Define os campos do DropDownList
+                        DropDownListHospedagemPopupReservaCadastro.DataTextField = "Nome";
+                        DropDownListHospedagemPopupReservaCadastro.DataValueField = "SEQ_HOSPEDAGEM";
+
+                        // Preenche o DropDownList com os dados da tabela
+                        DropDownListHospedagemPopupReservaCadastro.DataSource = reader;
+                        DropDownListHospedagemPopupReservaCadastro.DataBind();
+                    }
+                }
+            }
+        }
+         private void PopularDropdownListTransporte()
+        {
+            //SELECT[Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM[dbo].[SEMEAR_PESSOA]
+            // Define a string de conexão com o banco de dados
+            string connectionString = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
+
+            // Define a consulta SQL para selecionar os dados da tabela
+            string query = "SELECT [SQ_TRANSPORTE] ,[NOME] FROM [dbo].[SEMEAR_TRANSPORTE] ";
+
+            // Cria uma conexão com o banco de dados
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Cria um comando SQL
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Abre a conexão com o banco de dados
+                    connection.Open();
+
+                    // Executa o comando SQL e obtém um SqlDataReader
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        // Define os campos do DropDownList
+                        DropDownListTransportePopupReservaCadastro.DataTextField = "NOME";
+                        DropDownListTransportePopupReservaCadastro.DataValueField = "SQ_TRANSPORTE";
+
+                        // Preenche o DropDownList com os dados da tabela
+                        DropDownListTransportePopupReservaCadastro.DataSource = reader;
+                        DropDownListTransportePopupReservaCadastro.DataBind();
+                    }
+                }
             }
         }
 
         private void limparCadastro()
         {
-            TbxNomePopupClienteCadastro.Text = "";
-            TbxTel1PopupClienteCadastro.Text = "";
-            TbxEmailPopupClienteCadastro.Text = "";
-            TbxNascimentoPopupClienteCadastro.Text = "";
-            TbxCPFPopupClienteCadastro.Text = "";
-            TbxNumPassPopupClienteCadastro.Text = "";
-            TbxDataEmissPassPopupClienteCadastro.Text = "";
-            TbxDataValiPassPopupClienteCadastro.Text = "";
-            TbxNumRGPopupClienteCadastro.Text = "";
-            TbxOrgaoEmissorPopupClienteCadastro.Text = "";
-            TbxDataEmissRGPopupClienteCadastro.Text = "";
-            DropDownListFuncionarioPopupClienteCadastro.SelectedValue = "0";
-            TbxSalarioFuncionaroPopupClienteCadastro.Text = "";
-            TbxSaldoPopupClienteCadastro.Text = "";
-            DropDownListFuncionarioPopupClienteCadastro.SelectedValue = "0";
-            DropDownListFlagExcluidoPopupClienteCadastro.SelectedValue = "0";
-            TbxBairroPopupClienteCadastro.Text = "";
-            TbxCidadePopupClienteCadastro.Text = "";
-            TbxUFPopupClienteCadastro.Text = "";
-            TbxRuaPopupClienteCadastro.Text = "";
-            TbxCEPPopupClienteCadastro.Text = "";
-            GridViewClientes.SelectedIndex = -1;
+            //TbxNomePopupReservaCadastro.Text = "";
+            //TbxTel1PopupReservaCadastro.Text = "";
+            //TbxEmailPopupReservaCadastro.Text = "";
+            //TbxNascimentoPopupReservaCadastro.Text = "";
+            //TbxCPFPopupReservaCadastro.Text = "";
+            //TbxNumPassPopupReservaCadastro.Text = "";
+            //TbxDataEmissPassPopupReservaCadastro.Text = "";
+            //TbxDataValiPassPopupReservaCadastro.Text = "";
+            //TbxNumRGPopupReservaCadastro.Text = "";
+            //TbxOrgaoEmissorPopupReservaCadastro.Text = "";
+            //TbxDataEmissRGPopupReservaCadastro.Text = "";
+            //DropDownListFuncionarioPopupReservaCadastro.SelectedValue = "0";
+            //TbxSalarioFuncionaroPopupReservaCadastro.Text = "";
+            //TbxSaldoPopupReservaCadastro.Text = "";
+            //DropDownListFuncionarioPopupReservaCadastro.SelectedValue = "0";
+            //DropDownListFlagExcluidoPopupReservaCadastro.SelectedValue = "0";
+            //TbxBairroPopupReservaCadastro.Text = "";
+            //TbxCidadePopupReservaCadastro.Text = "";
+            //TbxUFPopupReservaCadastro.Text = "";
+            //TbxRuaPopupReservaCadastro.Text = "";
+            //TbxCEPPopupReservaCadastro.Text = "";
+            //GridViewReservas.SelectedIndex = -1;
 
 
         }
 
-        protected void btnLimparPopupClienteCadastro_Click(object sender, EventArgs e)
+        protected void btnLimparPopupReservaCadastro_Click(object sender, EventArgs e)
         {
             limparCadastro();
+        }
+
+        protected void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void ddlOptions_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -54,8 +54,8 @@
 
     z-index: 10001;
     overflow:scroll; 
-    height:500px;
-    width:900px;
+    height:100%;
+    width:100%;
 
   }
   .hdnBtn{
