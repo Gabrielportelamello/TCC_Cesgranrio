@@ -147,7 +147,6 @@ C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\
 C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\pt-br\System.Web.Optimization.resources.dll
 C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\pt-br\Microsoft.AspNet.FriendlyUrls.resources.dll
-C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\ProjetoSemearTurismo.csprojAssemblyReference.cache
 C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\ProjetoSemearTurismo.csproj.CoreCompileInputs.cache
 C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\ProjetoSemearTurismo.csproj.CopyComplete
 C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\ProjetoSemearTurismo.dll
@@ -229,3 +228,4 @@ C:\repos\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\Proj
 C:\repos\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\ProjetoSemearTurismo.csproj.CopyComplete
 C:\repos\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\ProjetoSemearTurismo.dll
 C:\repos\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\ProjetoSemearTurismo.pdb
+C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\ProjetoSemearTurismo.csproj.AssemblyReference.cache

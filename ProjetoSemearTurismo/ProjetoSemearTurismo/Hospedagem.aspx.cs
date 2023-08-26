@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -11,7 +12,7 @@ namespace ProjetoSemearTurismo.Views
 {
     public partial class Hospedagem : System.Web.UI.Page
     {
-        string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
+        string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -124,7 +125,8 @@ namespace ProjetoSemearTurismo.Views
         private void preencheFormEdicao(string sIndiceRegistro)
         {
             //limpaCadastroEdicao();
-            string oradb = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
+            string oradb = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
+
             SqlConnection conn = new SqlConnection(oradb);
             SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_Hospedagem where SQ_Hospedagem = " + sIndiceRegistro, conn);
             conn.Open();

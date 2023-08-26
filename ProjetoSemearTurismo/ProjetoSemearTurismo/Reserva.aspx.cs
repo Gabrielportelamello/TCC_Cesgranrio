@@ -6,12 +6,14 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
+
 
 namespace ProjetoSemearTurismo.Views
 {
     public partial class Reserva : System.Web.UI.Page
     {
-        string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
+        string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -114,7 +116,8 @@ namespace ProjetoSemearTurismo.Views
         private void preencheFormEdicao(string sIndiceRegistro)
         {
             ////limpaCadastroEdicao();
-            //string oradb = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
+            ///            string oradb = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
+
             //SqlConnection conn = new SqlConnection(oradb);
             //SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA where SQ_PESSOA = " + sIndiceRegistro, conn);
             //conn.Open();
@@ -488,7 +491,7 @@ namespace ProjetoSemearTurismo.Views
         protected void PopularDropdownList()
     {
         // Define a string de conexão com o banco de dados
-        string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
+        string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
         // Define a consulta SQL para selecionar os dados da tabela
         string query = "SELECT [NOME_VIAGEM] , [SQ_VIAGEM] FROM [dbo].[SEMEAR_VIAGEM] ";
@@ -520,7 +523,7 @@ namespace ProjetoSemearTurismo.Views
         {
             //SELECT[Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM[dbo].[SEMEAR_PESSOA]
             // Define a string de conexão com o banco de dados
-            string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
+            string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
             // Define a consulta SQL para selecionar os dados da tabela
             string query = "SELECT [Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM [dbo].[SEMEAR_PESSOA] ";
@@ -552,7 +555,7 @@ namespace ProjetoSemearTurismo.Views
         {
             //SELECT[Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM[dbo].[SEMEAR_PESSOA]
             // Define a string de conexão com o banco de dados
-            string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
+            string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
             // Define a consulta SQL para selecionar os dados da tabela
             string query = "SELECT [SEQ_HOSPEDAGEM] , [Nome] FROM [dbo].[SEMEAR_HOSPEDAGEM]";
@@ -584,7 +587,7 @@ namespace ProjetoSemearTurismo.Views
         {
             //SELECT[Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM[dbo].[SEMEAR_PESSOA]
             // Define a string de conexão com o banco de dados
-            string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
+            string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
             // Define a consulta SQL para selecionar os dados da tabela
             string query = "SELECT [SQ_TRANSPORTE] ,[NOME] FROM [dbo].[SEMEAR_TRANSPORTE] ";

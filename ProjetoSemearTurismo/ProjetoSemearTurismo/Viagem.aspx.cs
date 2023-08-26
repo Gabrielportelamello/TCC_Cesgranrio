@@ -6,12 +6,13 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Configuration;
 
 namespace ProjetoSemearTurismo
 {
     public partial class Contact : Page
     {
-        string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
+        string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
         
 
@@ -110,8 +111,10 @@ namespace ProjetoSemearTurismo
         }
         private void preencheFormEdicao(string sIndiceRegistro)
         {
+
             //limpaCadastroEdicao();
-            string oradb = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
+            string oradb = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
+
             SqlConnection conn = new SqlConnection(oradb);
             SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_VIAGEM where SQ_VIAGEM = " + sIndiceRegistro, conn);
             conn.Open();
