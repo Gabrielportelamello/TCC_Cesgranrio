@@ -11,7 +11,7 @@ namespace ProjetoSemearTurismo
 {
     public partial class Transporte : System.Web.UI.Page
     {
-        string connectionString = "Data Source=BEATRIZ\\SQLEXPRESS;Initial Catalog=tailandia;Integrated Security=true";
+        string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -109,7 +109,7 @@ namespace ProjetoSemearTurismo
         private void preencheFormEdicao(string sIndiceRegistro)
         {
             //limpaCadastroEdicao();
-            string oradb = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
+            string oradb = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
             SqlConnection conn = new SqlConnection(oradb);
             SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE where SQ_TRANSPORTE = " + sIndiceRegistro, conn);
             conn.Open();

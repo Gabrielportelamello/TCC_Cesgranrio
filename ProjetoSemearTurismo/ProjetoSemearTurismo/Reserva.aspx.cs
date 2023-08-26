@@ -11,7 +11,7 @@ namespace ProjetoSemearTurismo.Views
 {
     public partial class Reserva : System.Web.UI.Page
     {
-        string connectionString = "Data Source=BEATRIZ\\SQLEXPRESS;Initial Catalog=tailandia;Integrated Security=true";
+        string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -114,7 +114,7 @@ namespace ProjetoSemearTurismo.Views
         private void preencheFormEdicao(string sIndiceRegistro)
         {
             ////limpaCadastroEdicao();
-            //string oradb = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
+            //string oradb = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
             //SqlConnection conn = new SqlConnection(oradb);
             //SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA where SQ_PESSOA = " + sIndiceRegistro, conn);
             //conn.Open();
@@ -222,16 +222,53 @@ namespace ProjetoSemearTurismo.Views
 
         protected void BtnCadastrarReservaModal_Click(object sender, EventArgs e)
         {
-            //if (TbxNomePopupReservaCadastro.Text != "" && TbxCPFPopupReservaCadastro.Text != ""
-            //    && TbxTel1PopupReservaCadastro.Text != "")
-            //{
-            //    RealizaCadastroReserva();
-            //    RealizaCadastroImagensReserva();
-            //}
-            //else
-            //{
-            //    //mbox
-            //}
+            if (!string.IsNullOrEmpty(TextBoxTransportePopupReservaCadastro.Text) && !string.IsNullOrEmpty(TextBoxViagemPopupReservaCadastro.Text))
+                
+            {
+                RealizaCadastroReserva();
+                int SEQ = getMaxValue();
+                RealizaCadastroReservaAssociativa(SEQ);
+                //RealizaCadastroImagensReserva();
+            }
+            else
+            {
+                //mbox
+            }
+        }
+
+        private void RealizaCadastroReservaAssociativa(int SEQ)
+        {
+
+            using (SqlConnection openCon = new SqlConnection(connectionString))
+            {
+
+
+
+                //           -----------------------------
+
+                
+
+                string saveStaff = "INSERT INTO[dbo].[SEMEAR_ASSOCIATIVA_VPR] " + "([SQ_VIAGEM_FK],[SQ_RESERVA_FK],[SQ_CLIENTE_FK],[DT_INCLUSAO],[DT_EDICAO])" + 
+                " VALUES ( " + DropDownListViagemPopupReservaCadastro.SelectedValue + " , " + SEQ + " , " + DropDownListClientePopupReservaCadastro.SelectedValue + " , (SELECT GETDATE() AS CurrentDateTime),(SELECT GETDATE() AS CurrentDateTime))"; 
+
+
+
+                using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
+                {
+                    querySaveStaff.Connection = openCon;
+
+                    openCon.Open();
+
+                    querySaveStaff.ExecuteNonQuery();
+
+                    openCon.Dispose();
+                    openCon.Close();
+                }
+
+            }
+
+
+            GVBing();
         }
 
         private void RealizaCadastroImagensFuncionario()
@@ -252,47 +289,50 @@ namespace ProjetoSemearTurismo.Views
         private void RealizaCadastroReserva()
         {
 
-            //using (SqlConnection openCon = new SqlConnection(connectionString))
-            //{
-            //    string saveStaff = " INSERT INTO " +
-            //        "[dbo].[SEMEAR_PESSOA] " +
-            //        " ([Nome]  " +
-            //        ",[Telefone] " +
-            //        ",[Email]" +
-            //        "  ,[Data_Nascimento] " +
-            //        " ,[CPF],[Passaporte] ,[emissao_passaporte],[Validade_Passaporte] ,[RG] " +
-            //        ",[orgao_emissor_RG] ,[data_emissao_RG] ,[Perfil_Acesso] ,[salario] ,[Saldo] ,[FL_FUNCIONARIO] " +
-            //        ",[FL_EXCLUIDO] ,[bairro_endereco],[cidade_endereco] ,[uf_endereco] ,[rua_endereco] ,[CEP])  " +
-            //        " VALUES ('" + TbxNomePopupReservaCadastro.Text + "', '" +
-            //        "" + TbxTel1PopupReservaCadastro.Text +
-            //        "', '" + TbxEmailPopupReservaCadastro.Text +
-            //        "', (Select CONVERT(datetime,'" + TbxNascimentoPopupReservaCadastro.Text + "',20)) ,'"
-            //        + TbxCPFPopupReservaCadastro.Text +
-            //        "', '" + TbxNumPassPopupReservaCadastro.Text +
-            //        "', (Select CONVERT(datetime,'" + TbxDataEmissPassPopupReservaCadastro.Text + "',20)),(Select CONVERT(datetime,'" + TbxDataValiPassPopupReservaCadastro.Text + "',20)),'" + TbxNumRGPopupReservaCadastro.Text + "" +
-            //        "', '" + TbxOrgaoEmissorPopupReservaCadastro.Text + "',(Select CONVERT(datetime,'" + TbxDataEmissRGPopupReservaCadastro.Text + "',20))," + DropDownListFuncionarioPopupReservaCadastro.SelectedValue + " ," + TbxSalarioFuncionaroPopupReservaCadastro.Text + "," + TbxSaldoPopupReservaCadastro.Text + ","
-            //        + DropDownListFuncionarioPopupReservaCadastro.SelectedValue
-            //        + " ," + DropDownListFlagExcluidoPopupReservaCadastro.SelectedValue + " ,'" + TbxBairroPopupReservaCadastro.Text + "','"
-            //        + TbxCidadePopupReservaCadastro.Text + "','" + TbxUFPopupReservaCadastro.Text
-            //        + "' ,'" + TbxRuaPopupReservaCadastro.Text + "','" + TbxCEPPopupReservaCadastro.Text + "') ";
+            using (SqlConnection openCon = new SqlConnection(connectionString))
+            {
+                
+                 
+
+                //           -----------------------------
+
+                //               INSERT INTO[dbo].[SEMEAR_ASSOCIATIVA_VPR]
+                //      ([SQ_HPR_PK]
+                //      ,[SQ_VIAGEM_FK]
+                //      ,[SQ_RESERVA_FK]
+                //      ,[SQ_CLIENTE_FK]
+                //      ,[DT_INCLUSAO]
+                //      ,[DT_EXCLUSAO]
+                //      ,[DT_EDICAO])
+                //VALUES
+                //      (< SQ_HPR_PK, bigint,>
+                //      ,< SQ_VIAGEM_FK, int,>
+                //      ,< SQ_RESERVA_FK, bigint,>
+                //      ,< SQ_CLIENTE_FK, int,>
+                //      ,< DT_INCLUSAO, datetime,>
+                //      ,< DT_EXCLUSAO, datetime,>
+                //      ,< DT_EDICAO, datetime,>)
+
+                string saveStaff = "INSERT INTO [dbo].[SEMEAR_RESERVA] ([SQ_CLIENTE]) VALUES (" + DropDownListClientePopupReservaCadastro.SelectedValue + ")";
 
 
-            //    using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
-            //    {
-            //        querySaveStaff.Connection = openCon;
 
-            //        openCon.Open();
+                using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
+                {
+                    querySaveStaff.Connection = openCon;
 
-            //        querySaveStaff.ExecuteNonQuery();
+                    openCon.Open();
 
-            //        openCon.Dispose();
-            //        openCon.Close();
-            //    }
+                    querySaveStaff.ExecuteNonQuery();
 
-            //}
+                    openCon.Dispose();
+                    openCon.Close();
+                }
+
+            }
 
 
-            //GVBing();
+            GVBing();
         }
         private void RealizaEdicaoCadastroReserva(string indiceRegistro)
         {
@@ -448,7 +488,7 @@ namespace ProjetoSemearTurismo.Views
         protected void PopularDropdownList()
     {
         // Define a string de conexão com o banco de dados
-        string connectionString = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
+        string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
 
         // Define a consulta SQL para selecionar os dados da tabela
         string query = "SELECT [NOME_VIAGEM] , [SQ_VIAGEM] FROM [dbo].[SEMEAR_VIAGEM] ";
@@ -480,7 +520,7 @@ namespace ProjetoSemearTurismo.Views
         {
             //SELECT[Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM[dbo].[SEMEAR_PESSOA]
             // Define a string de conexão com o banco de dados
-            string connectionString = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
+            string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
 
             // Define a consulta SQL para selecionar os dados da tabela
             string query = "SELECT [Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM [dbo].[SEMEAR_PESSOA] ";
@@ -512,7 +552,7 @@ namespace ProjetoSemearTurismo.Views
         {
             //SELECT[Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM[dbo].[SEMEAR_PESSOA]
             // Define a string de conexão com o banco de dados
-            string connectionString = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
+            string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
 
             // Define a consulta SQL para selecionar os dados da tabela
             string query = "SELECT [SEQ_HOSPEDAGEM] , [Nome] FROM [dbo].[SEMEAR_HOSPEDAGEM]";
@@ -544,7 +584,7 @@ namespace ProjetoSemearTurismo.Views
         {
             //SELECT[Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM[dbo].[SEMEAR_PESSOA]
             // Define a string de conexão com o banco de dados
-            string connectionString = "Data Source = BEATRIZ\\SQLEXPRESS; Initial Catalog = tailandia; Integrated Security = true";
+            string connectionString = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
 
             // Define a consulta SQL para selecionar os dados da tabela
             string query = "SELECT [SQ_TRANSPORTE] ,[NOME] FROM [dbo].[SEMEAR_TRANSPORTE] ";
@@ -613,6 +653,37 @@ namespace ProjetoSemearTurismo.Views
 
         protected void ddlOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private int getMaxValue()
+        {
+            
+                int maxValue = 0;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    string query = "SELECT MAX(SQ_RESERVA) AS MaxValue FROM dbo.SEMEAR_RESERVA";
+
+                    SqlCommand command = new SqlCommand(query, connection);
+
+                    connection.Open();
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        if (!reader.IsDBNull(0))
+                        {
+                            maxValue = reader.GetInt32(0);
+                        }
+                    }
+
+                    reader.Close();
+                }
+
+                return maxValue;
+            
 
         }
     }

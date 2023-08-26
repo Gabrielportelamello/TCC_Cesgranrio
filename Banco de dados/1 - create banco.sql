@@ -2,7 +2,7 @@ USE [master]
 GO
 
 /****** Object:  Database [tailandia]    Script Date: 25/07/2023 20:53:25 ******/
-CREATE DATABASE [tailandia] 
+USE  [tailandia] 
 GO
 
 IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))

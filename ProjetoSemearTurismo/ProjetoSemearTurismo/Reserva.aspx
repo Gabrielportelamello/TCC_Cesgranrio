@@ -15,10 +15,10 @@
             border-color: whitesmoke;
         }
 
-            .btnExcluir:hover {
-                border-color: #FF3300;
-                transition: .5s;
-            }
+        .btnExcluir:hover {
+            border-color: #FF3300;
+            transition: .5s;
+        }
 
         .btnEditar {
             color: whitesmoke;
