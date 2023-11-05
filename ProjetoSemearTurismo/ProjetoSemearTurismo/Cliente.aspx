@@ -63,16 +63,10 @@
   }
          </style>
     
-    <div class="jumbotron">
-        <h2>Cliente</h2>
-        <p class="lead">Gerencie o cadastro de clientes, inclusão, edição e exclusão.</p>
-<%--        <p><a runat="server" href="~/Viagem" class="btn btn-primary btn-lg">Clientes &raquo;</a></p>--%>
-        <p><asp:Button ID="BtnModalClientesGRID" CssClass="btn btn-primary btn-lg" runat="server" Text="Cadastrar Cliente »" OnClick="BtnModalClientesGRID_Click" /> </p>
-        <p>
+
             <asp:Button ID="hdnBtnModalClientes" runat="server" Text="" CssClass="hdnBtn" />
 
-        </p>
-    </div>
+
 
     <cc1:ModalPopupExtender ID="MPEClientesGRID" runat="server" PopupControlID="PNLClientesGRID" TargetControlID="hdnBtnModalClientes"
                 CancelControlID="btnHDNCancelarPopupClienteCadastro" BackgroundCssClass="modalBackground" >
@@ -169,80 +163,6 @@
          <asp:TextBox ID="TbxCEPPopupClienteCadastro" runat="server" Width="96px"></asp:TextBox>
                   
          
-<%--         <br />  <br />
-           <h3>
-            <asp:Label ID="lblImagensPrincipalPopupClienteCadastro" runat="server" Text="Imagens"></asp:Label>
-         </h3>
-         <br />  <br />         
-         
-        <div class="col-md-4">
-            <h4>Imagen 1</h4>
-            
-            
-         <br />
-         <asp:Image ID="Image1PopupClienteCadastro" runat="server" />
-        <br />
-      <asp:FileUpload ID="FileUploadimg1PopupClienteCadastro" runat="server" />
-
-        </div>
-        
-        <div class="col-md-4">
-            <h4>Imagen 2</h4>
-            
-            
-         <br />
-         <asp:Image ID="Image2PopupClienteCadastro" runat="server" />
-        <br />
-      <asp:FileUpload ID="FileUploadimg2PopupClienteCadastro" runat="server" />
-
-        </div>  
-        <div class="col-md-4">
-            <h4>Imagen 3</h4>
-            
-            
-         <br />
-         <asp:Image ID="Image3PopupClienteCadastro" runat="server" />
-        <br />
-      <asp:FileUpload ID="FileUploadimg3PopupClienteCadastro" runat="server" />
-
-        </div>
-    
-
-               <br />  <br />    
-
-           <div class="row">
-        <div class="col-md-4">
-            <h4>Imagen 4</h4>
-            
-            
-         <br />
-         <asp:Image ID="Image4PopupClienteCadastro" runat="server" />
-        <br />
-      <asp:FileUpload ID="FileUploadimg4PopupClienteCadastro" runat="server" />
-
-        </div>
-          
-        <div class="col-md-4">
-            <h4>Imagen 5</h4>
-            
-            
-         <br />
-         <asp:Image ID="Image5PopupClienteCadastro" runat="server" />
-        <br />
-      <asp:FileUpload ID="FileUploadimg5PopupClienteCadastro" runat="server" />
-
-        </div>  
-        <div class="col-md-4">
-            <h4>Imagen 6</h4>
-            
-            
-         <br />
-         <asp:Image ID="Image6PopupClienteCadastro" runat="server" />
-        <br />
-      <asp:FileUpload ID="FileUploadimg6PopupClienteCadastro" runat="server" />
-
-        </div>         
-            </div>--%>
            <br />  <br />
          <h3>
             <asp:Label ID="lblPerfilPopupClienteCadastro" runat="server" Text="Perfil de Acesso"></asp:Label>
@@ -282,71 +202,11 @@
            </asp:Panel>     
 
     
-
-      
-
-
-<%--
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Gerenciar Clientes</h2>
-            <p> O gerenciamento de clientes permite cadastrar, editar e excluir os clientes e funcionarios da empresa.
-                
-                </p>
-            <p>
-                <a class="btn btn-default" runat="server" href="~/Cliente">Clientes &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Gerenciar Reservas </h2>
-            <p>
-               Local de gerenciamento de reservas feitas por clientes, status de pagamento de cada reserva, inclusao e cancelamento de reservas.
-            </p>
-            <p>
-                <a class="btn btn-default" runat="server" href="~/Reserva">Reservas &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Gerenciar Viagens</h2>
-            <p>
-                O gerenciamento de Viagens permite cadastrar, editar e excluir Viagens </p>
-            <p>
-                <a class="btn btn-default" runat="server" href="~/Viagem">Viagens &raquo;</a>
-            </p>
-        </div>
-    </div>
-    
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Gerenciar Transportes</h2>
-            <p> O gerenciamento de transportes permite cadastrar, editar e excluir os transportes que atenderão os clientes.
-                
-                </p>
-            <p>
-                <a class="btn btn-default" runat="server" href="~/Transporte">Transportes &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Gerenciar Hospedagem  </h2>
-            <p>
-               Local de gerenciamento de hospedagem de cada viagem .
-            </p>
-            <p>
-                <a class="btn btn-default" runat="server" href="~/Hospedagem">Hospedagens &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Relatórios</h2>
-            <p>
-                O gerenciamento de Viagens permite cadastrar, editar e excluir Viagens </p>
-            <p>
-                <a class="btn btn-default" runat="server" href="~/Viagem">Viagens &raquo;</a>
-            </p>
-        </div>
-    </div>--%>
-      <h2>Clientes cadastrados</h2>
+  <h2 class="text-center">Clientes</h2>
     <br />
-      <h4>Pesquisar cliente</h4>
+    <asp:Button ID="BtnModalClientesGRID" CssClass="btn btn-primary btn-lg w-100" runat="server" Text="Cadastrar Cliente »" OnClick="BtnModalClientesGRID_Click" />
+
+
     <asp:TextBox ID="TbxPesquisarGridClientes" runat="server" Width="265px" Height="35px"></asp:TextBox>
     <asp:ImageButton ID="ImgBtnPesquisarGridClientes" runat="server" Height="48px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridClientes_Click" />
         <br />

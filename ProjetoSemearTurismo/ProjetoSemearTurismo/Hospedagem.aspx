@@ -64,17 +64,7 @@
   }
          </style>
     
-    <div class="jumbotron">
-        <h2>Hospedagem</h2>
-        <p class="lead">Gerencie o cadastro de Hospedagems, inclusão, edição e exclusão.</p>
-<%--        <p><a runat="server" href="~/Viagem" class="btn btn-primary btn-lg">Hospedagems &raquo;</a></p>--%>
-        <p><asp:Button ID="BtnModalHospedagemsGRID" CssClass="btn btn-primary btn-lg" runat="server" Text="Cadastrar Hospedagem »" OnClick="BtnModalHospedagemsGRID_Click" /> </p>
-        <p>
-            <asp:Button ID="hdnBtnModalHospedagems" runat="server" Text="" CssClass="hdnBtn" />
-
-        </p>
-    </div>
-
+  
     <cc1:ModalPopupExtender ID="MPEHospedagemsGRID" runat="server" PopupControlID="PNLHospedagemsGRID" TargetControlID="hdnBtnModalHospedagems"
                 CancelControlID="btnHDNCancelarPopupHospedagemCadastro" BackgroundCssClass="modalBackground" >
   </cc1:ModalPopupExtender>    
@@ -90,7 +80,7 @@
             <br />
          <asp:Label ID="LblNomePopupHospedagemCadastro" runat="server" Text="Nome" ></asp:Label>
          <asp:TextBox ID="TbxNomePopupHospedagemCadastro" runat="server"></asp:TextBox>
-         <asp:Label ID="LblCNPJPopupHospedagemCadastro" runat="server" Text="CPF" style="margin-left: 15px"></asp:Label>
+         <asp:Label ID="LblCNPJPopupHospedagemCadastro" runat="server" Text="CNPJ" style="margin-left: 15px"></asp:Label>
          <asp:TextBox ID="TbxCNPJPopupHospedagemCadastro" runat="server" Width="99px"></asp:TextBox>
         
          <%--<asp:Label ID="LblNascimento" runat="server" Text="Nascimento" CssClass="lbl" style="margin-left: 15px"></asp:Label>
@@ -167,16 +157,20 @@
 
       
 
-      <h2>Hospedagems cadastrados</h2>
+      <h2>Hospedagems</h2>
     <br />
-      <h4>Pesquisar Hospedagem</h4>
-    <asp:TextBox ID="TbxPesquisarGridHospedagems" runat="server" Width="265px" Height="35px"></asp:TextBox>
-    <asp:ImageButton ID="ImgBtnPesquisarGridHospedagems" runat="server" Height="48px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridHospedagems_Click" />
+     <asp:Button ID="BtnModalHospedagemsGRID" CssClass="btn btn-primary btn-lg" runat="server" Text="Cadastrar Hospedagem »" OnClick="BtnModalHospedagemsGRID_Click" />
+        
+            <asp:Button ID="hdnBtnModalHospedagems" runat="server" Text="" CssClass="hdnBtn" />
+
+      
+    <asp:TextBox ID="TbxPesquisarGridHospedagems" runat="server" Width="265px" Height="35px" ToolTip="Filtrar por nome"></asp:TextBox>
+    <asp:ImageButton ID="ImgBtnPesquisarGridHospedagems" runat="server" Height="48px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridHospedagems_Click" ToolTip="Filtrar por nome" />
         <br />
         <br />
        
  
-    <asp:GridView ID="GridViewHospedagems" runat="server" CellPadding="10" ForeColor="#333333" AutoGenerateColumns="False" BorderStyle="Inset" AllowPaging="True" DataKeyNames="SQ_Hospedagem" OnPageIndexChanging="GridViewHospedagems_PageIndexChanging" OnRowDeleting="GridViewHospedagems_RowDeleting" OnSelectedIndexChanged="GridViewHospedagems_SelectedIndexChanged" OnSelectedIndexChanging="GridViewHospedagems_SelectedIndexChanging"  >
+    <asp:GridView ID="GridViewHospedagems" runat="server" CellPadding="10" ForeColor="#333333" AutoGenerateColumns="False" BorderStyle="Inset" AllowPaging="True" DataKeyNames="SEQ_Hospedagem" OnPageIndexChanging="GridViewHospedagems_PageIndexChanging" OnRowDeleting="GridViewHospedagems_RowDeleting" OnSelectedIndexChanged="GridViewHospedagems_SelectedIndexChanged" OnSelectedIndexChanging="GridViewHospedagems_SelectedIndexChanging"  >
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
         <asp:BoundField DataField="SEQ_HOSPEDAGEM" HeaderText="SEQ_HOSPEDAGEM" ReadOnly="True" SortExpression="SEQ_HOSPEDAGEM" Visible="False" >

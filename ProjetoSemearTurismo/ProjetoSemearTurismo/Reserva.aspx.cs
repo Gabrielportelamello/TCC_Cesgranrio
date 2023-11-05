@@ -38,7 +38,7 @@ namespace ProjetoSemearTurismo.Views
             }
         }
 
-     
+
 
         protected void GVBing()
         {
@@ -225,8 +225,8 @@ namespace ProjetoSemearTurismo.Views
 
         protected void BtnCadastrarReservaModal_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(TextBoxTransportePopupReservaCadastro.Text) && !string.IsNullOrEmpty(TextBoxViagemPopupReservaCadastro.Text))
-                
+            if (false)
+
             {
                 RealizaCadastroReserva();
                 int SEQ = getMaxValue();
@@ -249,10 +249,10 @@ namespace ProjetoSemearTurismo.Views
 
                 //           -----------------------------
 
-                
 
-                string saveStaff = "INSERT INTO[dbo].[SEMEAR_ASSOCIATIVA_VPR] " + "([SQ_VIAGEM_FK],[SQ_RESERVA_FK],[SQ_CLIENTE_FK],[DT_INCLUSAO],[DT_EDICAO])" + 
-                " VALUES ( " + DropDownListViagemPopupReservaCadastro.SelectedValue + " , " + SEQ + " , " + DropDownListClientePopupReservaCadastro.SelectedValue + " , (SELECT GETDATE() AS CurrentDateTime),(SELECT GETDATE() AS CurrentDateTime))"; 
+
+                string saveStaff = "INSERT INTO[dbo].[SEMEAR_ASSOCIATIVA_VPR] " + "([SQ_VIAGEM_FK],[SQ_RESERVA_FK],[SQ_CLIENTE_FK],[DT_INCLUSAO],[DT_EDICAO])" +
+                " VALUES ( " + DropDownListViagemPopupReservaCadastro.SelectedValue + " , " + SEQ + " , " + DropDownListClientePopupReservaCadastro.SelectedValue + " , (SELECT GETDATE() AS CurrentDateTime),(SELECT GETDATE() AS CurrentDateTime))";
 
 
 
@@ -294,8 +294,8 @@ namespace ProjetoSemearTurismo.Views
 
             using (SqlConnection openCon = new SqlConnection(connectionString))
             {
-                
-                 
+
+
 
                 //           -----------------------------
 
@@ -471,7 +471,7 @@ namespace ProjetoSemearTurismo.Views
 
         protected void BtnModalReservasGRID_Click(object sender, EventArgs e)
         {
-            MPEReservasGRID.Show();
+            //MPEReservasGRID.Show();
             BtnCadastrarPopupReservaCadastro.Visible = true;
             BtnEditarCadastroPopupReservaCadastro.Visible = false;
             btnLimparPopupReservaCadastro.Visible = true;
@@ -489,44 +489,12 @@ namespace ProjetoSemearTurismo.Views
         }
 
         protected void PopularDropdownList()
-    {
-        // Define a string de conexão com o banco de dados
-        string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
-
-        // Define a consulta SQL para selecionar os dados da tabela
-        string query = "SELECT [NOME_VIAGEM] , [SQ_VIAGEM] FROM [dbo].[SEMEAR_VIAGEM] ";
-
-        // Cria uma conexão com o banco de dados
-        using (SqlConnection connection = new SqlConnection(connectionString))
         {
-            // Cria um comando SQL
-            using (SqlCommand command = new SqlCommand(query, connection))
-            {
-                // Abre a conexão com o banco de dados
-                connection.Open();
-
-                // Executa o comando SQL e obtém um SqlDataReader
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    // Define os campos do DropDownList
-                    DropDownListViagemPopupReservaCadastro.DataTextField = "NOME_VIAGEM";
-                    DropDownListViagemPopupReservaCadastro.DataValueField = "SQ_VIAGEM";
-
-                        // Preenche o DropDownList com os dados da tabela
-                        DropDownListViagemPopupReservaCadastro.DataSource = reader;
-                        DropDownListViagemPopupReservaCadastro.DataBind();
-                }
-            }
-        }
-    }
-        private void PopularDropdownListClientes()
-        {
-            //SELECT[Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM[dbo].[SEMEAR_PESSOA]
             // Define a string de conexão com o banco de dados
             string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
             // Define a consulta SQL para selecionar os dados da tabela
-            string query = "SELECT [Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM [dbo].[SEMEAR_PESSOA] ";
+            string query = "SELECT [NOME_VIAGEM] , [SQ_VIAGEM] FROM [dbo].[SEMEAR_VIAGEM] ";
 
             // Cria uma conexão com o banco de dados
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -540,25 +508,85 @@ namespace ProjetoSemearTurismo.Views
                     // Executa o comando SQL e obtém um SqlDataReader
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        // Define os campos do DropDownList
-                        DropDownListClientePopupReservaCadastro.DataTextField = "NomeCompleto";
-                        DropDownListClientePopupReservaCadastro.DataValueField = "SQ_PESSOA";
+                        // Cria uma lista para armazenar os itens do DropDownList
+                        List<ListItem> items = new List<ListItem>();
 
-                        // Preenche o DropDownList com os dados da tabela
-                        DropDownListClientePopupReservaCadastro.DataSource = reader;
+                        // Adiciona o item "Selecione a viagem" à lista
+                        items.Add(new ListItem("Selecione a viagem", "0"));
+
+                        // Adiciona os itens do leitor à lista
+                        while (reader.Read())
+                        {
+                            string nomeViagem = reader["NOME_VIAGEM"].ToString();
+                            string sqViagem = reader["SQ_VIAGEM"].ToString();
+                            items.Add(new ListItem(nomeViagem, sqViagem));
+                        }
+
+                        // Define os campos do DropDownList
+                        DropDownListViagemPopupReservaCadastro.DataTextField = "Text";
+                        DropDownListViagemPopupReservaCadastro.DataValueField = "Value";
+
+                        // Atribui a lista como o DataSource do DropDownList
+                        DropDownListViagemPopupReservaCadastro.DataSource = items;
+                        DropDownListViagemPopupReservaCadastro.DataBind();
+                    }
+                }
+            }
+        }
+
+        private void PopularDropdownListClientes()
+        {
+            // Define a string de conexão com o banco de dados
+            string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
+
+            // Define a consulta SQL para selecionar os dados da tabela
+            string query = "SELECT [Nome] + ' - CPF: ' + [CPF] AS NomeCompleto, [SQ_PESSOA] FROM [dbo].[SEMEAR_PESSOA] ";
+
+            // Cria uma conexão com o banco de dados
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                // Cria um comando SQL
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Abre a conexão com o banco de dados
+                    connection.Open();
+
+                    // Executa o comando SQL e obtém um SqlDataReader
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        // Cria uma lista para armazenar os itens do DropDownList
+                        List<ListItem> items = new List<ListItem>();
+
+                        // Adiciona o item "Selecione o Cliente" à lista
+                        items.Add(new ListItem("Selecione o Cliente", "0"));
+
+                        // Adiciona os itens do leitor à lista
+                        while (reader.Read())
+                        {
+                            string nomeCompleto = reader["NomeCompleto"].ToString();
+                            string sqPessoa = reader["SQ_PESSOA"].ToString();
+                            items.Add(new ListItem(nomeCompleto, sqPessoa));
+                        }
+
+                        // Define os campos do DropDownList
+                        DropDownListClientePopupReservaCadastro.DataTextField = "Text";
+                        DropDownListClientePopupReservaCadastro.DataValueField = "Value";
+
+                        // Atribui a lista como o DataSource do DropDownList
+                        DropDownListClientePopupReservaCadastro.DataSource = items;
                         DropDownListClientePopupReservaCadastro.DataBind();
                     }
                 }
             }
         }
-         private void PopularDropdownListHospedagem()
+
+        private void PopularDropdownListHospedagem()
         {
-            //SELECT[Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM[dbo].[SEMEAR_PESSOA]
             // Define a string de conexão com o banco de dados
             string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
             // Define a consulta SQL para selecionar os dados da tabela
-            string query = "SELECT [SEQ_HOSPEDAGEM] , [Nome] FROM [dbo].[SEMEAR_HOSPEDAGEM]";
+            string query = "SELECT [SEQ_HOSPEDAGEM], [Nome] FROM [dbo].[SEMEAR_HOSPEDAGEM_TEMP]";
 
             // Cria uma conexão com o banco de dados
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -572,25 +600,39 @@ namespace ProjetoSemearTurismo.Views
                     // Executa o comando SQL e obtém um SqlDataReader
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        // Define os campos do DropDownList
-                        DropDownListHospedagemPopupReservaCadastro.DataTextField = "Nome";
-                        DropDownListHospedagemPopupReservaCadastro.DataValueField = "SEQ_HOSPEDAGEM";
+                        // Cria uma lista para armazenar os itens do DropDownList
+                        List<ListItem> items = new List<ListItem>();
 
-                        // Preenche o DropDownList com os dados da tabela
-                        DropDownListHospedagemPopupReservaCadastro.DataSource = reader;
+                        // Adiciona o item "Selecione a Hospedagem" à lista
+                        items.Add(new ListItem("Selecione a Hospedagem", "0"));
+
+                        // Adiciona os itens do leitor à lista
+                        while (reader.Read())
+                        {
+                            string nomeHospedagem = reader["Nome"].ToString();
+                            string seqHospedagem = reader["SEQ_HOSPEDAGEM"].ToString();
+                            items.Add(new ListItem(nomeHospedagem, seqHospedagem));
+                        }
+
+                        // Define os campos do DropDownList
+                        DropDownListHospedagemPopupReservaCadastro.DataTextField = "Text";
+                        DropDownListHospedagemPopupReservaCadastro.DataValueField = "Value";
+
+                        // Atribui a lista como o DataSource do DropDownList
+                        DropDownListHospedagemPopupReservaCadastro.DataSource = items;
                         DropDownListHospedagemPopupReservaCadastro.DataBind();
                     }
                 }
             }
         }
-         private void PopularDropdownListTransporte()
+
+        private void PopularDropdownListTransporte()
         {
-            //SELECT[Nome] + ' - CPF:  ' +  [CPF]  AS NomeCompleto  ,[SQ_PESSOA]  FROM[dbo].[SEMEAR_PESSOA]
             // Define a string de conexão com o banco de dados
             string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
             // Define a consulta SQL para selecionar os dados da tabela
-            string query = "SELECT [SQ_TRANSPORTE] ,[NOME] FROM [dbo].[SEMEAR_TRANSPORTE] ";
+            string query = "SELECT [SQ_TRANSPORTE], [NOME] FROM [dbo].[SEMEAR_TRANSPORTE_TEMP]";
 
             // Cria uma conexão com o banco de dados
             using (SqlConnection connection = new SqlConnection(connectionString))
@@ -604,12 +646,26 @@ namespace ProjetoSemearTurismo.Views
                     // Executa o comando SQL e obtém um SqlDataReader
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
-                        // Define os campos do DropDownList
-                        DropDownListTransportePopupReservaCadastro.DataTextField = "NOME";
-                        DropDownListTransportePopupReservaCadastro.DataValueField = "SQ_TRANSPORTE";
+                        // Cria uma lista para armazenar os itens do DropDownList
+                        List<ListItem> items = new List<ListItem>();
 
-                        // Preenche o DropDownList com os dados da tabela
-                        DropDownListTransportePopupReservaCadastro.DataSource = reader;
+                        // Adiciona o item "Selecione o Transporte" à lista
+                        items.Add(new ListItem("Selecione o Transporte", "0"));
+
+                        // Adiciona os itens do leitor à lista
+                        while (reader.Read())
+                        {
+                            string nomeTransporte = reader["NOME"].ToString();
+                            string sqTransporte = reader["SQ_TRANSPORTE"].ToString();
+                            items.Add(new ListItem(nomeTransporte, sqTransporte));
+                        }
+
+                        // Define os campos do DropDownList
+                        DropDownListTransportePopupReservaCadastro.DataTextField = "Text";
+                        DropDownListTransportePopupReservaCadastro.DataValueField = "Value";
+
+                        // Atribui a lista como o DataSource do DropDownList
+                        DropDownListTransportePopupReservaCadastro.DataSource = items;
                         DropDownListTransportePopupReservaCadastro.DataBind();
                     }
                 }
@@ -661,32 +717,32 @@ namespace ProjetoSemearTurismo.Views
 
         private int getMaxValue()
         {
-            
-                int maxValue = 0;
 
-                using (SqlConnection connection = new SqlConnection(connectionString))
+            int maxValue = 0;
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                string query = "SELECT MAX(SQ_RESERVA) AS MaxValue FROM dbo.SEMEAR_RESERVA";
+
+                SqlCommand command = new SqlCommand(query, connection);
+
+                connection.Open();
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.Read())
                 {
-                    string query = "SELECT MAX(SQ_RESERVA) AS MaxValue FROM dbo.SEMEAR_RESERVA";
-
-                    SqlCommand command = new SqlCommand(query, connection);
-
-                    connection.Open();
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.Read())
+                    if (!reader.IsDBNull(0))
                     {
-                        if (!reader.IsDBNull(0))
-                        {
-                            maxValue = reader.GetInt32(0);
-                        }
+                        maxValue = reader.GetInt32(0);
                     }
-
-                    reader.Close();
                 }
 
-                return maxValue;
-            
+                reader.Close();
+            }
+
+            return maxValue;
+
 
         }
     }

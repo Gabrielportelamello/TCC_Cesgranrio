@@ -114,6 +114,7 @@ namespace ProjetoSemearTurismo
             //limpaCadastroEdicao();
             string oradb = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
+            //string oradb = "Data Source=DESKTOP-TUB2VPR\\SQLEXPRESS;Initial Catalog = tailandia; Integrated Security = true";
             SqlConnection conn = new SqlConnection(oradb);
             SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA where SQ_PESSOA = " + sIndiceRegistro, conn);
             conn.Open();

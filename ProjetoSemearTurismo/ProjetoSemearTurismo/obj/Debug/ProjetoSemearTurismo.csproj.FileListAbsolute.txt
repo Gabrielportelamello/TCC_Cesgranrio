@@ -229,3 +229,14 @@ C:\repos\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\Proj
 C:\repos\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\ProjetoSemearTurismo.dll
 C:\repos\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\ProjetoSemearTurismo.pdb
 C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\obj\Debug\ProjetoSemearTurismo.csproj.AssemblyReference.cache
+C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\BouncyCastle.Crypto.dll
+C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\DocumentFormat.OpenXml.dll
+C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\EPPlus.dll
+C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\EPPlus.Interfaces.dll
+C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\EPPlus.System.Drawing.dll
+C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\itextsharp.dll
+C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\DocumentFormat.OpenXml.xml
+C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\EPPlus.xml
+C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\itextsharp.xml
+C:\Users\adm\Documents\TCC_Cesgranrio\ProjetoSemearTurismo\ProjetoSemearTurismo\bin\Microsoft.IO.RecyclableMemoryStream.xml

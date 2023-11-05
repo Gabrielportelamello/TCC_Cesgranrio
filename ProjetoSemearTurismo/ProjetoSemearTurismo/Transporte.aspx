@@ -62,17 +62,7 @@
       opacity:0%;
   }
          </style>
-    
-    <div class="jumbotron">
-        <h2>Transporte</h2>
-        <p class="lead">Gerencie o cadastro de Transporte, inclusão, edição e exclusão.</p>
-<%--        <p><a runat="server" href="~/Viagem" class="btn btn-primary btn-lg">Transporte &raquo;</a></p>--%>
-        <p><asp:Button ID="BtnModalTransporteGRID" CssClass="btn btn-primary btn-lg" runat="server" Text="Cadastrar Transporte »" OnClick="BtnModalTransporteGRID_Click" /> </p>
-        <p>
-            <asp:Button ID="hdnBtnModalTransporte" runat="server" Text="" CssClass="hdnBtn" />
-
-        </p>
-    </div>
+ 
 
     <cc1:ModalPopupExtender ID="MPETransporteGRID" runat="server" PopupControlID="PNLTransporteGRID" TargetControlID="hdnBtnModalTransporte"
                 CancelControlID="btnHDNCancelarPopupTransporteCadastro" BackgroundCssClass="modalBackground" >
@@ -135,6 +125,7 @@
            <br />
            <br />
             <asp:Label ID="Label1" runat="server" Text="EXCLUIR ? "></asp:Label>
+            <asp:Label ID="hdnLblIDselecionado" runat="server" Visible="false" Text=""></asp:Label>
          <asp:DropDownList ID="DropDownListFlagExcluidoPopupTransporteCadastro" runat="server" >
              <asp:ListItem Value="0" Text="NÃO"></asp:ListItem>
             <asp:ListItem Value="1" Text="SIM"></asp:ListItem>
@@ -150,11 +141,16 @@
     
            </asp:Panel>     
 
-      <h2>Transporte cadastrados</h2>
+      <h2 class="text-center">Transportes</h2>
     <br />
-      <h4>Pesquisar Transporte</h4>
-    <asp:TextBox ID="TbxPesquisarGridTransporte" runat="server" Width="265px" Height="35px"></asp:TextBox>
-    <asp:ImageButton ID="ImgBtnPesquisarGridTransporte" runat="server" Height="48px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridTransporte_Click" />
+    
+    <asp:Button ID="hdnBtnModalTransporte" runat="server" Text="" CssClass="hdnBtn" />
+           
+    <asp:Button ID="BtnModalTransporteGRID" CssClass="btn btn-primary btn-lg w-100" runat="server" Text="Cadastrar Transporte »" OnClick="BtnModalTransporteGRID_Click" />
+
+
+    <asp:TextBox ID="TbxPesquisarGridTransporte" runat="server" Width="265px" Height="35px" ToolTip="Filtrar por nome:"></asp:TextBox>
+    <asp:ImageButton ID="ImgBtnPesquisarGridTransporte" runat="server" Height="48px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridTransporte_Click" ToolTip="Filtrar por nome:" />
         <br />
         <br />
        
@@ -163,7 +159,7 @@
                 <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
                 <Columns>
                     <asp:BoundField HeaderText="NUMERO" DataField="SQ_TRANSPORTE" Visible="False" />
-                    <asp:BoundField HeaderText="Nome" >
+                    <asp:BoundField HeaderText="Nome" DataField="Nome"  >
                     <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
                     <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
                     </asp:BoundField>

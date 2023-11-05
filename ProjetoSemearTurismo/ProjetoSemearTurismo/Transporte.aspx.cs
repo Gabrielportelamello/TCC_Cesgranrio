@@ -40,7 +40,7 @@ namespace ProjetoSemearTurismo
             SqlConnection conn = new SqlConnection(connectionString);
 
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE ORDER BY SQ_TRANSPORTE", conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE_TEMP ORDER BY SQ_TRANSPORTE", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
@@ -113,19 +113,27 @@ namespace ProjetoSemearTurismo
             string oradb = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
             SqlConnection conn = new SqlConnection(oradb);
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE where SQ_TRANSPORTE = " + sIndiceRegistro, conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE_TEMP where SQ_TRANSPORTE = " + sIndiceRegistro, conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
-            a.Fill(ds, "SEMEAR_TRANSPORTE");
+            a.Fill(ds, "SEMEAR_TRANSPORTE_TEMP");
             //continnuar daqui.
-            foreach (DataRow r in ds.Tables["SEMEAR_TRANSPORTE"].Rows)
+            foreach (DataRow r in ds.Tables["SEMEAR_TRANSPORTE_TEMP"].Rows)
             {
 
 
-                TbxNomePopupTransporteCadastro.Text = r["SQ_TRANSPORTE"].ToString();
+                hdnLblIDselecionado.Text = r["SQ_TRANSPORTE"].ToString();
+                TbxNomePopupTransporteCadastro.Text = r["NOME"].ToString();
+                TbxCNPJPopupTransporteCadastro.Text = r["CNPJ"].ToString();
+                TbxEnderecoPopupTransporteCadastro.Text = r["ENDERECO"].ToString();
+                TbxTel1PopupTransporteCadastro.Text = r["TELEFONES"].ToString();
+                TbxEmailPopupTransporteCadastro.Text = r["EMAIL"].ToString();
+                TbxQTDAssentosPopupTransporteCadastro.Text = r["QTD_Assentos"].ToString();
+                TbxCEPPopupTransporteCadastro.Text = r["CEP"].ToString();
+                TbxPrecosPopupTransporteCadastro.Text = r["Preco"].ToString();
 
-              
+
             }
 
 
@@ -141,7 +149,7 @@ namespace ProjetoSemearTurismo
 
         protected void BtnCadastrarTransporteModal_Click(object sender, EventArgs e)
         {
-            if ( TbxCNPJPopupTransporteCadastro.Text != ""
+            if (TbxCNPJPopupTransporteCadastro.Text != ""
                 && TbxTel1PopupTransporteCadastro.Text != "")
             {
                 RealizaCadastroTransporte();
@@ -174,26 +182,49 @@ namespace ProjetoSemearTurismo
             using (SqlConnection openCon = new SqlConnection(connectionString))
             {
 
-                string saveStaff = "INSERT INTO [dbo].[SEMEAR_TRANSPORTE] " +
-               "([CNPJ]" +
+                string saveStaff = "INSERT INTO [dbo].[SEMEAR_TRANSPORTE_TEMP] " +
+               "(" +
+               "[NOME]" +
+               ",[CNPJ]" +
                         " ,[Endereco]" +
                          ",[Telefones]" +
                           ",[Email]" +
                           ",[CEP]" +
-                         ",[QTD_Assentos]" +                        
+                         ",[QTD_Assentos]" +
                          ",[Preco]" +
                          ")" +
-    " VALUES ('" +
-           TbxCNPJPopupTransporteCadastro.Text +
-          "','" + TbxEnderecoPopupTransporteCadastro.Text +
-          "','" + TbxTel1PopupTransporteCadastro.Text +
-          "','" + TbxEmailPopupTransporteCadastro.Text +
-          "','" + TbxCEPPopupTransporteCadastro.Text+
-          "',"+TbxQTDAssentosPopupTransporteCadastro.Text+
-           ","+ TbxPrecosPopupTransporteCadastro.Text +
-           ")";
+                    " VALUES ('" +
+                   TbxNomePopupTransporteCadastro.Text +
+                  "','" + TbxCNPJPopupTransporteCadastro.Text +
+                  "','" + TbxEnderecoPopupTransporteCadastro.Text +
+                  "','" + TbxTel1PopupTransporteCadastro.Text +
+                  "','" + TbxEmailPopupTransporteCadastro.Text +
+                  "','" + TbxCEPPopupTransporteCadastro.Text;
 
-              
+                if (string.IsNullOrEmpty(TbxQTDAssentosPopupTransporteCadastro.Text))
+                {
+                    saveStaff += "',0";
+
+                }
+                else
+                {
+                    saveStaff += "'," + TbxQTDAssentosPopupTransporteCadastro.Text;
+
+                }
+
+                if (string.IsNullOrEmpty(TbxPrecosPopupTransporteCadastro.Text))
+                {
+                    saveStaff += ",0";
+
+                }
+                else
+                {
+                    saveStaff += "," + TbxPrecosPopupTransporteCadastro.Text;
+
+                }
+                saveStaff += ")";
+
+
                 using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
                 {
                     querySaveStaff.Connection = openCon;
@@ -221,15 +252,37 @@ namespace ProjetoSemearTurismo
 
                 string saveStaff =
 
-            "UPDATE[dbo].[SEMEAR_TRANSPORTE]"+
-                "SET[CNPJ] = "+TbxCNPJPopupTransporteCadastro.Text+
-     ",[Endereco] = "+TbxEnderecoPopupTransporteCadastro.Text+
-     ",[Telefones] = "+TbxTel1PopupTransporteCadastro.Text+
-      ",[Email] = "+TbxEmailPopupTransporteCadastro.Text+
-      ",[CEP] = "+TbxCEPPopupTransporteCadastro.Text+
-      ",[QTD_Assentos] = "+TbxQTDAssentosPopupTransporteCadastro.Text+
-   ",[Preco] = "+TbxPrecosPopupTransporteCadastro.Text+
-    " WHERE SQ_TRANSPORTE = " + indiceRegistro + " ";
+                "UPDATE[dbo].[SEMEAR_TRANSPORTE_TEMP]" +
+                "SET" +
+                "[NOME] = '" + TbxNomePopupTransporteCadastro.Text +
+                "',[CNPJ] = '" + TbxCNPJPopupTransporteCadastro.Text +
+                 "',[Endereco] = '" + TbxEnderecoPopupTransporteCadastro.Text +
+                 "',[Telefones] = '" + TbxTel1PopupTransporteCadastro.Text +
+                  "',[Email] = '" + TbxEmailPopupTransporteCadastro.Text +
+                  "',[CEP] = '" + TbxCEPPopupTransporteCadastro.Text;
+                if (string.IsNullOrEmpty(TbxQTDAssentosPopupTransporteCadastro.Text))
+                {
+                    saveStaff += "',[QTD_Assentos] = 0";
+
+                }
+                else
+                {
+                    saveStaff += "',[QTD_Assentos] = " + TbxQTDAssentosPopupTransporteCadastro.Text;
+
+                }
+
+                if (string.IsNullOrEmpty(TbxPrecosPopupTransporteCadastro.Text))
+                {
+                    saveStaff += ",[Preco] = 0";
+
+                }
+                else
+                {
+                    saveStaff += ",[Preco] = " + TbxPrecosPopupTransporteCadastro.Text;
+
+                }
+
+                saveStaff += " WHERE SQ_TRANSPORTE = " + indiceRegistro + " ";
 
 
 
@@ -282,7 +335,7 @@ namespace ProjetoSemearTurismo
 
             //SqlConnection conn = new SqlConnection(connectionString);
 
-            //SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE where Nome LIKE '%" + TbxPesquisarGridTransporte.Text + "%' ORDER BY Nome", conn);
+            //SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE_TEMP where Nome LIKE '%" + TbxPesquisarGridTransporte.Text + "%' ORDER BY Nome", conn);
             //conn.Open();
             //SqlCommandBuilder builder = new SqlCommandBuilder(a);
             //DataSet ds = new DataSet();
@@ -298,7 +351,7 @@ namespace ProjetoSemearTurismo
 
         protected void DropDownListFuncionarioPopupTransporteCadastro_SelectedIndexChanged(object sender, EventArgs e)
         {
-          
+
 
         }
 
@@ -317,7 +370,7 @@ namespace ProjetoSemearTurismo
             //}
             //else
             //{
-                GVBing();
+            GVBing();
             //}
             GridViewTransporte.SelectedIndex = -1;
         }
@@ -346,11 +399,11 @@ namespace ProjetoSemearTurismo
             TbxNomePopupTransporteCadastro.Text = "";
             TbxTel1PopupTransporteCadastro.Text = "";
             TbxEmailPopupTransporteCadastro.Text = "";
-           
+
             TbxCNPJPopupTransporteCadastro.Text = "";
-           
+
             DropDownListFlagExcluidoPopupTransporteCadastro.SelectedValue = "0";
-          
+
             TbxCEPPopupTransporteCadastro.Text = "";
             GridViewTransporte.SelectedIndex = -1;
 

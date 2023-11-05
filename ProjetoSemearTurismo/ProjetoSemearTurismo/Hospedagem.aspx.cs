@@ -50,12 +50,12 @@ namespace ProjetoSemearTurismo.Views
       //,[data_checkin]
       //,[data_checkout]
       //,[preco]
-      //      FROM[dbo].[SEMEAR_HOSPEDAGEM]
+      //      FROM[dbo].[SEMEAR_HOSPEDAGEM_TEMP]
 
             SqlConnection conn = new SqlConnection(connectionString);
 
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_HOSPEDAGEM ORDER BY NOME", conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_HOSPEDAGEM_TEMP ORDER BY NOME", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
@@ -128,13 +128,13 @@ namespace ProjetoSemearTurismo.Views
             string oradb = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
             SqlConnection conn = new SqlConnection(oradb);
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_Hospedagem where SQ_Hospedagem = " + sIndiceRegistro, conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_HOSPEDAGEM_TEMP where SEQ_Hospedagem = " + sIndiceRegistro, conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
-            a.Fill(ds, "SEMEAR_Hospedagem");
+            a.Fill(ds, "SEMEAR_HOSPEDAGEM_TEMP");
             //continnuar daqui.
-            foreach (DataRow r in ds.Tables["SEMEAR_Hospedagem"].Rows)
+            foreach (DataRow r in ds.Tables["SEMEAR_HOSPEDAGEM_TEMP"].Rows)
             {
 
                
@@ -179,7 +179,7 @@ namespace ProjetoSemearTurismo.Views
                 ////,[rua_endereco]
                 ////,[CEP]
                 ////,[SQ_Hospedagem]
-                ////          FROM[tailandia].[dbo].[SEMEAR_Hospedagem]
+                ////          FROM[tailandia].[dbo].[SEMEAR_HOSPEDAGEM_TEMP]
                 //TbxOrgaoEmissorPopupHospedagemCadastro.Text = r["orgao_emissor_RG"].ToString();
                 //string resulta = r["data_emissao_RG"].ToString();
 
@@ -246,7 +246,7 @@ namespace ProjetoSemearTurismo.Views
            
             using (SqlConnection openCon = new SqlConnection(connectionString))
             {
-                string saveStaff = "INSERT INTO[dbo].[SEMEAR_HOSPEDAGEM] " +
+                string saveStaff = "INSERT INTO[dbo].[SEMEAR_HOSPEDAGEM_TEMP] " +
            "(" +
          "[Nome]" +
          ",[Endereco]" +
@@ -292,7 +292,7 @@ namespace ProjetoSemearTurismo.Views
         }
         private void RealizaEdicaoCadastroHospedagem(string indiceRegistro)
         {
-  //          UPDATE[dbo].[SEMEAR_HOSPEDAGEM]
+  //          UPDATE[dbo].[SEMEAR_HOSPEDAGEM_TEMP]
   // SET[SEQ_HOSPEDAGEM] = < SEQ_HOSPEDAGEM, bigint,>
   //    ,[Nome] = < Nome, varchar(250),>
   //    ,[Endereco] = < Endereco, varchar(max),>
@@ -310,9 +310,9 @@ namespace ProjetoSemearTurismo.Views
   //WHERE < Critérios de Pesquisa,,>
             using (SqlConnection openCon = new SqlConnection(connectionString))
             {
-                string saveStaff = "UPDATE[dbo].[SEMEAR_HOSPEDAGEM] "+
-                                    "SET[SEQ_HOSPEDAGEM] = < SEQ_HOSPEDAGEM, bigint,> "+
-                                       ",[Nome] = '"+TbxNomePopupHospedagemCadastro.Text+"' "+
+                string saveStaff = "UPDATE[dbo].[SEMEAR_HOSPEDAGEM_TEMP] "+
+                                    "SET "+
+                                       "[Nome] = '"+TbxNomePopupHospedagemCadastro.Text+"' "+
                                        ",[Endereco] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
                                        ",[CNPJ] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
                                        ",[Telefones] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
@@ -323,7 +323,7 @@ namespace ProjetoSemearTurismo.Views
                                        ",[data_checkout] = (Select CONVERT(datetime,'" + TbxChekoutPopupHospedagemCadastro.Text + "',20)) " +
                                        ",[preco] = " + TbxPrecoPopupHospedagemCadastro.Text+
 
-                " WHERE SQ_Hospedagem = " + indiceRegistro ;
+                " WHERE SEQ_Hospedagem = " + indiceRegistro ;
 
 
                 using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
@@ -375,7 +375,7 @@ namespace ProjetoSemearTurismo.Views
 
             SqlConnection conn = new SqlConnection(connectionString);
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_Hospedagem where Nome LIKE '%" + TbxPesquisarGridHospedagems.Text + "%' ORDER BY Nome", conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_HOSPEDAGEM_TEMP where Nome LIKE '%" + TbxPesquisarGridHospedagems.Text + "%' ORDER BY Nome", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
