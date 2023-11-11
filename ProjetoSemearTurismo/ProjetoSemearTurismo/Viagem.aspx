@@ -47,23 +47,23 @@
             padding: 3px;
             z-index: 10001;
             overflow: scroll;
-            margin-top:25px;
+            margin-top: 25px;
             height: 94%;
             width: 90%;
         }
 
         .hdnBtn {
-          display:none;
+            display: none;
         }
     </style>
 
     <div class="w-100 text-center center-block">
-        
-        
-            
-            <asp:Button ID="hdnBtnModalViagens" runat="server" Text="" CssClass="hdnBtn w-100" />
 
-      
+
+
+        <asp:Button ID="hdnBtnModalViagens" runat="server" Text="" CssClass="hdnBtn w-100" />
+
+
     </div>
 
     <cc1:ModalPopupExtender ID="MPEViagensGRID" runat="server" PopupControlID="PNLViagensGRID" TargetControlID="hdnBtnModalViagens"
@@ -75,7 +75,7 @@
             <asp:Label ID="LblViagensPopupViagemCadastro" runat="server" Text="Viagens"></asp:Label>
         </h2>
         <br />
-     
+
         <h3>
             <asp:Label ID="LblInfViagemPopupViagemCadastro" runat="server" Text="Informações Viagem"></asp:Label>
         </h3>
@@ -90,19 +90,19 @@
         <asp:TextBox ID="TbxDataFinalPopupViagemCadastro" runat="server" Style="margin-left: 15px" CssClass="tbx" TextMode="Date" Width="105px"></asp:TextBox>
 
         <br />
-      
+
         <asp:Label ID="LblDescPopupViagemCadastro" runat="server" Text="Descrição"></asp:Label>
         <br />
         <asp:TextBox ID="TbxDescPopupViagemCadastro" runat="server" TextMode="MultiLine" Height="100px" Width="600px"></asp:TextBox>
 
-      
+
         <br />
         <h3>
             <asp:Label ID="lblobsPopupViagemCadastro" runat="server" Text="Observação"></asp:Label>
         </h3>
 
         <br />
-       
+
         <asp:Label ID="lblStatus" runat="server" Text="Status "></asp:Label>
         <asp:DropDownList ID="DropDownListViagemPopupViagemCadastro" runat="server">
             <asp:ListItem Value="0" Text="Ativa"></asp:ListItem>
@@ -120,12 +120,12 @@
 
 
         <br />
-      
+
         <asp:Label ID="LblOBSViagemPopupViagemCadastro" runat="server" Text="Observação"></asp:Label>
         <br />
         <asp:TextBox ID="TbxOBSViagemPopupViagemCadastro" runat="server" TextMode="MultiLine" Height="100px" Width="600px"></asp:TextBox>
         <br />
-       
+
         <asp:Button ID="BtnCadastrarPopupViagemCadastro" CssClass="btn btn-primary btn-lg" runat="server" Text="Cadastrar Viagem" OnClick="BtnCadastrarViagemModal_Click" />
         <asp:Button ID="BtnEditarCadastroPopupViagemCadastro" CssClass="btn btn-primary btn-lg" runat="server" Text="Editar Viagem" OnClick="BtnEditarCadastroPopupViagemCadastro_Click" />
         <asp:Button ID="btnCancelarPopupViagemCadastro" runat="server" Text="Cancelar" CssClass="btn btn-primary btn-lg" OnClick="btnCancelarPopupViagemCadastro_Click" />
@@ -134,28 +134,28 @@
 
     </asp:Panel>
     <div class="w-100 text-center center-block">
-        <h2 >Viagens cadastradas</h2>
-   
+        <h2>Viagens cadastradas</h2>
+
     </div>
 
-     <div class="w-100 text-left" style="margin-bottom:1%;" >
-    
-    <asp:Button ID="BtnModalViagensGRID" CssClass="btn btn-primary btn-lg w-100 " runat="server" Text="Cadastrar Viagem »" OnClick="BtnModalViagensGRID_Click" ToolTip="Filtrar por nome:" />
+    <div class="w-100 text-left" style="margin-bottom: 1%;">
 
-    <asp:TextBox ID="TbxPesquisarGridViagens"  runat="server" Width="265px" Height="35px" ToolTip="Filtrar por nome:"></asp:TextBox>
-    <asp:ImageButton ID="ImgBtnPesquisarGridViagens" runat="server" Height="48px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridViagens_Click" ToolTip="Filtrar por nome:" />
-   
-   
+        <asp:Button ID="BtnModalViagensGRID" CssClass="btn btn-primary btn-lg w-100 " runat="server" Text="Cadastrar Viagem »" OnClick="BtnModalViagensGRID_Click" ToolTip="Filtrar por nome:" />
+
+        <asp:TextBox ID="TbxPesquisarGridViagens" runat="server" Width="265px" Height="35px" ToolTip="Filtrar por nome:"></asp:TextBox>
+        <asp:ImageButton ID="ImgBtnPesquisarGridViagens" runat="server" Height="48px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridViagens_Click" ToolTip="Filtrar por nome:" />
+
+
     </div>
 
-    
+
     <div class="container w-100 text-center center-block">
         <div class="row">
             <div class="col">
                 <div class="w-100">
 
 
-                    <asp:GridView ID="GridViewViagens"  CssClass="w-100 bg-success container"  runat="server" AutoGenerateColumns="False" AllowPaging="True" DataKeyNames="SQ_VIAGEM" OnPageIndexChanging="GridViewViagens_PageIndexChanging" OnRowDeleting="GridViewViagens_RowDeleting" OnSelectedIndexChanged="GridViewViagens_SelectedIndexChanged" OnSelectedIndexChanging="GridViewViagens_SelectedIndexChanging">
+                    <asp:GridView ID="GridViewViagens" CssClass="w-100 bg-success container" runat="server" AutoGenerateColumns="False" AllowPaging="True" DataKeyNames="SQ_VIAGEM" OnPageIndexChanging="GridViewViagens_PageIndexChanging" OnRowDeleting="GridViewViagens_RowDeleting" OnSelectedIndexChanged="GridViewViagens_SelectedIndexChanged" OnSelectedIndexChanging="GridViewViagens_SelectedIndexChanging">
                         <Columns>
                             <asp:BoundField HeaderText="NUMERO" DataField="SQ_VIAGEM" Visible="False" />
                             <asp:BoundField HeaderText="Nome" DataField="NOME_VIAGEM">
@@ -212,7 +212,16 @@
                             </asp:CommandField>
 
                         </Columns>
-
+                        <EditRowStyle BackColor="#999999" />
+                        <FooterStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                        <HeaderStyle BackColor="#5D7B9D" Font-Bold="True" ForeColor="White" />
+                        <PagerStyle BackColor="#284775" ForeColor="White" HorizontalAlign="Center" />
+                        <RowStyle BackColor="#F7F6F3" ForeColor="#333333" />
+                        <SelectedRowStyle BackColor="#E2DED6" Font-Bold="True" ForeColor="#333333" />
+                        <SortedAscendingCellStyle BackColor="#E9E7E2" />
+                        <SortedAscendingHeaderStyle BackColor="#506C8C" />
+                        <SortedDescendingCellStyle BackColor="#FFFDF8" />
+                        <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                     </asp:GridView>
                 </div>
             </div>

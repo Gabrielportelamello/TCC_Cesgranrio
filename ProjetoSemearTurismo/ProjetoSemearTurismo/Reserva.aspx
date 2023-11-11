@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Reserva.aspx.cs" Inherits="ProjetoSemearTurismo.Views.Reserva" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
@@ -30,11 +31,12 @@
         }
     </style>
 
-  <%--  <div class="jumbotron">
+    <%--  <div class="jumbotron">
         <h2>Gerenciar Reservas</h2>
         <p class="lead">Cadastre, edite e exclua reservas facilmente.</p>
         <asp:Button ID="BtnModalReservasGRID" Visible="false" CssClass="btn btn-primary btn-lg" runat="server" Text="Cadastrar Reserva" OnClick="BtnModalReservasGRID_Click" />
     </div>--%>
+        <h2 style="text-align:center;">Reservas</h2>
 
     <div class="reserva-section">
         <h2>Cadastro de Reservas</h2>
@@ -48,13 +50,13 @@
             <asp:DropDownList ID="DropDownListViagemPopupReservaCadastro" runat="server" CssClass="form-control" ToolTip="Selecione a Viagem" placeholder="Selecione a Viagem"></asp:DropDownList>
 
             <!-- DropDownList para Cliente -->
-            <asp:DropDownList ID="DropDownListClientePopupReservaCadastro" runat="server" CssClass="form-control" ToolTip="Selecione o Cliente"  placeholder="Selecione o Cliente"></asp:DropDownList>
+            <asp:DropDownList ID="DropDownListClientePopupReservaCadastro" runat="server" CssClass="form-control" ToolTip="Selecione o Cliente" placeholder="Selecione o Cliente"></asp:DropDownList>
 
             <!-- DropDownList para Transporte -->
-            <asp:DropDownList ID="DropDownListTransportePopupReservaCadastro" runat="server" CssClass="form-control" ToolTip="Selecione o Transporte"  placeholder="Selecione o Transporte"></asp:DropDownList>
+            <asp:DropDownList ID="DropDownListTransportePopupReservaCadastro" runat="server" CssClass="form-control" ToolTip="Selecione o Transporte" placeholder="Selecione o Transporte"></asp:DropDownList>
 
             <!-- DropDownList para Hospedagem -->
-            <asp:DropDownList ID="DropDownListHospedagemPopupReservaCadastro" runat="server" CssClass="form-control" ToolTip="Selecione a Hospedagem"  placeholder="Selecione a Hospedagem"></asp:DropDownList>
+            <asp:DropDownList ID="DropDownListHospedagemPopupReservaCadastro" runat="server" CssClass="form-control" ToolTip="Selecione a Hospedagem" placeholder="Selecione a Hospedagem"></asp:DropDownList>
 
             <br />
 
@@ -76,7 +78,7 @@
         <div>
             <h4>Pesquisar Reserva</h4>
             <asp:TextBox ID="TbxPesquisarGridReservas" runat="server" CssClass="form-control" placeholder="Digite para pesquisar"></asp:TextBox>
-           <asp:Button ID="ImgBtnPesquisarGridReservas" runat="server" CssClass="btn btn-primary action-btn" Text="Pesquisar" />
+            <asp:Button ID="ImgBtnPesquisarGridReservas" runat="server" CssClass="btn btn-primary action-btn" Text="Pesquisar" />
         </div>
 
         <br />

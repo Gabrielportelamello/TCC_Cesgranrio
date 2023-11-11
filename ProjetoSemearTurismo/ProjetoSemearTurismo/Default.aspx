@@ -3,9 +3,8 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <div class="jumbotron">
-        <h2>Semear Turismo</h2>
+        <h2 style="text-align:center;">Semear Turismo</h2>
         <p class="lead">Sistema de Gerenciamento de Viagens Semear Turismo. Gerencie o cadastro de clientes, transportes, hospedagens, viagens e reservas em um só lugar.</p>
-        <p><a runat="server" href="~/Viagem" class="btn btn-primary btn-lg">Viagens &raquo;</a></p>
     </div>
 
     <div class="row">
@@ -57,11 +56,11 @@
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Relatórios</h2>
+            <h2>Downloads</h2>
             <p>
-                O gerenciamento de Viagens permite cadastrar, editar e excluir Viagens </p>
+               Faça o download de arquivos em formato pdf e excel </p>
             <p>
-                <a class="btn btn-default" runat="server" href="~/Viagem">Viagens &raquo;</a>
+                <a class="btn btn-default" runat="server" href="~/Relatorio">Downloads &raquo;</a>
             </p>
         </div>
     </div>

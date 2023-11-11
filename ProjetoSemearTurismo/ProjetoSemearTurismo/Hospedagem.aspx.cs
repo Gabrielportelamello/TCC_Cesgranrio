@@ -36,21 +36,21 @@ namespace ProjetoSemearTurismo.Views
 
         protected void GVBing()
         {
-      //      SELECT[SEQ_HOSPEDAGEM]
-      //,[Nome]
-      //,[Endereco]
-      //,[CNPJ]
-      //,[Telefones]
-      //,[Email]
-      //,[CEP]
-      //,[qtd_quartos]
-      //,[qtd_camas]
-      //,[tipo_cama]
-      //,[pacote_incluso]
-      //,[data_checkin]
-      //,[data_checkout]
-      //,[preco]
-      //      FROM[dbo].[SEMEAR_HOSPEDAGEM_TEMP]
+            //      SELECT[SEQ_HOSPEDAGEM]
+            //,[Nome]
+            //,[Endereco]
+            //,[CNPJ]
+            //,[Telefones]
+            //,[Email]
+            //,[CEP]
+            //,[qtd_quartos]
+            //,[qtd_camas]
+            //,[tipo_cama]
+            //,[pacote_incluso]
+            //,[data_checkin]
+            //,[data_checkout]
+            //,[preco]
+            //      FROM[dbo].[SEMEAR_HOSPEDAGEM_TEMP]
 
             SqlConnection conn = new SqlConnection(connectionString);
 
@@ -137,7 +137,7 @@ namespace ProjetoSemearTurismo.Views
             foreach (DataRow r in ds.Tables["SEMEAR_HOSPEDAGEM_TEMP"].Rows)
             {
 
-               
+
 
                 TbxNomePopupHospedagemCadastro.Text = r["NOME"].ToString();
 
@@ -243,7 +243,7 @@ namespace ProjetoSemearTurismo.Views
 
         private void RealizaCadastroHospedagem()
         {
-           
+
             using (SqlConnection openCon = new SqlConnection(connectionString))
             {
                 string saveStaff = "INSERT INTO[dbo].[SEMEAR_HOSPEDAGEM_TEMP] " +
@@ -260,16 +260,16 @@ namespace ProjetoSemearTurismo.Views
          ",[preco])" +
     " VALUES " +
          "(" +
-         "'"+TbxNomePopupHospedagemCadastro.Text+"'" +
-         " ,'"+TbxRuaPopupHospedagemCadastro.Text+"'" +
-         " ,'"+TbxCNPJPopupHospedagemCadastro.Text+"'" +
-         " ,'"+TbxTel1PopupHospedagemCadastro.Text+"'" +
-         " ,'"+TbxEmailPopupHospedagemCadastro.Text+"'" +
-          ",'"+TbxCEPPopupHospedagemCadastro.Text+"'" +
-          ","+TbxQTDQuartosPopupHospedagemCadastro.Text+
-        ",(Select CONVERT(datetime,'" + TbxChekinPopupHospedagemCadastro.Text + "',20)) "+
+         "'" + TbxNomePopupHospedagemCadastro.Text + "'" +
+         " ,'" + TbxRuaPopupHospedagemCadastro.Text + "'" +
+         " ,'" + TbxCNPJPopupHospedagemCadastro.Text + "'" +
+         " ,'" + TbxTel1PopupHospedagemCadastro.Text + "'" +
+         " ,'" + TbxEmailPopupHospedagemCadastro.Text + "'" +
+          ",'" + TbxCEPPopupHospedagemCadastro.Text + "'" +
+          "," + TbxQTDQuartosPopupHospedagemCadastro.Text +
+        ",(Select CONVERT(datetime,'" + TbxChekinPopupHospedagemCadastro.Text + "',20)) " +
         ", (Select CONVERT(datetime,'" + TbxChekoutPopupHospedagemCadastro.Text + "',20))" +
-          ","+TbxPrecoPopupHospedagemCadastro.Text+")";
+          "," + TbxPrecoPopupHospedagemCadastro.Text + ")";
 
 
 
@@ -292,38 +292,38 @@ namespace ProjetoSemearTurismo.Views
         }
         private void RealizaEdicaoCadastroHospedagem(string indiceRegistro)
         {
-  //          UPDATE[dbo].[SEMEAR_HOSPEDAGEM_TEMP]
-  // SET[SEQ_HOSPEDAGEM] = < SEQ_HOSPEDAGEM, bigint,>
-  //    ,[Nome] = < Nome, varchar(250),>
-  //    ,[Endereco] = < Endereco, varchar(max),>
-  //    ,[CNPJ] = < CNPJ, varchar(50),>
-  //    ,[Telefones] = < Telefones, varchar(50),>
-  //    ,[Email] = < Email, varchar(max),>
-  //    ,[CEP] = < CEP, varchar(50),>
-  //    ,[qtd_quartos] = < qtd_quartos, int,>
-  //    ,[qtd_camas] = < qtd_camas, int,>
-  //    ,[tipo_cama] = < tipo_cama, smallint,>
-  //    ,[pacote_incluso] = < pacote_incluso, varchar(max),>
-  //    ,[data_checkin] = < data_checkin, datetime,>
-  //    ,[data_checkout] = < data_checkout, datetime,>
-  //    ,[preco] = < preco, float,>
-  //WHERE < Critérios de Pesquisa,,>
+            //          UPDATE[dbo].[SEMEAR_HOSPEDAGEM_TEMP]
+            // SET[SEQ_HOSPEDAGEM] = < SEQ_HOSPEDAGEM, bigint,>
+            //    ,[Nome] = < Nome, varchar(250),>
+            //    ,[Endereco] = < Endereco, varchar(max),>
+            //    ,[CNPJ] = < CNPJ, varchar(50),>
+            //    ,[Telefones] = < Telefones, varchar(50),>
+            //    ,[Email] = < Email, varchar(max),>
+            //    ,[CEP] = < CEP, varchar(50),>
+            //    ,[qtd_quartos] = < qtd_quartos, int,>
+            //    ,[qtd_camas] = < qtd_camas, int,>
+            //    ,[tipo_cama] = < tipo_cama, smallint,>
+            //    ,[pacote_incluso] = < pacote_incluso, varchar(max),>
+            //    ,[data_checkin] = < data_checkin, datetime,>
+            //    ,[data_checkout] = < data_checkout, datetime,>
+            //    ,[preco] = < preco, float,>
+            //WHERE < Critérios de Pesquisa,,>
             using (SqlConnection openCon = new SqlConnection(connectionString))
             {
-                string saveStaff = "UPDATE[dbo].[SEMEAR_HOSPEDAGEM_TEMP] "+
-                                    "SET "+
-                                       "[Nome] = '"+TbxNomePopupHospedagemCadastro.Text+"' "+
+                string saveStaff = "UPDATE[dbo].[SEMEAR_HOSPEDAGEM_TEMP] " +
+                                    "SET " +
+                                       "[Nome] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
                                        ",[Endereco] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
                                        ",[CNPJ] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
                                        ",[Telefones] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
                                       ",[Email] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
                                       ",[CEP] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
-                                      ",[qtd_quartos] = "+TbxQTDQuartosPopupHospedagemCadastro +
+                                      ",[qtd_quartos] = " + TbxQTDQuartosPopupHospedagemCadastro +
                                        ",[data_checkin] = (Select CONVERT(datetime,'" + TbxChekinPopupHospedagemCadastro.Text + "',20)) " +
                                        ",[data_checkout] = (Select CONVERT(datetime,'" + TbxChekoutPopupHospedagemCadastro.Text + "',20)) " +
-                                       ",[preco] = " + TbxPrecoPopupHospedagemCadastro.Text+
+                                       ",[preco] = " + TbxPrecoPopupHospedagemCadastro.Text +
 
-                " WHERE SEQ_Hospedagem = " + indiceRegistro ;
+                " WHERE SEQ_Hospedagem = " + indiceRegistro;
 
 
                 using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
@@ -391,13 +391,13 @@ namespace ProjetoSemearTurismo.Views
 
         protected void DropDownListFuncionarioPopupHospedagemCadastro_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
+
 
         }
 
         protected void DropDownListFuncionarioPopupHospedagemCadastro_TextChanged(object sender, EventArgs e)
         {
-          
+
         }
 
         protected void BtnEditarCadastroPopupHospedagemCadastro_Click(object sender, EventArgs e)
@@ -440,11 +440,11 @@ namespace ProjetoSemearTurismo.Views
             TbxNomePopupHospedagemCadastro.Text = "";
             TbxTel1PopupHospedagemCadastro.Text = "";
             TbxEmailPopupHospedagemCadastro.Text = "";
-       
+
             TbxChekinPopupHospedagemCadastro.Text = "";
             TbxChekoutPopupHospedagemCadastro.Text = "";
             TbxQTDQuartosPopupHospedagemCadastro.Text = "";
-        
+
             TbxPrecoPopupHospedagemCadastro.Text = "";
             DropDownListFlagExcluidoPopupHospedagemCadastro.SelectedValue = "0";
             TbxBairroPopupHospedagemCadastro.Text = "";
