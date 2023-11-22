@@ -7,6 +7,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Configuration;
+using DocumentFormat.OpenXml.Drawing.Charts;
 
 
 namespace ProjetoSemearTurismo.Views
@@ -24,6 +25,7 @@ namespace ProjetoSemearTurismo.Views
                 PopularDropdownListClientes();
                 PopularDropdownListHospedagem();
                 PopularDropdownListTransporte();
+                GVBing();
 
                 //GridViewReservas.SelectedIndex = -1;
 
@@ -42,21 +44,31 @@ namespace ProjetoSemearTurismo.Views
 
         protected void GVBing()
         {
+            SqlConnection conn = new SqlConnection(connectionString);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT   V.NOME_VIAGEM,   P.Nome, " +
+                "  P.CPF,  H.Nome as Nome_Hospedagem,  T.NOME as Nome_Transporte, R.SQ_HPR_PK  " +
+                "FROM   SEMEAR_VIAGEM V" +
+                "  JOIN SEMEAR_ASSOCIATIVA_VPR R ON V.SQ_VIAGEM = R.SQ_VIAGEM_FK" +
+                "   JOIN SEMEAR_PESSOA P ON P.SQ_PESSOA = R.SQ_CLIENTE_FK " +
+                "LEFT JOIN SEMEAR_HOSPEDAGEM_TEMP H ON R.SQ_HOSPEDAGEM_FK = H.SEQ_HOSPEDAGEM" +
+                "   LEFT JOIN SEMEAR_TRANSPORTE_TEMP T ON R.SQ_TRANSPORTE_FK = T.SQ_TRANSPORTE" +
+                "  LEFT JOIN SEMEAR_HOSPEDAGEM_TEMP H_NULL ON R.SQ_TRANSPORTE_FK IS NOT NULL AND R.SQ_HOSPEDAGEM_FK IS NULL" +
+                " LEFT JOIN SEMEAR_TRANSPORTE_TEMP T_NULL ON R.SQ_HOSPEDAGEM_FK IS NOT NULL AND R.SQ_TRANSPORTE_FK IS NULL " +
+                "WHERE" +
+                "   H.SEQ_HOSPEDAGEM IS NOT NULL " +
+                "OR T.SQ_TRANSPORTE IS NOT NULL " +
+                "OR (H_NULL.SEQ_HOSPEDAGEM IS NULL " +
+                "AND T_NULL.SQ_TRANSPORTE IS NULL)", conn);
+            conn.Open();
+            SqlCommandBuilder builder = new SqlCommandBuilder(a);
+            DataSet ds = new DataSet();
+            a.Fill(ds);
 
-            //SqlConnection conn = new SqlConnection(connectionString);
+            GridViewReservas.DataSource = ds;
+            GridViewReservas.DataBind();
 
-
-            //SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA ORDER BY NOME", conn);
-            //conn.Open();
-            //SqlCommandBuilder builder = new SqlCommandBuilder(a);
-            //DataSet ds = new DataSet();
-            //a.Fill(ds);
-
-            //GridViewReservas.DataSource = ds;
-            //GridViewReservas.DataBind();
-
-            //conn.Close();
-            //conn.Dispose();
+            conn.Close();
+            conn.Dispose();
 
         }
 
@@ -212,8 +224,6 @@ namespace ProjetoSemearTurismo.Views
             //    //imgBanner3.ImageUrl = GetImage((byte[])r["IM_FAQ3"]);
             //}
 
-
-
             //conn.Close();
             //conn.Dispose();
         }
@@ -225,12 +235,9 @@ namespace ProjetoSemearTurismo.Views
 
         protected void BtnCadastrarReservaModal_Click(object sender, EventArgs e)
         {
-            if (false)
-
-            {
-                RealizaCadastroReserva();
-                int SEQ = getMaxValue();
-                RealizaCadastroReservaAssociativa(SEQ);
+            if (DropDownListViagemPopupReservaCadastro.SelectedIndex>0 && DropDownListClientePopupReservaCadastro.SelectedIndex>0)
+            {                
+                RealizaCadastroReservaAssociativa();
                 //RealizaCadastroImagensReserva();
             }
             else
@@ -239,36 +246,42 @@ namespace ProjetoSemearTurismo.Views
             }
         }
 
-        private void RealizaCadastroReservaAssociativa(int SEQ)
+        private void RealizaCadastroReservaAssociativa()
         {
-
-            using (SqlConnection openCon = new SqlConnection(connectionString))
+            string viagem = DropDownListViagemPopupReservaCadastro.SelectedValue;
+            string cliente = DropDownListClientePopupReservaCadastro.SelectedValue;
+            string hospedagem = "null";
+            string transporte = "null";
+            if (DropDownListHospedagemPopupReservaCadastro.SelectedIndex > 0)
+                hospedagem = DropDownListHospedagemPopupReservaCadastro.SelectedValue;
+            if (DropDownListTransportePopupReservaCadastro.SelectedIndex > 0)
+                transporte = DropDownListTransportePopupReservaCadastro.SelectedValue;
+            if (DropDownListViagemPopupReservaCadastro.SelectedIndex>0 && DropDownListClientePopupReservaCadastro.SelectedIndex > 0)
             {
-
-
-
-                //           -----------------------------
-
-
-
-                string saveStaff = "INSERT INTO[dbo].[SEMEAR_ASSOCIATIVA_VPR] " + "([SQ_VIAGEM_FK],[SQ_RESERVA_FK],[SQ_CLIENTE_FK],[DT_INCLUSAO],[DT_EDICAO])" +
-                " VALUES ( " + DropDownListViagemPopupReservaCadastro.SelectedValue + " , " + SEQ + " , " + DropDownListClientePopupReservaCadastro.SelectedValue + " , (SELECT GETDATE() AS CurrentDateTime),(SELECT GETDATE() AS CurrentDateTime))";
-
-
-
-                using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
+                using (SqlConnection openCon = new SqlConnection(connectionString))
                 {
-                    querySaveStaff.Connection = openCon;
+                    string saveStaff = "INSERT INTO[dbo].[SEMEAR_ASSOCIATIVA_VPR] " + "([SQ_VIAGEM_FK],[SQ_CLIENTE_FK],[DT_INCLUSAO],[DT_EDICAO],[SQ_HOSPEDAGEM_FK],[SQ_TRANSPORTE_FK])" +
+                    " VALUES ( " + viagem+ " , " + cliente + " , (SELECT GETDATE() AS CurrentDateTime),(SELECT GETDATE() AS CurrentDateTime)," + hospedagem + "," + transporte + ")";
 
-                    openCon.Open();
+                    using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
+                    {
+                        querySaveStaff.Connection = openCon;
 
-                    querySaveStaff.ExecuteNonQuery();
+                        openCon.Open();
 
-                    openCon.Dispose();
-                    openCon.Close();
+                        querySaveStaff.ExecuteNonQuery();
+
+                        openCon.Dispose();
+                        openCon.Close();
+                    }
+
                 }
-
             }
+            else
+            {
+                //mensagem de retorno "selecionar uma viagem e um cliente"
+            }
+           
 
 
             GVBing();

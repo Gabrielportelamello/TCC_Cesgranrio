@@ -47,13 +47,12 @@
             padding: 3px;
             z-index: 10001;
             overflow: scroll;
-            height: 100%;
+            height: 85%;
             width: 100%;
         }
 
         .hdnBtn {
-            visibility: hidden;
-            opacity: 0%;
+            display: none;
         }
     </style>
 
@@ -64,7 +63,7 @@
 
     <asp:Panel ID="PNLHospedagemsGRID" runat="server" CssClass="PopupHospedagemsGRID" align="center" Style="display: none; border-width: 3px; border-radius: 10px;">
         <h2>
-            <asp:Label ID="LblHospedagemsPopupHospedagemCadastro" runat="server" Text="Hospedagems"></asp:Label>
+            <asp:Label ID="LblHospedagemsPopupHospedagemCadastro" runat="server" Text="Hospedagens"></asp:Label>
         </h2>
         <br />
         <br />
@@ -158,82 +157,44 @@
 
 
 
-    <h2 style="text-align:center;">Hospedagems</h2>
+    <h2 style="text-align: center;">Hospedagems</h2>
     <br />
-    <asp:Button ID="BtnModalHospedagemsGRID" CssClass="btn btn-primary btn-lg" runat="server" Text="Cadastrar Hospedagem »" OnClick="BtnModalHospedagemsGRID_Click" />
+    <asp:Button ID="BtnModalHospedagemsGRID" CssClass="btn btn-primary btn-lg" Height="46px" runat="server" Text="Cadastrar Hospedagem »" OnClick="BtnModalHospedagemsGRID_Click" />
 
     <asp:Button ID="hdnBtnModalHospedagems" runat="server" Text="" CssClass="hdnBtn" />
 
 
-    <asp:TextBox ID="TbxPesquisarGridHospedagems" runat="server" Width="265px" Height="35px" ToolTip="Filtrar por nome"></asp:TextBox>
-    <asp:ImageButton ID="ImgBtnPesquisarGridHospedagems" runat="server" Height="48px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridHospedagems_Click" ToolTip="Filtrar por nome" />
+    <asp:TextBox ID="TbxPesquisarGridHospedagems" runat="server" Width="265px" Height="44px" ToolTip="Filtrar por nome"></asp:TextBox>
+    <asp:ImageButton ID="ImgBtnPesquisarGridHospedagems" runat="server" Height="46px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridHospedagems_Click" ToolTip="Filtrar por nome" />
     <br />
     <br />
 
 
-    <asp:GridView ID="GridViewHospedagems" runat="server" CellPadding="10" ForeColor="#333333" AutoGenerateColumns="False" BorderStyle="Inset" AllowPaging="True" DataKeyNames="SEQ_Hospedagem" OnPageIndexChanging="GridViewHospedagems_PageIndexChanging" OnRowDeleting="GridViewHospedagems_RowDeleting" OnSelectedIndexChanged="GridViewHospedagems_SelectedIndexChanged" OnSelectedIndexChanging="GridViewHospedagems_SelectedIndexChanging">
+    <asp:GridView ID="GridViewHospedagems" CssClass="table table-striped table-bordered table-condensed w-100" runat="server" CellPadding="10" ForeColor="#333333" AutoGenerateColumns="False" BorderStyle="Inset" AllowPaging="True" DataKeyNames="SEQ_Hospedagem" OnPageIndexChanging="GridViewHospedagems_PageIndexChanging" OnRowDeleting="GridViewHospedagems_RowDeleting" OnSelectedIndexChanged="GridViewHospedagems_SelectedIndexChanged" OnSelectedIndexChanging="GridViewHospedagems_SelectedIndexChanging">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
-            <asp:BoundField DataField="SEQ_HOSPEDAGEM" HeaderText="SEQ_HOSPEDAGEM" ReadOnly="True" SortExpression="SEQ_HOSPEDAGEM" Visible="False">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Endereco" HeaderText="Endereço" SortExpression="Endereco">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-            </asp:BoundField>
-            <asp:BoundField DataField="CNPJ" HeaderText="CNPJ" SortExpression="CNPJ">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Telefones" HeaderText="Telefones" SortExpression="Telefones">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-            </asp:BoundField>
-            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-            </asp:BoundField>
-            <asp:BoundField DataField="CEP" HeaderText="CEP" SortExpression="CEP">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-            </asp:BoundField>
-            <asp:BoundField DataField="qtd_quartos" HeaderText="Quantidade de Quartos" SortExpression="qtd_quartos">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-            </asp:BoundField>
-            <asp:BoundField DataField="data_checkin" HeaderText="Data Check-In" SortExpression="data_checkin" DataFormatString="{0:d}">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-            </asp:BoundField>
-            <asp:BoundField DataField="data_checkout" HeaderText="Data Check-Out" SortExpression="data_checkout" DataFormatString="{0:d}">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-            </asp:BoundField>
-            <asp:BoundField DataField="preco" HeaderText="Preço" SortExpression="preco" DataFormatString="{0:C2}">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-            </asp:BoundField>
+            <asp:BoundField DataField="SEQ_HOSPEDAGEM" HeaderText="SEQ_HOSPEDAGEM" ReadOnly="True" SortExpression="SEQ_HOSPEDAGEM" Visible="False"></asp:BoundField>
+            <asp:BoundField DataField="Nome" HeaderText="Nome" SortExpression="Nome"></asp:BoundField>
+            <asp:BoundField DataField="Endereco" HeaderText="Endereço" SortExpression="Endereco"></asp:BoundField>
+            <asp:BoundField DataField="CNPJ" HeaderText="CNPJ" SortExpression="CNPJ"></asp:BoundField>
+            <asp:BoundField DataField="Telefones" HeaderText="Telefones" SortExpression="Telefones"></asp:BoundField>
+            <asp:BoundField DataField="Email" HeaderText="Email" SortExpression="Email"></asp:BoundField>
+            <asp:BoundField DataField="CEP" HeaderText="CEP" SortExpression="CEP"></asp:BoundField>
+            <asp:BoundField DataField="qtd_quartos" HeaderText="Quantidade de Quartos" SortExpression="qtd_quartos"></asp:BoundField>
+            <asp:BoundField DataField="data_checkin" HeaderText="Data Check-In" SortExpression="data_checkin" DataFormatString="{0:d}"></asp:BoundField>
+            <asp:BoundField DataField="data_checkout" HeaderText="Data Check-Out" SortExpression="data_checkout" DataFormatString="{0:d}"></asp:BoundField>
+            <asp:BoundField DataField="preco" HeaderText="Preço" SortExpression="preco" DataFormatString="{0:C2}"></asp:BoundField>
             <asp:CommandField ButtonType="Button" ControlStyle-CssClass="btnEditar" UpdateText="Atualizar" SelectText="Editar" ShowSelectButton="True" HeaderText="Editar">
 
                 <ControlStyle CssClass="btnEditar" Font-Bold="True" Height="40px" BackColor="#339933" BorderStyle="Solid" BorderWidth="6px"></ControlStyle>
 
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
 
             </asp:CommandField>
             <asp:CommandField ButtonType="Button" InsertVisible="False" ShowDeleteButton="True" ControlStyle-CssClass="btnExcluir" HeaderText="Excluir">
 
+            <ControlStyle CssClass="btnExcluir" Font-Bold="True" Height="40px" BackColor="#FF3300" BorderStyle="Solid" BorderWidth="6px"></ControlStyle>
 
-                <ControlStyle CssClass="btnExcluir" Font-Bold="True" Height="40px" BackColor="#FF3300" BorderStyle="Solid" BorderWidth="6px"></ControlStyle>
 
-
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
 
 
             </asp:CommandField>
@@ -252,7 +213,7 @@
         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
     </asp:GridView>
 
-
-
-
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </asp:Content>

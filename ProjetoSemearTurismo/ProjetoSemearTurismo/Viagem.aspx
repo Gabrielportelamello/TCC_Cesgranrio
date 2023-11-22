@@ -134,16 +134,16 @@
 
     </asp:Panel>
     <div class="w-100 text-center center-block">
-        <h2>Viagens cadastradas</h2>
+        <h2 >Viagens cadastradas</h2>
 
     </div>
 
     <div class="w-100 text-left" style="margin-bottom: 1%;">
 
-        <asp:Button ID="BtnModalViagensGRID" CssClass="btn btn-primary btn-lg w-100 " runat="server" Text="Cadastrar Viagem »" OnClick="BtnModalViagensGRID_Click" ToolTip="Filtrar por nome:" />
+        <asp:Button ID="BtnModalViagensGRID" CssClass="btn btn-primary btn-lg w-100" Height="46" runat="server" Text="Cadastrar Viagem »" OnClick="BtnModalViagensGRID_Click" ToolTip="Filtrar por nome:" />
 
-        <asp:TextBox ID="TbxPesquisarGridViagens" runat="server" Width="265px" Height="35px" ToolTip="Filtrar por nome:"></asp:TextBox>
-        <asp:ImageButton ID="ImgBtnPesquisarGridViagens" runat="server" Height="48px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridViagens_Click" ToolTip="Filtrar por nome:" />
+        <asp:TextBox ID="TbxPesquisarGridViagens" runat="server" Width="265px" Height="44px" ToolTip="Filtrar por nome:"></asp:TextBox>
+        <asp:ImageButton ID="ImgBtnPesquisarGridViagens" runat="server" Height="46px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridViagens_Click" ToolTip="Filtrar por nome:" />
 
 
     </div>
@@ -155,48 +155,38 @@
                 <div class="w-100">
 
 
-                    <asp:GridView ID="GridViewViagens" CssClass="w-100 bg-success container" runat="server" AutoGenerateColumns="False" AllowPaging="True" DataKeyNames="SQ_VIAGEM" OnPageIndexChanging="GridViewViagens_PageIndexChanging" OnRowDeleting="GridViewViagens_RowDeleting" OnSelectedIndexChanged="GridViewViagens_SelectedIndexChanged" OnSelectedIndexChanging="GridViewViagens_SelectedIndexChanging">
+                    <asp:GridView ID="GridViewViagens" CssClass="table table-striped table-bordered table-condensed w-100"  runat="server" AutoGenerateColumns="False" AllowPaging="True" DataKeyNames="SQ_VIAGEM" OnPageIndexChanging="GridViewViagens_PageIndexChanging" OnRowDeleting="GridViewViagens_RowDeleting" OnSelectedIndexChanged="GridViewViagens_SelectedIndexChanged" OnSelectedIndexChanging="GridViewViagens_SelectedIndexChanging">
                         <Columns>
                             <asp:BoundField HeaderText="NUMERO" DataField="SQ_VIAGEM" Visible="False" />
                             <asp:BoundField HeaderText="Nome" DataField="NOME_VIAGEM">
-                                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+                              
                             </asp:BoundField>
                             <asp:BoundField HeaderText="Inicio viagem" DataField="DT_InicialPeriodo_viagem">
-                                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+              
                             </asp:BoundField>
                             <asp:BoundField HeaderText="Final viagem" DataField="DTFinalperiodo_viagem">
-                                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+                              
                             </asp:BoundField>
                             <asp:BoundField HeaderText="Descricao do pacote" DataField="Descricao_do_pacote">
-                                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+                     
                             </asp:BoundField>
                             <asp:BoundField DataField="Tipo_Transporte" HeaderText="Transporte" Visible="False">
-                                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+                      
                             </asp:BoundField>
                             <asp:BoundField DataField="Preco" HeaderText="Preço">
-                                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+                         
                             </asp:BoundField>
                             <asp:BoundField DataField="Formas_de_pagamento" HeaderText="Formas de pagamento" Visible="False" />
                             <asp:BoundField DataField="OBSERVACAO" HeaderText="Observação">
-                                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+                
                             </asp:BoundField>
                             <asp:BoundField DataField="FL_STATUS" HeaderText="Status">
-                                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+                           
                             </asp:BoundField>
                             <asp:CommandField ButtonType="Button" ControlStyle-CssClass="btnEditar" UpdateText="Atualizar" SelectText="Editar" ShowSelectButton="True" HeaderText="Editar">
 
                                 <ControlStyle CssClass="btnEditar" Font-Bold="True" Height="40px" BackColor="#339933" BorderStyle="Solid" BorderWidth="6px"></ControlStyle>
-
-                                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+ 
 
                             </asp:CommandField>
                             <asp:CommandField ButtonType="Button" InsertVisible="False" ShowDeleteButton="True" ControlStyle-CssClass="btnExcluir" HeaderText="Excluir">
@@ -204,9 +194,7 @@
 
                                 <ControlStyle CssClass="btnExcluir" Font-Bold="True" Height="40px" BackColor="#FF3300" BorderStyle="Solid" BorderWidth="6px"></ControlStyle>
 
-
-                                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+ 
 
 
                             </asp:CommandField>
@@ -231,5 +219,8 @@
 
 
 
+        <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </asp:Content>

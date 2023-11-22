@@ -4,7 +4,7 @@
 
     <div class="jumbotron">
         <h2 style="text-align:center;">Semear Turismo</h2>
-        <p class="lead">Sistema de Gerenciamento de Viagens Semear Turismo. Gerencie o cadastro de clientes, transportes, hospedagens, viagens e reservas em um só lugar.</p>
+        <p class="lead"style="text-align:center;">Sistema de Gerenciamento de Viagens Semear Turismo. Gerencie o cadastro de clientes, transportes, hospedagens, viagens e reservas em um só lugar.</p>
     </div>
 
     <div class="row">

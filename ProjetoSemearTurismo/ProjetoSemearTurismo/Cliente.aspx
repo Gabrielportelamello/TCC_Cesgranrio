@@ -210,44 +210,38 @@
 
     <h2 class="text-center">Clientes</h2>
     <br />
-    <asp:Button ID="BtnModalClientesGRID" CssClass="btn btn-primary btn-lg w-100" runat="server" Text="Cadastrar Cliente »" OnClick="BtnModalClientesGRID_Click" />
+    <asp:Button ID="BtnModalClientesGRID" CssClass="btn btn-primary btn-lg w-100" Height="46px" runat="server" Text="Cadastrar Cliente »" OnClick="BtnModalClientesGRID_Click" />
 
 
-    <asp:TextBox ID="TbxPesquisarGridClientes" runat="server" Width="265px" Height="35px"></asp:TextBox>
-    <asp:ImageButton ID="ImgBtnPesquisarGridClientes" runat="server" Height="48px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridClientes_Click" />
+    <asp:TextBox ID="TbxPesquisarGridClientes" runat="server" Width="265px" Height="44px"></asp:TextBox>
+    <asp:ImageButton ID="ImgBtnPesquisarGridClientes" runat="server" Height="46px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridClientes_Click" />
     <br />
     <br />
 
 
-    <asp:GridView ID="GridViewClientes" runat="server" CellPadding="10" ForeColor="#333333" AutoGenerateColumns="False" BorderStyle="Inset" AllowPaging="True" DataKeyNames="SQ_PESSOA" OnPageIndexChanging="GridViewClientes_PageIndexChanging" OnRowDeleting="GridViewClientes_RowDeleting" OnSelectedIndexChanged="GridViewClientes_SelectedIndexChanged" OnSelectedIndexChanging="GridViewClientes_SelectedIndexChanging">
+    <asp:GridView ID="GridViewClientes" runat="server" CssClass="table table-striped table-bordered table-condensed w-100"  CellPadding="10" ForeColor="#333333" AutoGenerateColumns="False" BorderStyle="Inset" AllowPaging="True" DataKeyNames="SQ_PESSOA" OnPageIndexChanging="GridViewClientes_PageIndexChanging" OnRowDeleting="GridViewClientes_RowDeleting" OnSelectedIndexChanged="GridViewClientes_SelectedIndexChanged" OnSelectedIndexChanging="GridViewClientes_SelectedIndexChanging">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
             <asp:BoundField HeaderText="NUMERO" DataField="SQ_PESSOA" Visible="False" />
             <asp:BoundField HeaderText="Nome" DataField="Nome">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+               
             </asp:BoundField>
             <asp:BoundField HeaderText="Telefone" DataField="Telefone">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+             
             </asp:BoundField>
             <asp:BoundField HeaderText="Email" DataField="Email">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+              
             </asp:BoundField>
             <asp:BoundField HeaderText="Data de Nascimento" DataField="Data_Nascimento">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+        
             </asp:BoundField>
             <asp:BoundField DataField="CPF" HeaderText="CPF">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+            
             </asp:BoundField>
             <asp:BoundField DataField="Passaporte" HeaderText="Passaporte" Visible="False" />
             <asp:BoundField DataField="emissao_passaporte" HeaderText="Emissao passaporte" Visible="False" />
             <asp:BoundField DataField="RG" HeaderText="RG">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+           
             </asp:BoundField>
             <asp:BoundField DataField="Validade_Passaporte" HeaderText="Validade do Passaporte" Visible="False" />
             <asp:BoundField DataField="orgao_emissor_RG" HeaderText="orgao_emissor_RG" Visible="False" />
@@ -255,14 +249,12 @@
             <asp:BoundField DataField="Perfil_Acesso" HeaderText="Perfil_Acesso" Visible="False" />
             <asp:BoundField DataField="salario" HeaderText="salario" Visible="False" />
             <asp:BoundField DataField="Saldo" HeaderText="Saldo">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+              
             </asp:BoundField>
             <asp:BoundField DataField="FL_FUNCIONARIO" HeaderText="FL_FUNCIONARIO" Visible="False" />
             <asp:BoundField DataField="FL_EXCLUIDO" HeaderText="EXCLUIDO">
 
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+       
             </asp:BoundField>
 
             <asp:BoundField DataField="bairro_endereco" HeaderText="bairro_endereco" Visible="False" />
@@ -275,8 +267,7 @@
 
                 <ControlStyle CssClass="btnEditar" Font-Bold="True" Height="40px" BackColor="#339933" BorderStyle="Solid" BorderWidth="6px"></ControlStyle>
 
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+             
 
             </asp:CommandField>
             <asp:CommandField ButtonType="Button" InsertVisible="False" ShowDeleteButton="True" ControlStyle-CssClass="btnExcluir" HeaderText="Excluir">
@@ -285,8 +276,7 @@
                 <ControlStyle CssClass="btnExcluir" Font-Bold="True" Height="40px" BackColor="#FF3300" BorderStyle="Solid" BorderWidth="6px"></ControlStyle>
 
 
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+     
 
 
             </asp:CommandField>
@@ -307,5 +297,8 @@
 
 
 
+        <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </asp:Content>

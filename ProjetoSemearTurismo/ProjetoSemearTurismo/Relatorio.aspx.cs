@@ -45,7 +45,23 @@ namespace ProjetoSemearTurismo
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString);
 
+            /*USE [tailandia]
+GO
 
+SELECT [SQ_HPR_PK]
+      ,[SQ_VIAGEM_FK]
+      ,[SQ_RESERVA_FK]
+      ,[SQ_CLIENTE_FK]
+      ,[DT_INCLUSAO]
+      ,[DT_EXCLUSAO]
+      ,[DT_EDICAO]
+      ,[SQ_HOSPEDAGEM_FK]
+      ,[SQ_TRANSPORTE_FK]
+  FROM [dbo].[SEMEAR_ASSOCIATIVA_VPR]
+
+GO
+
+*/
             SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_VIAGEM ORDER BY NOME_VIAGEM", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);

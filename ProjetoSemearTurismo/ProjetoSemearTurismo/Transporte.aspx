@@ -46,13 +46,13 @@
             padding: 3px;
             z-index: 10001;
             overflow: scroll;
-            height: 500px;
-            width: 900px;
+            height: 85%;
+            width: 100%;
+
         }
 
         .hdnBtn {
-            visibility: hidden;
-            opacity: 0%;
+         display:none;
         }
     </style>
 
@@ -65,12 +65,8 @@
         <h2>
             <asp:Label ID="LblTransportePopupTransporteCadastro" runat="server" Text="Transporte"></asp:Label>
         </h2>
-        <br />
-        <br />
-        <h3>
-            <asp:Label ID="LblDadosPessoaisPopupTransporteCadastro" runat="server" Text="Dados Empresariais"></asp:Label>
-        </h3>
-        <br />
+        <br />     
+      
         <asp:Label ID="LblNomePopupTransporteCadastro" runat="server" Text="Nome"></asp:Label>
         <asp:TextBox ID="TbxNomePopupTransporteCadastro" runat="server"></asp:TextBox>
         <asp:Label ID="LblCNPJPopupTransporteCadastro" runat="server" Text="CNPJ" Style="margin-left: 15px"></asp:Label>
@@ -78,25 +74,19 @@
         <br />
         <br />
 
-        <asp:Label ID="LblQTDAssentosPopupTransporteCadastro" runat="server" Text="Quantidade de Assentos" Style="margin-left: 15px"></asp:Label>
+        <asp:Label ID="LblQTDAssentosPopupTransporteCadastro" runat="server" Text="Vagas" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxQTDAssentosPopupTransporteCadastro" runat="server" Width="99px"></asp:TextBox>
 
-        <asp:Label ID="LblPrecoPopupTransporteCadastro" runat="server" Text="Preço Transporte" Style="margin-left: 15px"></asp:Label>
+        <asp:Label ID="LblPrecoPopupTransporteCadastro" runat="server" Text="Preço" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxPrecosPopupTransporteCadastro" runat="server" Width="99px"></asp:TextBox>
 
 
 
         <br />
-        <br />
-        <br />
-
-
-        <h3>
-            <asp:Label ID="LblContatoPrincipalPopupTransporteCadastro" runat="server" Text="Contato"></asp:Label>
-        </h3>
-        <br />
+                        <br />
         <asp:Label ID="LblTel1PopupTransporteCadastro" runat="server" Text="Telefone 1"></asp:Label>
         <asp:TextBox ID="TbxTel1PopupTransporteCadastro" runat="server"></asp:TextBox>
+
 
 
 
@@ -105,10 +95,7 @@
 
         <br />
         <br />
-
-        <h3>
-            <asp:Label ID="LblEnderecoPrincipalPopupTransporteCadastro" runat="server" Text="Endereço"></asp:Label>
-        </h3>
+       
         <asp:Label ID="LblEnderecoPopupTransporteCadastro" runat="server" Text="Rua"></asp:Label>
         <asp:TextBox ID="TbxEnderecoPopupTransporteCadastro" runat="server"></asp:TextBox>
 
@@ -140,65 +127,47 @@
 
     <h2 class="text-center">Transportes</h2>
     <br />
+    
+    <asp:Button ID="hdnBtnModalTransporte" runat="server" Text=""   CssClass="hdnBtn" />
 
-    <asp:Button ID="hdnBtnModalTransporte" runat="server" Text="" CssClass="hdnBtn" />
-
-    <asp:Button ID="BtnModalTransporteGRID" CssClass="btn btn-primary btn-lg w-100" runat="server" Text="Cadastrar Transporte »" OnClick="BtnModalTransporteGRID_Click" />
+    <asp:Button ID="BtnModalTransporteGRID" CssClass="btn btn-primary btn-lg w-100" Height="46px" runat="server" Text="Cadastrar Transporte »" OnClick="BtnModalTransporteGRID_Click" />
 
 
-    <asp:TextBox ID="TbxPesquisarGridTransporte" runat="server" Width="265px" Height="35px" ToolTip="Filtrar por nome:"></asp:TextBox>
-    <asp:ImageButton ID="ImgBtnPesquisarGridTransporte" runat="server" Height="48px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridTransporte_Click" ToolTip="Filtrar por nome:" />
+    <asp:TextBox ID="TbxPesquisarGridTransporte" runat="server" Width="265px" Height="44px" ToolTip="Filtrar por nome:"></asp:TextBox>
+    <asp:ImageButton ID="ImgBtnPesquisarGridTransporte" runat="server" Height="46px" CssClass="btn btn-primary btn-lg" ImageUrl="~/Imagens/kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" Width="59px" ImageAlign="Middle" OnClick="ImgBtnPesquisarGridTransporte_Click" ToolTip="Filtrar por nome:" />
     <br />
     <br />
 
 
-    <asp:GridView ID="GridViewTransporte" runat="server" CellPadding="10" ForeColor="#333333" AutoGenerateColumns="False" BorderStyle="Inset" AllowPaging="True" DataKeyNames="SQ_TRANSPORTE" OnPageIndexChanging="GridViewTransporte_PageIndexChanging" OnRowDeleting="GridViewTransporte_RowDeleting" OnSelectedIndexChanged="GridViewTransporte_SelectedIndexChanged" OnSelectedIndexChanging="GridViewTransporte_SelectedIndexChanging">
+    <asp:GridView ID="GridViewTransporte" runat="server" CellPadding="10" CssClass="table table-striped table-bordered table-condensed w-100"  ForeColor="#333333" AutoGenerateColumns="False" BorderStyle="Inset" AllowPaging="True" DataKeyNames="SQ_TRANSPORTE" OnPageIndexChanging="GridViewTransporte_PageIndexChanging" OnRowDeleting="GridViewTransporte_RowDeleting" OnSelectedIndexChanged="GridViewTransporte_SelectedIndexChanged" OnSelectedIndexChanging="GridViewTransporte_SelectedIndexChanging">
         <AlternatingRowStyle BackColor="White" ForeColor="#284775" />
         <Columns>
             <asp:BoundField HeaderText="NUMERO" DataField="SQ_TRANSPORTE" Visible="False" />
             <asp:BoundField HeaderText="Nome" DataField="Nome">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+               
             </asp:BoundField>
             <asp:BoundField HeaderText="Telefone" DataField="Telefones">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+                 
             </asp:BoundField>
             <asp:BoundField HeaderText="Email" DataField="Email">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+                 
             </asp:BoundField>
             <asp:BoundField DataField="CNPJ" HeaderText="CNPJ">
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
+      
             </asp:BoundField>
-            <asp:BoundField HeaderText="EXCLUIDO">
-
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-            </asp:BoundField>
-
+           
             <asp:BoundField DataField="endereco" HeaderText="endereco" Visible="False" />
 
             <asp:BoundField DataField="CEP" HeaderText="CEP" Visible="False" />
             <asp:CommandField ButtonType="Button" ControlStyle-CssClass="btnEditar" UpdateText="Atualizar" SelectText="Editar" ShowSelectButton="True" HeaderText="Editar">
 
                 <ControlStyle CssClass="btnEditar" Font-Bold="True" Height="40px" BackColor="#339933" BorderStyle="Solid" BorderWidth="6px"></ControlStyle>
-
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-
+                 
             </asp:CommandField>
             <asp:CommandField ButtonType="Button" InsertVisible="False" ShowDeleteButton="True" ControlStyle-CssClass="btnExcluir" HeaderText="Excluir">
-
-
+                 
                 <ControlStyle CssClass="btnExcluir" Font-Bold="True" Height="40px" BackColor="#FF3300" BorderStyle="Solid" BorderWidth="6px"></ControlStyle>
-
-
-                <HeaderStyle BorderStyle="Solid" BorderWidth="10px" />
-                <ItemStyle BorderStyle="Solid" BorderWidth="10px" />
-
-
+               
             </asp:CommandField>
 
         </Columns>
@@ -217,5 +186,8 @@
 
 
 
+        <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-theme.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
 </asp:Content>

@@ -42,15 +42,6 @@ namespace ProjetoSemearTurismo
         protected global::System.Web.UI.WebControls.Label LblTransportePopupTransporteCadastro;
 
         /// <summary>
-        /// Controle LblDadosPessoaisPopupTransporteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblDadosPessoaisPopupTransporteCadastro;
-
-        /// <summary>
         /// Controle LblNomePopupTransporteCadastro.
         /// </summary>
         /// <remarks>
@@ -123,15 +114,6 @@ namespace ProjetoSemearTurismo
         protected global::System.Web.UI.WebControls.TextBox TbxPrecosPopupTransporteCadastro;
 
         /// <summary>
-        /// Controle LblContatoPrincipalPopupTransporteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblContatoPrincipalPopupTransporteCadastro;
-
-        /// <summary>
         /// Controle LblTel1PopupTransporteCadastro.
         /// </summary>
         /// <remarks>
@@ -166,15 +148,6 @@ namespace ProjetoSemearTurismo
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbxEmailPopupTransporteCadastro;
-
-        /// <summary>
-        /// Controle LblEnderecoPrincipalPopupTransporteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblEnderecoPrincipalPopupTransporteCadastro;
 
         /// <summary>
         /// Controle LblEnderecoPopupTransporteCadastro.
