@@ -10,7 +10,7 @@ using System.Configuration;
 
 namespace ProjetoSemearTurismo
 {
-    public partial class Contact : Page
+    public partial class Viagem : Page
     {
         string connectionString = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 

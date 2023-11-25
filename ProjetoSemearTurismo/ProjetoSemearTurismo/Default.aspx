@@ -29,7 +29,7 @@
         <div class="col-md-4">
             <h2>Gerenciar Viagens</h2>
             <p>
-                O gerenciamento de Viagens permite cadastrar, editar e excluir Viagens </p>
+                O gerenciamento de Viagens permite cadastrar, editar e excluir Viagens. </p>
             <p>
                 <a class="btn btn-default" runat="server" href="~/Viagem">Viagens &raquo;</a>
             </p>
@@ -49,19 +49,35 @@
         <div class="col-md-4">
             <h2>Gerenciar Hospedagem  </h2>
             <p>
-               Local de gerenciamento de hospedagem de cada viagem .
+               Local de gerenciamento de hospedagem de cada viagem.
             </p>
             <p>
                 <a class="btn btn-default" runat="server" href="~/Hospedagem">Hospedagens &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Downloads</h2>
+            <h2>Relatório</h2>
             <p>
-               Faça o download de arquivos em formato pdf e excel </p>
+               Visualize qual viagem foi mais reservada</p>
             <p>
-                <a class="btn btn-default" runat="server" href="~/Relatorio">Downloads &raquo;</a>
+                <a class="btn btn-default" runat="server" href="~/Relatorio">Relatório &raquo;</a>
             </p>
+        </div>
+    </div>
+      <div class="row">
+        <div class="col-md-4">
+            <h2>Downloads</h2>
+            <p> Faça downloads de arquivos em formato pdf e excel                
+                </p>
+            <p>
+                <a class="btn btn-default" runat="server" href="~/Download">Downloads &raquo;</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+       
+        </div>
+        <div class="col-md-4">
+         
         </div>
     </div>
     

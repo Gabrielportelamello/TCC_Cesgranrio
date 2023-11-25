@@ -11,7 +11,7 @@ namespace ProjetoSemearTurismo.Views
 {
 
 
-    public partial class Reserva
+    public partial class Download
     {
 
         /// <summary>

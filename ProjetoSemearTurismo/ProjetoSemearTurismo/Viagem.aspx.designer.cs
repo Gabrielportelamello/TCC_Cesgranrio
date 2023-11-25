@@ -11,7 +11,7 @@ namespace ProjetoSemearTurismo
 {
 
 
-    public partial class Contact
+    public partial class Viagem
     {
 
         /// <summary>

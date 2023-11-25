@@ -18,11 +18,17 @@ using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
 using System.Text.RegularExpressions;
 using TableCell = System.Web.UI.WebControls.TableCell;
 using Font = iTextSharp.text.Font;
+using Newtonsoft.Json;
+using System.Web.Services;
+using System.Web.Script.Serialization;
 
 namespace ProjetoSemearTurismo
 {
     public partial class Relatorio : System.Web.UI.Page
     {
+
+
+        // ... Seu código existente ...
         protected void Application_Start(object sender, EventArgs e)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
@@ -32,293 +38,322 @@ namespace ProjetoSemearTurismo
         {
             if (!IsPostBack)
             {
-                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-
-                GVBing();
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;      
 
 
             }
 
         }
-        protected void GVBing()
+        protected string ObterDadosGrafico()
         {
+            // Simule dados de exemplo (ajuste conforme necessário)
+            var result = new
+            {
+                labels = new List<string> { "Data1", "Data2", "Data3" },
+                datasets = new List<object> { new { data = new List<int> { 10, 20, 15 } } }
+            };
 
-            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString);
-
-            /*USE [tailandia]
-GO
-
-SELECT [SQ_HPR_PK]
-      ,[SQ_VIAGEM_FK]
-      ,[SQ_RESERVA_FK]
-      ,[SQ_CLIENTE_FK]
-      ,[DT_INCLUSAO]
-      ,[DT_EXCLUSAO]
-      ,[DT_EDICAO]
-      ,[SQ_HOSPEDAGEM_FK]
-      ,[SQ_TRANSPORTE_FK]
-  FROM [dbo].[SEMEAR_ASSOCIATIVA_VPR]
-
-GO
-
-*/
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_VIAGEM ORDER BY NOME_VIAGEM", conn);
-            conn.Open();
-            SqlCommandBuilder builder = new SqlCommandBuilder(a);
-            DataSet ds = new DataSet();
-
-            a.Fill(ds);
-
-            gridViewExcel.DataSource = ds;
-            gridViewExcel.DataBind();
-
-            conn.Close();
-            conn.Dispose();
-
+            // Converta o objeto em formato JSON
+            string jsonResult = new JavaScriptSerializer().Serialize(result);
+            return jsonResult;
         }
-        //private DataTable GridViewToDataTable(GridView gridView)
-        //{
-        //    DataTable dataTable = new DataTable();
 
-        //    // Adicione colunas ao DataTable com base nas colunas do GridView.
-        //    foreach (DataControlField column in gridView.Columns)
-        //    {
-        //        if (column is BoundField)
+        //        protected void Application_Start(object sender, EventArgs e)
         //        {
-        //            BoundField boundField = column as BoundField;
-        //            dataTable.Columns.Add(boundField.DataField);
+        //            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+        //            // Rest of your Application_Start code
         //        }
-        //    }
-
-        //    // Adicione linhas ao DataTable com base nas linhas do GridView.
-        //    foreach (GridViewRow row in gridView.Rows)
-        //    {
-        //        DataRow dataRow = dataTable.NewRow();
-
-        //        for (int i = 0; i < gridView.Columns.Count; i++)
+        //        protected void Page_Load(object sender, EventArgs e)
         //        {
-        //            DataControlFieldCell cell = row.Cells[i] as DataControlFieldCell;
-
-        //            if (cell != null && cell.ContainingField is BoundField)
+        //            if (!IsPostBack)
         //            {
-        //                BoundField boundField = cell.ContainingField as BoundField;
-        //                dataRow[boundField.DataField] = cell.Text;
+        //                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+        //                GVBing();
+
+
+        //            }
+
+        //        }
+        //        protected void GVBing()
+        //        {
+
+        //            SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString);
+
+        //            /*USE [tailandia]
+        //GO
+
+        //SELECT [SQ_HPR_PK]
+        //      ,[SQ_VIAGEM_FK]
+        //      ,[SQ_RESERVA_FK]
+        //      ,[SQ_CLIENTE_FK]
+        //      ,[DT_INCLUSAO]
+        //      ,[DT_EXCLUSAO]
+        //      ,[DT_EDICAO]
+        //      ,[SQ_HOSPEDAGEM_FK]
+        //      ,[SQ_TRANSPORTE_FK]
+        //  FROM [dbo].[SEMEAR_ASSOCIATIVA_VPR]
+
+        //GO
+
+        //*/
+        //            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_VIAGEM ORDER BY NOME_VIAGEM", conn);
+        //            conn.Open();
+        //            SqlCommandBuilder builder = new SqlCommandBuilder(a);
+        //            DataSet ds = new DataSet();
+
+        //            a.Fill(ds);
+
+        //            gridViewExcel.DataSource = ds;
+        //            gridViewExcel.DataBind();
+
+        //            conn.Close();
+        //            conn.Dispose();
+
+        //        }
+        //        //private DataTable GridViewToDataTable(GridView gridView)
+        //        //{
+        //        //    DataTable dataTable = new DataTable();
+
+        //        //    // Adicione colunas ao DataTable com base nas colunas do GridView.
+        //        //    foreach (DataControlField column in gridView.Columns)
+        //        //    {
+        //        //        if (column is BoundField)
+        //        //        {
+        //        //            BoundField boundField = column as BoundField;
+        //        //            dataTable.Columns.Add(boundField.DataField);
+        //        //        }
+        //        //    }
+
+        //        //    // Adicione linhas ao DataTable com base nas linhas do GridView.
+        //        //    foreach (GridViewRow row in gridView.Rows)
+        //        //    {
+        //        //        DataRow dataRow = dataTable.NewRow();
+
+        //        //        for (int i = 0; i < gridView.Columns.Count; i++)
+        //        //        {
+        //        //            DataControlFieldCell cell = row.Cells[i] as DataControlFieldCell;
+
+        //        //            if (cell != null && cell.ContainingField is BoundField)
+        //        //            {
+        //        //                BoundField boundField = cell.ContainingField as BoundField;
+        //        //                dataRow[boundField.DataField] = cell.Text;
+        //        //            }
+        //        //        }
+
+        //        //        dataTable.Rows.Add(dataRow);
+        //        //    }
+
+        //        //    return dataTable;
+        //        //}
+
+
+        //        private DataTable GridViewToDataTable(GridView gridView)
+        //        {
+        //            DataTable dt = new DataTable();
+
+        //            // Adicione colunas ao DataTable com base nas colunas na GridView
+        //            foreach (DataControlField column in gridView.Columns)
+        //            {
+        //                if (column is BoundField)
+        //                {
+        //                    BoundField boundField = column as BoundField;
+        //                    dt.Columns.Add(boundField.HeaderText); // Use o HeaderText da coluna como nome da coluna
+        //                }
+        //            }
+
+        //            // Adicione linhas ao DataTable com base nas linhas na GridView
+        //            foreach (GridViewRow row in gridView.Rows)
+        //            {
+        //                DataRow dataRow = dt.NewRow();
+
+        //                for (int i = 0; i < gridView.Columns.Count; i++)
+        //                {
+        //                    DataControlFieldCell cell = row.Cells[i] as DataControlFieldCell;
+
+        //                    if (cell != null && cell.ContainingField is BoundField)
+        //                    {
+        //                        dataRow[i] = cell.Text;
+        //                    }
+        //                }
+
+        //                dt.Rows.Add(dataRow);
+        //            }
+
+        //            return dt;
+        //        }
+        //        //protected void btnGenerateExcel_Click(object sender, EventArgs e)
+        //        //{
+        //        //    using (ExcelPackage package = new ExcelPackage())
+        //        //    {
+        //        //        ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Dados");
+
+
+
+        //        //        DataTable ds = new DataTable();
+
+        //        //        ds = GridViewToDataTable(gridViewExcel);
+
+
+        //        //        worksheet.Cells["A1"].LoadFromDataTable(ds, true);
+
+        //        //        byte[] bytes = package.GetAsByteArray();
+
+        //        //        // Send the generated Excel file as a response to the client
+        //        //        Response.Clear();
+        //        //        Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+        //        //        Response.AddHeader("Content-Disposition", "attachment; filename=sample.xlsx");
+        //        //        Response.BinaryWrite(bytes);
+        //        //        Response.End();
+        //        //    }
+        //        //}
+
+
+
+        //        protected void btnGenerateExcel_Click(object sender, EventArgs e)
+        //        {
+        //            try
+        //            {
+        //                using (ExcelPackage package = new ExcelPackage())
+        //                {
+        //                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Dados");
+
+        //                    // Adicione manualmente o cabeçalho
+        //                    int headerIndex = 1;
+        //                    foreach (TableCell cell in gridViewExcel.HeaderRow.Cells)
+        //                    {
+        //                        worksheet.Cells[1, headerIndex].Value = DecodeHtmlEntities(cell.Text); // Decodifique entidades HTML
+        //                        headerIndex++;
+        //                    }
+
+        //                    // Defina o formato de célula para as colunas de data
+        //                    using (ExcelRange dateColumn = worksheet.Cells["B2:B" + (gridViewExcel.Rows.Count + 1)])
+        //                    {
+        //                        dateColumn.Style.Numberformat.Format = "dd/MM/yyyy HH:mm:ss";
+        //                    }
+
+        //                    // Preencha a planilha do Excel com os dados da GridView
+        //                    int rowIndex = 2;
+
+        //                    // Loop pelas linhas da GridView
+        //                    foreach (GridViewRow row in gridViewExcel.Rows)
+        //                    {
+        //                        int cellIndex = 1;
+
+        //                        // Loop pelas células da linha
+        //                        foreach (TableCell cell in row.Cells)
+        //                        {
+        //                            string cellText = DecodeHtmlEntities(cell.Text); // Decodifique entidades HTML
+
+        //                            // Remova os espaços não quebráveis (&nbsp;)
+        //                            cellText = cellText.Replace("&nbsp;", " ");
+
+        //                            worksheet.Cells[rowIndex, cellIndex].Value = cellText;
+        //                            cellIndex++;
+        //                        }
+
+        //                        rowIndex++;
+        //                    }
+
+        //                    // Configuração do tipo de resposta e nome do arquivo Excel
+        //                    Response.Clear();
+        //                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+        //                    Response.ContentEncoding = System.Text.Encoding.UTF8; // Configuração do charset
+        //                    Response.AddHeader("Content-Disposition", "attachment; filename=sample.xlsx");
+
+        //                    // Envie o arquivo Excel como resposta para o cliente
+        //                    Response.BinaryWrite(package.GetAsByteArray());
+        //                    Response.End();
+        //                }
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                // Lide com qualquer exceção aqui
+        //                Response.Write("Erro ao gerar o arquivo Excel: " + ex.Message);
         //            }
         //        }
 
-        //        dataTable.Rows.Add(dataRow);
-        //    }
-
-        //    return dataTable;
-        //}
 
 
-        private DataTable GridViewToDataTable(GridView gridView)
-        {
-            DataTable dt = new DataTable();
-
-            // Adicione colunas ao DataTable com base nas colunas na GridView
-            foreach (DataControlField column in gridView.Columns)
-            {
-                if (column is BoundField)
-                {
-                    BoundField boundField = column as BoundField;
-                    dt.Columns.Add(boundField.HeaderText); // Use o HeaderText da coluna como nome da coluna
-                }
-            }
-
-            // Adicione linhas ao DataTable com base nas linhas na GridView
-            foreach (GridViewRow row in gridView.Rows)
-            {
-                DataRow dataRow = dt.NewRow();
-
-                for (int i = 0; i < gridView.Columns.Count; i++)
-                {
-                    DataControlFieldCell cell = row.Cells[i] as DataControlFieldCell;
-
-                    if (cell != null && cell.ContainingField is BoundField)
-                    {
-                        dataRow[i] = cell.Text;
-                    }
-                }
-
-                dt.Rows.Add(dataRow);
-            }
-
-            return dt;
-        }
-        //protected void btnGenerateExcel_Click(object sender, EventArgs e)
-        //{
-        //    using (ExcelPackage package = new ExcelPackage())
-        //    {
-        //        ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Dados");
+        //        private string DecodeHtmlEntities(string input)
+        //        {
+        //            // Decodifique entidades HTML
+        //            return Regex.Replace(input, "&#\\d+;", match =>
+        //            {
+        //                int code;
+        //                if (int.TryParse(match.Value.Substring(2, match.Value.Length - 3), out code))
+        //                {
+        //                    return char.ConvertFromUtf32(code);
+        //                }
+        //                return match.Value;
+        //            });
+        //        }
 
 
 
-        //        DataTable ds = new DataTable();
+        //        protected void btnGeneratePDF_Click(object sender, EventArgs e)
+        //        {
+        //            try
+        //            {
+        //                // Configurações do documento PDF
+        //                Document doc = new Document();
+        //                MemoryStream memoryStream = new MemoryStream();
+        //                PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
+        //                doc.Open();
 
-        //        ds = GridViewToDataTable(gridViewExcel);
+        //                // Crie uma tabela para armazenar os dados da GridView
+        //                PdfPTable table = new PdfPTable(gridViewExcel.HeaderRow.Cells.Count);
+        //                table.WidthPercentage = 100;
 
+        //                // Crie uma fonte personalizada para o cabeçalho
+        //                BaseFont baseFont = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
+        //                Font headerFont = new Font(baseFont, 12, Font.BOLD);
 
-        //        worksheet.Cells["A1"].LoadFromDataTable(ds, true);
+        //                // Adicione o cabeçalho da GridView à tabela
+        //                foreach (TableCell cell in gridViewExcel.HeaderRow.Cells)
+        //                {
+        //                    PdfPCell pdfCell = new PdfPCell(new Phrase(HttpUtility.HtmlDecode(cell.Text), headerFont));
+        //                    pdfCell.BackgroundColor = new BaseColor(gridViewExcel.HeaderStyle.BackColor);
+        //                    table.AddCell(pdfCell);
+        //                }
 
-        //        byte[] bytes = package.GetAsByteArray();
+        //                // Crie uma fonte personalizada para os dados
+        //                Font dataFont = new Font(baseFont, 10);
 
-        //        // Send the generated Excel file as a response to the client
-        //        Response.Clear();
-        //        Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-        //        Response.AddHeader("Content-Disposition", "attachment; filename=sample.xlsx");
-        //        Response.BinaryWrite(bytes);
-        //        Response.End();
-        //    }
-        //}
+        //                // Adicione as linhas de dados da GridView à tabela
+        //                foreach (GridViewRow row in gridViewExcel.Rows)
+        //                {
+        //                    foreach (TableCell cell in row.Cells)
+        //                    {
+        //                        PdfPCell pdfCell = new PdfPCell(new Phrase(HttpUtility.HtmlDecode(cell.Text), dataFont));
+        //                        table.AddCell(pdfCell);
+        //                    }
+        //                }
 
+        //                // Adicione a tabela ao documento PDF
+        //                doc.Add(table);
 
+        //                // Feche o documento
+        //                doc.Close();
 
-        protected void btnGenerateExcel_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (ExcelPackage package = new ExcelPackage())
-                {
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Dados");
+        //                // Configuração do tipo de resposta e nome do arquivo PDF
+        //                Response.Clear();
+        //                Response.ContentType = "application/pdf";
+        //                Response.AddHeader("Content-Disposition", "attachment; filename=sample.pdf");
 
-                    // Adicione manualmente o cabeçalho
-                    int headerIndex = 1;
-                    foreach (TableCell cell in gridViewExcel.HeaderRow.Cells)
-                    {
-                        worksheet.Cells[1, headerIndex].Value = DecodeHtmlEntities(cell.Text); // Decodifique entidades HTML
-                        headerIndex++;
-                    }
+        //                // Especifique o charset como UTF-8
+        //                Response.ContentEncoding = System.Text.Encoding.UTF8;
 
-                    // Defina o formato de célula para as colunas de data
-                    using (ExcelRange dateColumn = worksheet.Cells["B2:B" + (gridViewExcel.Rows.Count + 1)])
-                    {
-                        dateColumn.Style.Numberformat.Format = "dd/MM/yyyy HH:mm:ss";
-                    }
-
-                    // Preencha a planilha do Excel com os dados da GridView
-                    int rowIndex = 2;
-
-                    // Loop pelas linhas da GridView
-                    foreach (GridViewRow row in gridViewExcel.Rows)
-                    {
-                        int cellIndex = 1;
-
-                        // Loop pelas células da linha
-                        foreach (TableCell cell in row.Cells)
-                        {
-                            string cellText = DecodeHtmlEntities(cell.Text); // Decodifique entidades HTML
-
-                            // Remova os espaços não quebráveis (&nbsp;)
-                            cellText = cellText.Replace("&nbsp;", " ");
-
-                            worksheet.Cells[rowIndex, cellIndex].Value = cellText;
-                            cellIndex++;
-                        }
-
-                        rowIndex++;
-                    }
-
-                    // Configuração do tipo de resposta e nome do arquivo Excel
-                    Response.Clear();
-                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                    Response.ContentEncoding = System.Text.Encoding.UTF8; // Configuração do charset
-                    Response.AddHeader("Content-Disposition", "attachment; filename=sample.xlsx");
-
-                    // Envie o arquivo Excel como resposta para o cliente
-                    Response.BinaryWrite(package.GetAsByteArray());
-                    Response.End();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Lide com qualquer exceção aqui
-                Response.Write("Erro ao gerar o arquivo Excel: " + ex.Message);
-            }
-        }
-
-      
-
-        private string DecodeHtmlEntities(string input)
-        {
-            // Decodifique entidades HTML
-            return Regex.Replace(input, "&#\\d+;", match =>
-            {
-                int code;
-                if (int.TryParse(match.Value.Substring(2, match.Value.Length - 3), out code))
-                {
-                    return char.ConvertFromUtf32(code);
-                }
-                return match.Value;
-            });
-        }
-
-
-
-        protected void btnGeneratePDF_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                // Configurações do documento PDF
-                Document doc = new Document();
-                MemoryStream memoryStream = new MemoryStream();
-                PdfWriter writer = PdfWriter.GetInstance(doc, memoryStream);
-                doc.Open();
-
-                // Crie uma tabela para armazenar os dados da GridView
-                PdfPTable table = new PdfPTable(gridViewExcel.HeaderRow.Cells.Count);
-                table.WidthPercentage = 100;
-
-                // Crie uma fonte personalizada para o cabeçalho
-                BaseFont baseFont = BaseFont.CreateFont(BaseFont.HELVETICA, BaseFont.CP1252, BaseFont.NOT_EMBEDDED);
-                Font headerFont = new Font(baseFont, 12, Font.BOLD);
-
-                // Adicione o cabeçalho da GridView à tabela
-                foreach (TableCell cell in gridViewExcel.HeaderRow.Cells)
-                {
-                    PdfPCell pdfCell = new PdfPCell(new Phrase(HttpUtility.HtmlDecode(cell.Text), headerFont));
-                    pdfCell.BackgroundColor = new BaseColor(gridViewExcel.HeaderStyle.BackColor);
-                    table.AddCell(pdfCell);
-                }
-
-                // Crie uma fonte personalizada para os dados
-                Font dataFont = new Font(baseFont, 10);
-
-                // Adicione as linhas de dados da GridView à tabela
-                foreach (GridViewRow row in gridViewExcel.Rows)
-                {
-                    foreach (TableCell cell in row.Cells)
-                    {
-                        PdfPCell pdfCell = new PdfPCell(new Phrase(HttpUtility.HtmlDecode(cell.Text), dataFont));
-                        table.AddCell(pdfCell);
-                    }
-                }
-
-                // Adicione a tabela ao documento PDF
-                doc.Add(table);
-
-                // Feche o documento
-                doc.Close();
-
-                // Configuração do tipo de resposta e nome do arquivo PDF
-                Response.Clear();
-                Response.ContentType = "application/pdf";
-                Response.AddHeader("Content-Disposition", "attachment; filename=sample.pdf");
-
-                // Especifique o charset como UTF-8
-                Response.ContentEncoding = System.Text.Encoding.UTF8;
-
-                // Envie o arquivo PDF como resposta para o cliente
-                Response.BinaryWrite(memoryStream.ToArray());
-                Response.End();
-            }
-            catch (Exception ex)
-            {
-                // Lide com qualquer exceção aqui
-                Response.Write("Erro ao gerar o arquivo PDF: " + ex.Message);
-            }
-        }
+        //                // Envie o arquivo PDF como resposta para o cliente
+        //                Response.BinaryWrite(memoryStream.ToArray());
+        //                Response.End();
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                // Lide com qualquer exceção aqui
+        //                Response.Write("Erro ao gerar o arquivo PDF: " + ex.Message);
+        //            }
+        //        }
 
     }
 }

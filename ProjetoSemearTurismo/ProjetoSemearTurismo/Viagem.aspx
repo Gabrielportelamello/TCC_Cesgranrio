@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Viagem.aspx.cs" Inherits="ProjetoSemearTurismo.Contact" %>
+﻿<%@ Page Title="Viagem" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Viagem.aspx.cs" Inherits="ProjetoSemearTurismo.Viagem" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 

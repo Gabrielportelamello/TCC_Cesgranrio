@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Reserva.aspx.cs" Inherits="ProjetoSemearTurismo.Views.Reserva" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Reserva.aspx.cs" Inherits="ProjetoSemearTurismo.Views.Download" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -88,13 +88,19 @@
         <br />
 
         <!-- GridView para exibição de reservas -->
-        <asp:GridView ID="GridViewReservas" runat="server" CssClass="table table-striped table-bordered table-condensed w-100"  CellPadding="10" ForeColor="#333333" AutoGenerateColumns="False" BorderStyle="Inset" AllowPaging="True" DataKeyNames="SQ_HPR_PK" OnPageIndexChanging="GridViewReservas_PageIndexChanging" OnRowDeleting="GridViewReservas_RowDeleting" OnSelectedIndexChanged="GridViewReservas_SelectedIndexChanged" OnSelectedIndexChanging="GridViewReservas_SelectedIndexChanging">
+        <asp:GridView ID="GridViewReservas" runat="server" CssClass="table table-striped table-bordered table-condensed w-100"  CellPadding="10" ForeColor="#333333" AutoGenerateColumns="False" BorderStyle="Inset" AllowPaging="True" DataKeyNames="SQ_HPR_PK,SQ_TRANSPORTE_FK, SQ_HOSPEDAGEM_FK, SQ_VIAGEM_FK, SQ_CLIENTE_FK" OnPageIndexChanging="GridViewReservas_PageIndexChanging" OnRowDeleting="GridViewReservas_RowDeleting" OnSelectedIndexChanged="GridViewReservas_SelectedIndexChanged" OnSelectedIndexChanging="GridViewReservas_SelectedIndexChanging">
             <Columns>
                 <asp:BoundField HeaderText="Viagem" DataField="NOME_VIAGEM" />
                 <asp:BoundField HeaderText="Cliente" DataField="nome" />
                 <asp:BoundField HeaderText="CPF" DataField="CPF" />
                 <asp:BoundField HeaderText="Hospedagem" DataField="nome_hospedagem" />
                 <asp:BoundField HeaderText="Transporte" DataField="nome_transporte" />
+                <asp:BoundField HeaderText="TransporteID" Visible="false" DataField="SQ_TRANSPORTE_FK" />
+                <asp:BoundField HeaderText="HospedagemID" Visible="false" DataField="SQ_HOSPEDAGEM_FK" />
+               <asp:BoundField HeaderText="ViagemID" Visible="false" DataField="SQ_VIAGEM_FK" />
+               <asp:BoundField HeaderText="ClienteID" Visible="false" DataField="SQ_CLIENTE_FK" />
+               <asp:BoundField HeaderText="ReservaID" Visible="false" DataField="SQ_HPR_PK" />
+
                 <asp:CommandField ButtonType="Button" ControlStyle-CssClass="btnEditar" UpdateText="Atualizar" SelectText="Editar" ShowSelectButton="True" HeaderText="Editar" />
                 <asp:CommandField ButtonType="Button" InsertVisible="False" ShowDeleteButton="True" ControlStyle-CssClass="btnExcluir" HeaderText="Excluir" />
             </Columns>

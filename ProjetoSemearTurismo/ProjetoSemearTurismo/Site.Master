@@ -61,7 +61,8 @@
                         <li><a runat="server" href="~/Transporte">Transporte</a></li>
                         <li><a runat="server" href="~/Hospedagem">Hospedagem</a></li>
                         <li><a runat="server" href="~/Reserva">Reserva</a></li>
-                        <li><a runat="server" href="~/Relatorio">Downloads</a></li>
+                        <li><a runat="server" href="~/Relatorio">Relatório</a></li>
+                        <li><a runat="server" href="~/Download">Downloads</a></li>
 
                     </ul>
                 </div>

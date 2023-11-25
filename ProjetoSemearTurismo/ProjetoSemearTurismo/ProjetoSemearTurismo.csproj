@@ -136,6 +136,7 @@
     <Content Include="Cliente.aspx" />
     <Content Include="Hospedagem.aspx" />
     <Content Include="Imagens\kisspng-magnifying-glass-computer-icons-search-box-icon-search-drawing-icon-5ab0b21d220e43.5318324015215293731395.png" />
+    <Content Include="Download.aspx" />
     <Content Include="Reserva.aspx" />
     <Content Include="Transporte.aspx" />
     <Content Include="Viagem.aspx" />
@@ -213,6 +214,13 @@
     </Compile>
     <Compile Include="Hospedagem.aspx.designer.cs">
       <DependentUpon>Hospedagem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Download.aspx.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Download.aspx.designer.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reserva.aspx.cs">
       <DependentUpon>Reserva.aspx</DependentUpon>
