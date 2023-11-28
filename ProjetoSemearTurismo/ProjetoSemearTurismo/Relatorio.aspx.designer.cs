@@ -15,48 +15,39 @@ namespace ProjetoSemearTurismo
     {
 
         /// <summary>
-        /// Controle ddlSelectTipoRelatorio.
+        /// Controle form1.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSelectTipoRelatorio;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl form1;
 
         /// <summary>
-        /// Controle txtFiltroNome.
+        /// Controle dataInicial.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtFiltroNome;
+        protected global::System.Web.UI.WebControls.TextBox dataInicial;
 
         /// <summary>
-        /// Controle gridViewExcel.
+        /// Controle dataFinal.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.GridView gridViewExcel;
+        protected global::System.Web.UI.WebControls.TextBox dataFinal;
 
         /// <summary>
-        /// Controle btnGenerateExcelClientes.
+        /// Controle btnBuscar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGenerateExcelClientes;
-
-        /// <summary>
-        /// Controle btnGeneratePDFClientes.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnGeneratePDFClientes;
+        protected global::System.Web.UI.WebControls.Button btnBuscar;
     }
 }

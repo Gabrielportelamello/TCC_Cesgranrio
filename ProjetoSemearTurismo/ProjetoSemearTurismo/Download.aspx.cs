@@ -45,23 +45,7 @@ namespace ProjetoSemearTurismo
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString);
 
-            /*USE [tailandia]
-GO
-
-SELECT [SQ_HPR_PK]
-      ,[SQ_VIAGEM_FK]
-      ,[SQ_RESERVA_FK]
-      ,[SQ_CLIENTE_FK]
-      ,[DT_INCLUSAO]
-      ,[DT_EXCLUSAO]
-      ,[DT_EDICAO]
-      ,[SQ_HOSPEDAGEM_FK]
-      ,[SQ_TRANSPORTE_FK]
-  FROM [dbo].[SEMEAR_ASSOCIATIVA_VPR]
-
-GO
-
-*/
+           
             SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_VIAGEM ORDER BY NOME_VIAGEM", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
@@ -76,43 +60,7 @@ GO
             conn.Dispose();
 
         }
-        //private DataTable GridViewToDataTable(GridView gridView)
-        //{
-        //    DataTable dataTable = new DataTable();
-
-        //    // Adicione colunas ao DataTable com base nas colunas do GridView.
-        //    foreach (DataControlField column in gridView.Columns)
-        //    {
-        //        if (column is BoundField)
-        //        {
-        //            BoundField boundField = column as BoundField;
-        //            dataTable.Columns.Add(boundField.DataField);
-        //        }
-        //    }
-
-        //    // Adicione linhas ao DataTable com base nas linhas do GridView.
-        //    foreach (GridViewRow row in gridView.Rows)
-        //    {
-        //        DataRow dataRow = dataTable.NewRow();
-
-        //        for (int i = 0; i < gridView.Columns.Count; i++)
-        //        {
-        //            DataControlFieldCell cell = row.Cells[i] as DataControlFieldCell;
-
-        //            if (cell != null && cell.ContainingField is BoundField)
-        //            {
-        //                BoundField boundField = cell.ContainingField as BoundField;
-        //                dataRow[boundField.DataField] = cell.Text;
-        //            }
-        //        }
-
-        //        dataTable.Rows.Add(dataRow);
-        //    }
-
-        //    return dataTable;
-        //}
-
-
+       
         private DataTable GridViewToDataTable(GridView gridView)
         {
             DataTable dt = new DataTable();
@@ -147,32 +95,7 @@ GO
 
             return dt;
         }
-        //protected void btnGenerateExcel_Click(object sender, EventArgs e)
-        //{
-        //    using (ExcelPackage package = new ExcelPackage())
-        //    {
-        //        ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Dados");
-
-
-
-        //        DataTable ds = new DataTable();
-
-        //        ds = GridViewToDataTable(gridViewExcel);
-
-
-        //        worksheet.Cells["A1"].LoadFromDataTable(ds, true);
-
-        //        byte[] bytes = package.GetAsByteArray();
-
-        //        // Send the generated Excel file as a response to the client
-        //        Response.Clear();
-        //        Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-        //        Response.AddHeader("Content-Disposition", "attachment; filename=sample.xlsx");
-        //        Response.BinaryWrite(bytes);
-        //        Response.End();
-        //    }
-        //}
-
+        
 
 
         protected void btnGenerateExcel_Click(object sender, EventArgs e)

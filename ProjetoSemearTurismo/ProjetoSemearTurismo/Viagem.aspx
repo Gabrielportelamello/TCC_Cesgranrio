@@ -48,8 +48,8 @@
             z-index: 10001;
             overflow: scroll;
             margin-top: 25px;
-            height: 94%;
-            width: 90%;
+            height: 90%;
+            width: 100%;
         }
 
         .hdnBtn {
@@ -73,12 +73,7 @@
     <asp:Panel ID="PNLViagensGRID" runat="server" CssClass="PopupViagensGRID w-100 text-center center-block" align="center" Style="display: none; border-width: 3px; border-radius: 10px;">
         <h2>
             <asp:Label ID="LblViagensPopupViagemCadastro" runat="server" Text="Viagens"></asp:Label>
-        </h2>
-        <br />
-
-        <h3>
-            <asp:Label ID="LblInfViagemPopupViagemCadastro" runat="server" Text="Informações Viagem"></asp:Label>
-        </h3>
+        </h2>   
         <br />
         <asp:Label ID="LblNomePopupViagemCadastro" runat="server" Text="Nome viagem "></asp:Label>
         <asp:TextBox ID="TbxNomePopupViagemCadastro" runat="server"></asp:TextBox>
@@ -91,19 +86,15 @@
 
         <br />
 
-        <asp:Label ID="LblDescPopupViagemCadastro" runat="server" Text="Descrição"></asp:Label>
+        <asp:Label ID="LblDescPopupViagemCadastro" runat="server" Text="Descrição"></asp:Label>     
+        <asp:TextBox ID="TbxDescPopupViagemCadastro" runat="server" TextMode="MultiLine"></asp:TextBox>       
+      
+
+        <asp:Label ID="LblOBSViagemPopupViagemCadastro" runat="server" Text="Observação"></asp:Label>
+     
+        <asp:TextBox ID="TbxOBSViagemPopupViagemCadastro" runat="server" TextMode="MultiLine"></asp:TextBox>
         <br />
-        <asp:TextBox ID="TbxDescPopupViagemCadastro" runat="server" TextMode="MultiLine" Height="100px" Width="600px"></asp:TextBox>
-
-
-        <br />
-        <h3>
-            <asp:Label ID="lblobsPopupViagemCadastro" runat="server" Text="Observação"></asp:Label>
-        </h3>
-
-        <br />
-
-        <asp:Label ID="lblStatus" runat="server" Text="Status "></asp:Label>
+          <asp:Label ID="lblStatus" runat="server" Text="Status "></asp:Label>
         <asp:DropDownList ID="DropDownListViagemPopupViagemCadastro" runat="server">
             <asp:ListItem Value="0" Text="Ativa"></asp:ListItem>
             <asp:ListItem Value="1" Text="Em andamento"></asp:ListItem>
@@ -121,11 +112,6 @@
 
         <br />
 
-        <asp:Label ID="LblOBSViagemPopupViagemCadastro" runat="server" Text="Observação"></asp:Label>
-        <br />
-        <asp:TextBox ID="TbxOBSViagemPopupViagemCadastro" runat="server" TextMode="MultiLine" Height="100px" Width="600px"></asp:TextBox>
-        <br />
-
         <asp:Button ID="BtnCadastrarPopupViagemCadastro" CssClass="btn btn-primary btn-lg" runat="server" Text="Cadastrar Viagem" OnClick="BtnCadastrarViagemModal_Click" />
         <asp:Button ID="BtnEditarCadastroPopupViagemCadastro" CssClass="btn btn-primary btn-lg" runat="server" Text="Editar Viagem" OnClick="BtnEditarCadastroPopupViagemCadastro_Click" />
         <asp:Button ID="btnCancelarPopupViagemCadastro" runat="server" Text="Cancelar" CssClass="btn btn-primary btn-lg" OnClick="btnCancelarPopupViagemCadastro_Click" />
@@ -134,7 +120,7 @@
 
     </asp:Panel>
     <div class="w-100 text-center center-block">
-        <h2 >Viagens cadastradas</h2>
+        <h2 >Viagem</h2>
 
     </div>
 

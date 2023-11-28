@@ -46,7 +46,7 @@
             padding: 3px;
             z-index: 10001;
             overflow: scroll;
-            height: 85%;
+            height: 90%;
             width: 100%;
 
         }
@@ -125,7 +125,7 @@
 
     </asp:Panel>
 
-    <h2 class="text-center">Transportes</h2>
+    <h2 class="text-center">Transporte</h2>
     <br />
     
     <asp:Button ID="hdnBtnModalTransporte" runat="server" Text=""   CssClass="hdnBtn" />

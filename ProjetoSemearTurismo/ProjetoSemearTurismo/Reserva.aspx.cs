@@ -44,7 +44,7 @@ namespace ProjetoSemearTurismo.Views
         {
             SqlConnection conn = new SqlConnection(connectionString);
             SqlDataAdapter a = new SqlDataAdapter("SELECT   V.NOME_VIAGEM,   P.Nome, " +
-                "  P.CPF,  H.Nome as Nome_Hospedagem,  T.NOME as Nome_Transporte, R.SQ_HPR_PK, SQ_TRANSPORTE_FK, SQ_HOSPEDAGEM_FK, SQ_VIAGEM_FK, SQ_CLIENTE_FK " +
+                "  P.CPF,  H.Nome as Nome_Hospedagem,  T.NOME as Nome_Transporte, R.SQ_HPR_PK, SQ_TRANSPORTE_FK, SQ_HOSPEDAGEM_FK, SQ_VIAGEM_FK, SQ_CLIENTE_FK,V.DT_InicialPeriodo_viagem  " +
                 "FROM   SEMEAR_VIAGEM V" +
                 "  JOIN SEMEAR_ASSOCIATIVA_VPR R ON V.SQ_VIAGEM = R.SQ_VIAGEM_FK" +
                 "   JOIN SEMEAR_PESSOA P ON P.SQ_PESSOA = R.SQ_CLIENTE_FK " +

@@ -51,15 +51,6 @@ namespace ProjetoSemearTurismo
         protected global::System.Web.UI.WebControls.Label LblClientesPopupClienteCadastro;
 
         /// <summary>
-        /// Controle LblDadosPessoaisPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblDadosPessoaisPopupClienteCadastro;
-
-        /// <summary>
         /// Controle LblNomePopupClienteCadastro.
         /// </summary>
         /// <remarks>
@@ -114,15 +105,6 @@ namespace ProjetoSemearTurismo
         protected global::System.Web.UI.WebControls.TextBox TbxNascimentoPopupClienteCadastro;
 
         /// <summary>
-        /// Controle LblFiliacaoPrincipalPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblFiliacaoPrincipalPopupClienteCadastro;
-
-        /// <summary>
         /// Controle LblNomePaiPopupClienteCadastro.
         /// </summary>
         /// <remarks>
@@ -157,24 +139,6 @@ namespace ProjetoSemearTurismo
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbxNomeMaePopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblDocumentosPrincipalPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblDocumentosPrincipalPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblRPrincipalGPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblRPrincipalGPopupClienteCadastro;
 
         /// <summary>
         /// Controle LblNumRGPopupClienteCadastro.
@@ -231,15 +195,6 @@ namespace ProjetoSemearTurismo
         protected global::System.Web.UI.WebControls.TextBox TbxDataEmissRGPopupClienteCadastro;
 
         /// <summary>
-        /// Controle LblPassaportePrincipalPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblPassaportePrincipalPopupClienteCadastro;
-
-        /// <summary>
         /// Controle LblNumPassPopupClienteCadastro.
         /// </summary>
         /// <remarks>
@@ -294,15 +249,6 @@ namespace ProjetoSemearTurismo
         protected global::System.Web.UI.WebControls.TextBox TbxDataValiPassPopupClienteCadastro;
 
         /// <summary>
-        /// Controle LblContatoPrincipalPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblContatoPrincipalPopupClienteCadastro;
-
-        /// <summary>
         /// Controle LblTel1PopupClienteCadastro.
         /// </summary>
         /// <remarks>
@@ -337,15 +283,6 @@ namespace ProjetoSemearTurismo
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbxEmailPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle LblEnderecoPrincipalPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblEnderecoPrincipalPopupClienteCadastro;
 
         /// <summary>
         /// Controle LblRuaPopupClienteCadastro.
@@ -436,15 +373,6 @@ namespace ProjetoSemearTurismo
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbxCEPPopupClienteCadastro;
-
-        /// <summary>
-        /// Controle lblPerfilPopupClienteCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblPerfilPopupClienteCadastro;
 
         /// <summary>
         /// Controle lblFuncao.

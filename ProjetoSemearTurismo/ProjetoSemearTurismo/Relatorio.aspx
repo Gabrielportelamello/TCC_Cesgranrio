@@ -1,23 +1,29 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Relatorio.aspx.cs" Inherits="ProjetoSemearTurismo.Relatorio" %>
-<!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Relatorio.aspx.cs" Inherits="ProjetoSemearTurismo.Relatorio" %>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>Relatório</title>
-    <!-- Inclua os links para os scripts necessários (Chart.js) aqui -->
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-<body>
-    <form id="form1" runat="server">
+        <br />
+
+        <h2 style="text-align: center;">Relatório</h2>
+
+    <div id="form1" runat="server">
         <div>
-            <!-- Adicione um elemento canvas para o gráfico -->
+                <label for="dataInicial">Data Inicial:</label>
+                <asp:TextBox ID="dataInicial" runat="server" Text="2020-11-10" type="date"></asp:TextBox>
+
+            
+           <label for="dataFinal">Data Final:</label>
+    <asp:TextBox ID="dataFinal" runat="server" Text="2024-11-20" type="date"></asp:TextBox>
+          
+
+            <asp:Button ID="btnBuscar" runat="server" Text="Gerar Relatório" OnClick="btnBuscar_Click" />
+            
             <canvas id="meuGrafico" width="400" height="200"></canvas>
         </div>
-    </form>
+    </div>
 
     <script>
-        // Obtém os dados do servidor e renderiza o gráfico
-        renderizarGrafico(<%= ObterDadosGrafico() %>);
+ 
 
         function renderizarGrafico(dados) {
             var ctx = document.getElementById('meuGrafico').getContext('2d');
@@ -27,7 +33,7 @@
                 data: {
                     labels: dados.labels,
                     datasets: [{
-                        label: 'Reservas por Data',
+                        label: 'Quantidade de reservas por Viagem',
                         data: dados.datasets[0].data,
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
@@ -44,5 +50,5 @@
             });
         }
     </script>
-</body>
-</html>
+
+    </asp:Content>

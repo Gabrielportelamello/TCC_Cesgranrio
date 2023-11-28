@@ -42,7 +42,7 @@ namespace ProjetoSemearTurismo
             SqlConnection conn = new SqlConnection(connectionString);
 
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_VIAGEM ORDER BY NOME_VIAGEM", conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_VIAGEM where fl_status = 0 ORDER BY NOME_VIAGEM ", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();

@@ -459,8 +459,8 @@ namespace ProjetoSemearTurismo
             TbxOrgaoEmissorPopupClienteCadastro.Text = "";
             TbxDataEmissRGPopupClienteCadastro.Text = "";
             DropDownListFuncionarioPopupClienteCadastro.SelectedValue = "0";
-            TbxSalarioFuncionaroPopupClienteCadastro.Text = "";
-            TbxSaldoPopupClienteCadastro.Text = "";
+            TbxSalarioFuncionaroPopupClienteCadastro.Text = "1750.50";
+            TbxSaldoPopupClienteCadastro.Text = "1750.50";
             DropDownListFuncionarioPopupClienteCadastro.SelectedValue = "0";
             DropDownListFlagExcluidoPopupClienteCadastro.SelectedValue = "0";
             TbxBairroPopupClienteCadastro.Text = "";
@@ -469,8 +469,7 @@ namespace ProjetoSemearTurismo
             TbxRuaPopupClienteCadastro.Text = "";
             TbxCEPPopupClienteCadastro.Text = "";
             GridViewClientes.SelectedIndex = -1;
-
-
+            MPEClientesGRID.Show();
         }
 
         protected void btnLimparPopupClienteCadastro_Click(object sender, EventArgs e)

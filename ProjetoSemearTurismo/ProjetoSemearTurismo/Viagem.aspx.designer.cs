@@ -51,15 +51,6 @@ namespace ProjetoSemearTurismo
         protected global::System.Web.UI.WebControls.Label LblViagensPopupViagemCadastro;
 
         /// <summary>
-        /// Controle LblInfViagemPopupViagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblInfViagemPopupViagemCadastro;
-
-        /// <summary>
         /// Controle LblNomePopupViagemCadastro.
         /// </summary>
         /// <remarks>
@@ -132,13 +123,22 @@ namespace ProjetoSemearTurismo
         protected global::System.Web.UI.WebControls.TextBox TbxDescPopupViagemCadastro;
 
         /// <summary>
-        /// Controle lblobsPopupViagemCadastro.
+        /// Controle LblOBSViagemPopupViagemCadastro.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblobsPopupViagemCadastro;
+        protected global::System.Web.UI.WebControls.Label LblOBSViagemPopupViagemCadastro;
+
+        /// <summary>
+        /// Controle TbxOBSViagemPopupViagemCadastro.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TbxOBSViagemPopupViagemCadastro;
 
         /// <summary>
         /// Controle lblStatus.
@@ -184,24 +184,6 @@ namespace ProjetoSemearTurismo
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbxPrecoViagemPopupViagemCadastro;
-
-        /// <summary>
-        /// Controle LblOBSViagemPopupViagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblOBSViagemPopupViagemCadastro;
-
-        /// <summary>
-        /// Controle TbxOBSViagemPopupViagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxOBSViagemPopupViagemCadastro;
 
         /// <summary>
         /// Controle BtnCadastrarPopupViagemCadastro.

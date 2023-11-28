@@ -9,7 +9,7 @@
 
     <div class="row">
         <div class="col-md-4">
-            <h2>Gerenciar Clientes</h2>
+            <h2>Cliente</h2>
             <p> O gerenciamento de clientes permite cadastrar, editar e excluir os clientes e funcionarios da empresa.
                 
                 </p>
@@ -18,7 +18,7 @@
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Gerenciar Reservas </h2>
+            <h2>Reserva</h2>
             <p>
                Local de gerenciamento de reservas feitas por clientes, status de pagamento de cada reserva, inclusao e cancelamento de reservas.
             </p>
@@ -27,9 +27,9 @@
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Gerenciar Viagens</h2>
+            <h2>Viagem</h2>
             <p>
-                O gerenciamento de Viagens permite cadastrar, editar e excluir Viagens </p>
+                O gerenciamento de Viagens permite cadastrar, editar e excluir Viagens. </p>
             <p>
                 <a class="btn btn-default" runat="server" href="~/Viagem">Viagens &raquo;</a>
             </p>
@@ -38,7 +38,7 @@
     
     <div class="row">
         <div class="col-md-4">
-            <h2>Gerenciar Transportes</h2>
+            <h2>Transporte</h2>
             <p> O gerenciamento de transportes permite cadastrar, editar e excluir os transportes que atenderão os clientes.
                 
                 </p>
@@ -47,21 +47,37 @@
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Gerenciar Hospedagem  </h2>
+            <h2>Hospedagem</h2>
             <p>
-               Local de gerenciamento de hospedagem de cada viagem .
+               Local de gerenciamento de hospedagem de cada viagem.
             </p>
             <p>
                 <a class="btn btn-default" runat="server" href="~/Hospedagem">Hospedagens &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">
-            <h2>Downloads</h2>
+            <h2>Relatório</h2>
             <p>
-               Faça o download de arquivos em formato pdf e excel </p>
+               Relatório de reservas</p>
             <p>
-                <a class="btn btn-default" runat="server" href="~/Relatorio">Downloads &raquo;</a>
+                <a class="btn btn-default" runat="server" href="~/Relatorio">Relatório &raquo;</a>
             </p>
+        </div>
+    </div>
+      <div class="row">
+        <div class="col-md-4">
+            <h2>Downloads</h2>
+            <p> Faça downloads de arquivos em formato pdf e excel                
+                </p>
+            <p>
+                <a class="btn btn-default" runat="server" href="~/Download">Downloads&raquo;</a>
+            </p>
+        </div>
+        <div class="col-md-4">
+       
+        </div>
+        <div class="col-md-4">
+         
         </div>
     </div>
     

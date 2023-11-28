@@ -46,8 +46,8 @@
             padding: 3px;
             z-index: 10001;
             overflow: scroll;
-            height: 500px;
-            width: 900px;
+            height: 90%;
+            width: 100%;
         }
 
         .hdnBtn {
@@ -64,13 +64,9 @@
 
     <asp:Panel ID="PNLClientesGRID" runat="server" CssClass="PopupClientesGRID" align="center" Style="display: none; border-width: 3px; border-radius: 10px;">
         <h2>
-            <asp:Label ID="LblClientesPopupClienteCadastro" runat="server" Text="Clientes"></asp:Label>
-        </h2>
+            <asp:Label ID="LblClientesPopupClienteCadastro" runat="server" Text="Cliente"></asp:Label>
+        </h2>    
         <br />
-        <br />
-        <h3>
-            <asp:Label ID="LblDadosPessoaisPopupClienteCadastro" runat="server" Text="Dados pessoais"></asp:Label>
-        </h3>
         <br />
         <asp:Label ID="LblNomePopupClienteCadastro" runat="server" Text="Nome"></asp:Label>
         <asp:TextBox ID="TbxNomePopupClienteCadastro" runat="server"></asp:TextBox>
@@ -79,41 +75,23 @@
 
         <asp:Label ID="LblNascimento" runat="server" Text="Nascimento" CssClass="lbl" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxNascimentoPopupClienteCadastro" runat="server" Style="margin-left: 15px" CssClass="tbx" TextMode="Date" Width="105px"></asp:TextBox>
-        <br />
-        <br />
-        <br />
-        <h4>
-            <asp:Label ID="LblFiliacaoPrincipalPopupClienteCadastro" runat="server" Text="Filiação"></asp:Label>
-        </h4>
-        <br />
+        <br />      
+        <br />      
+       
         <asp:Label ID="LblNomePaiPopupClienteCadastro" runat="server" Text="Nome PAI"></asp:Label>
         <asp:TextBox ID="TbxNomePaiPopupClienteCadastro" runat="server"></asp:TextBox>
         <asp:Label ID="LblNomeMaePopupClienteCadastro" runat="server" Text="Nome MÃE" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxNomeMaePopupClienteCadastro" runat="server"></asp:TextBox>
-        <br />
-        <br />
-        <br />
-        <h3>
-            <asp:Label ID="LblDocumentosPrincipalPopupClienteCadastro" runat="server" Text="Documentos"></asp:Label>
-        </h3>
-        <br />
-        <h4>
-            <asp:Label ID="LblRPrincipalGPopupClienteCadastro" runat="server" Text="RG"></asp:Label>
-        </h4>
-        <br />
+        <br />          
+        <br />          
+        
         <asp:Label ID="LblNumRGPopupClienteCadastro" runat="server" Text="Numeração RG" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxNumRGPopupClienteCadastro" runat="server" Width="99px"></asp:TextBox>
         <asp:Label ID="LblOrgaoEmissorPopupClienteCadastro" runat="server" Text="Orgão emissor"></asp:Label>
         <asp:TextBox ID="TbxOrgaoEmissorPopupClienteCadastro" runat="server"></asp:TextBox>
         <asp:Label ID="LblDataEmissRGPopupClienteCadastro" runat="server" Text="Data Emissão" Style="margin-left: 15px"></asp:Label>
-        <asp:TextBox ID="TbxDataEmissRGPopupClienteCadastro" runat="server" Width="99px" TextMode="Date"></asp:TextBox>
+        <asp:TextBox ID="TbxDataEmissRGPopupClienteCadastro" runat="server" Width="99px" TextMode="Date"></asp:TextBox>    
 
-        <br />
-        <br />
-        <br />
-        <h4>
-            <asp:Label ID="LblPassaportePrincipalPopupClienteCadastro" runat="server" Text="Passaporte"></asp:Label>
-        </h4>
 
         <br />
         <br />
@@ -124,16 +102,9 @@
         <asp:Label ID="LblDataValiPassPopupClienteCadastro" runat="server" Text="Data Validade" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxDataValiPassPopupClienteCadastro" runat="server" Width="99px" TextMode="Date"></asp:TextBox>
 
-
-
         <br />
         <br />
-
-        <h3>
-            <asp:Label ID="LblContatoPrincipalPopupClienteCadastro" runat="server" Text="Contato"></asp:Label>
-        </h3>
-        <br />
-        <asp:Label ID="LblTel1PopupClienteCadastro" runat="server" Text="Telefone 1"></asp:Label>
+        <asp:Label ID="LblTel1PopupClienteCadastro" runat="server" Text="Telefone"></asp:Label>
         <asp:TextBox ID="TbxTel1PopupClienteCadastro" runat="server"></asp:TextBox>
 
         <%--<asp:Label ID="LblTel2PopupClienteCadastro" runat="server" Text="Telefone 2" Style="margin-left: 15px"></asp:Label>
@@ -144,10 +115,7 @@
 
         <br />
         <br />
-
-        <h3>
-            <asp:Label ID="LblEnderecoPrincipalPopupClienteCadastro" runat="server" Text="Endereço"></asp:Label>
-        </h3>
+      
         <asp:Label ID="LblRuaPopupClienteCadastro" runat="server" Text="Rua"></asp:Label>
         <asp:TextBox ID="TbxRuaPopupClienteCadastro" runat="server"></asp:TextBox>
 
@@ -162,13 +130,7 @@
         <asp:Label ID="LblCEPPopupClienteCadastro" runat="server" Text="CEP" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxCEPPopupClienteCadastro" runat="server" Width="96px"></asp:TextBox>
 
-
-        <br />
-        <br />
-        <h3>
-            <asp:Label ID="lblPerfilPopupClienteCadastro" runat="server" Text="Perfil de Acesso"></asp:Label>
-        </h3>
-
+      
         <br />
         <br />
         <asp:Label ID="lblFuncao" runat="server" Text="É funcionário? "></asp:Label>
@@ -181,7 +143,7 @@
         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" Enabled="True" TargetControlID="TbxSalarioFuncionaroPopupClienteCadastro" FilterMode="ValidChars" ValidChars="1234567890.," />
 
         <asp:Label ID="LblSalarioFuncionaroPopupClienteCadastro" runat="server" Text="Salário" Style="margin-left: 15px"></asp:Label>
-        <asp:TextBox ID="TbxSalarioFuncionaroPopupClienteCadastro" runat="server">0000.00</asp:TextBox>
+        <asp:TextBox ID="TbxSalarioFuncionaroPopupClienteCadastro" ToolTip="1750.50" runat="server">1750.50</asp:TextBox>
         <br />
         <br />
         <asp:Label ID="Label1" runat="server" Text="EXCLUIR ? "></asp:Label>
@@ -193,7 +155,7 @@
 
         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender1" runat="server" Enabled="True" TargetControlID="TbxSaldoPopupClienteCadastro" FilterMode="ValidChars" ValidChars="1234567890.," />
         <asp:Label ID="LblSaldoPopupClienteCadastro" runat="server" Text="Saldo" Style="margin-left: 15px"></asp:Label>
-        <asp:TextBox ID="TbxSaldoPopupClienteCadastro" runat="server" TextMode="SingleLine">0.00</asp:TextBox>
+        <asp:TextBox ID="TbxSaldoPopupClienteCadastro" runat="server" ToolTip="1750.50" TextMode="SingleLine">1750.50</asp:TextBox>
         <br />
         <br />
         <asp:Button ID="BtnCadastrarPopupClienteCadastro" CssClass="btn btn-primary btn-lg" runat="server" Text="Cadastrar cliente" OnClick="BtnCadastrarClienteModal_Click" />
@@ -205,7 +167,7 @@
     </asp:Panel>
 
 
-    <h2 class="text-center">Clientes</h2>
+    <h2 class="text-center">Cliente</h2>
     <br />
     <asp:Button ID="BtnModalClientesGRID" CssClass="btn btn-primary btn-lg w-100" Height="46px" runat="server" Text="Cadastrar Cliente »" OnClick="BtnModalClientesGRID_Click" />
 

@@ -47,7 +47,7 @@
             padding: 3px;
             z-index: 10001;
             overflow: scroll;
-            height: 85%;
+            height: 90%;
             width: 100%;
         }
 
@@ -63,55 +63,34 @@
 
     <asp:Panel ID="PNLHospedagemsGRID" runat="server" CssClass="PopupHospedagemsGRID" align="center" Style="display: none; border-width: 3px; border-radius: 10px;">
         <h2>
-            <asp:Label ID="LblHospedagemsPopupHospedagemCadastro" runat="server" Text="Hospedagens"></asp:Label>
+            <asp:Label ID="LblHospedagemsPopupHospedagemCadastro" runat="server" Text="Hospedagem"></asp:Label>
         </h2>
         <br />
         <br />
-        <h3>
-            <asp:Label ID="LblDadosEmpresariaisPopupHospedagemCadastro" runat="server" Text="Dados Empresarias"></asp:Label>
-        </h3>
-        <br />
+      
         <asp:Label ID="LblNomePopupHospedagemCadastro" runat="server" Text="Nome"></asp:Label>
         <asp:TextBox ID="TbxNomePopupHospedagemCadastro" runat="server"></asp:TextBox>
         <asp:Label ID="LblCNPJPopupHospedagemCadastro" runat="server" Text="CNPJ" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxCNPJPopupHospedagemCadastro" runat="server" Width="99px"></asp:TextBox>
 
-        <%--<asp:Label ID="LblNascimento" runat="server" Text="Nascimento" CssClass="lbl" style="margin-left: 15px"></asp:Label>
-         <asp:TextBox ID="TbxNascimentoPopupHospedagemCadastro" runat="server" Style="margin-left: 15px" CssClass="tbx" TextMode="Date" Width="105px"></asp:TextBox>--%>
-        <br />
-        <br />
-        <br />
-        <h4>
-            <asp:Label ID="LblCkeckPrincipalPopupHospedagemCadastro" runat="server" Text="Checkin/Checkout"></asp:Label>
-        </h4>
-        <br />
+      <br />
+        <br />       
         <asp:Label ID="LblChekinPopupHospedagemCadastro" runat="server" Text="Data Checkin" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxChekinPopupHospedagemCadastro" runat="server" Width="99px" TextMode="Date"></asp:TextBox>
         <asp:Label ID="LblChekoutPopupHospedagemCadastro" runat="server" Text="Data Checkout" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxChekoutPopupHospedagemCadastro" runat="server" Width="99px" TextMode="Date"></asp:TextBox>
         <br />
         <br />
-        <br />
-
-        <h3>
-            <asp:Label ID="LblContatoPrincipalPopupHospedagemCadastro" runat="server" Text="Contato"></asp:Label>
-        </h3>
-        <br />
+       
         <asp:Label ID="LblTel1PopupHospedagemCadastro" runat="server" Text="Telefone 1"></asp:Label>
         <asp:TextBox ID="TbxTel1PopupHospedagemCadastro" runat="server"></asp:TextBox>
 
-        <%--<asp:Label ID="LblTel2PopupHospedagemCadastro" runat="server" Text="Telefone 2" Style="margin-left: 15px"></asp:Label>
-         <asp:TextBox ID="TbxTel2PopupHospedagemCadastro" runat="server"></asp:TextBox>--%>
 
         <asp:Label ID="LblEmailPopupHospedagemCadastro" runat="server" Text="E-mail" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxEmailPopupHospedagemCadastro" runat="server"></asp:TextBox>
 
         <br />
-        <br />
-
-        <h3>
-            <asp:Label ID="LblEnderecoPrincipalPopupHospedagemCadastro" runat="server" Text="Endereço"></asp:Label>
-        </h3>
+        <br />        
         <asp:Label ID="LblRuaPopupHospedagemCadastro" runat="server" Text="Rua"></asp:Label>
         <asp:TextBox ID="TbxRuaPopupHospedagemCadastro" runat="server"></asp:TextBox>
 
@@ -157,7 +136,7 @@
 
 
 
-    <h2 style="text-align: center;">Hospedagems</h2>
+    <h2 style="text-align: center;">Hospedagem</h2>
     <br />
     <asp:Button ID="BtnModalHospedagemsGRID" CssClass="btn btn-primary btn-lg" Height="46px" runat="server" Text="Cadastrar Hospedagem »" OnClick="BtnModalHospedagemsGRID_Click" />
 

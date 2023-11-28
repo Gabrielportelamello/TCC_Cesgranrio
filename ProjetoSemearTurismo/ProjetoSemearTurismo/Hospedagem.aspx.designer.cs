@@ -42,15 +42,6 @@ namespace ProjetoSemearTurismo.Views
         protected global::System.Web.UI.WebControls.Label LblHospedagemsPopupHospedagemCadastro;
 
         /// <summary>
-        /// Controle LblDadosEmpresariaisPopupHospedagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblDadosEmpresariaisPopupHospedagemCadastro;
-
-        /// <summary>
         /// Controle LblNomePopupHospedagemCadastro.
         /// </summary>
         /// <remarks>
@@ -85,15 +76,6 @@ namespace ProjetoSemearTurismo.Views
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbxCNPJPopupHospedagemCadastro;
-
-        /// <summary>
-        /// Controle LblCkeckPrincipalPopupHospedagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblCkeckPrincipalPopupHospedagemCadastro;
 
         /// <summary>
         /// Controle LblChekinPopupHospedagemCadastro.
@@ -132,15 +114,6 @@ namespace ProjetoSemearTurismo.Views
         protected global::System.Web.UI.WebControls.TextBox TbxChekoutPopupHospedagemCadastro;
 
         /// <summary>
-        /// Controle LblContatoPrincipalPopupHospedagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblContatoPrincipalPopupHospedagemCadastro;
-
-        /// <summary>
         /// Controle LblTel1PopupHospedagemCadastro.
         /// </summary>
         /// <remarks>
@@ -175,15 +148,6 @@ namespace ProjetoSemearTurismo.Views
         /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox TbxEmailPopupHospedagemCadastro;
-
-        /// <summary>
-        /// Controle LblEnderecoPrincipalPopupHospedagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblEnderecoPrincipalPopupHospedagemCadastro;
 
         /// <summary>
         /// Controle LblRuaPopupHospedagemCadastro.

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Reserva.aspx.cs" Inherits="ProjetoSemearTurismo.Views.Reserva" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" MasterPageFile="~/Site.Master" CodeBehind="Reserva.aspx.cs" Inherits="ProjetoSemearTurismo.Views.Download" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="cc1" %>
 
@@ -100,6 +100,8 @@
                <asp:BoundField HeaderText="ViagemID" Visible="false" DataField="SQ_VIAGEM_FK" />
                <asp:BoundField HeaderText="ClienteID" Visible="false" DataField="SQ_CLIENTE_FK" />
                <asp:BoundField HeaderText="ReservaID" Visible="false" DataField="SQ_HPR_PK" />
+               <asp:BoundField HeaderText="Data" DataField="DT_InicialPeriodo_viagem" />
+
 
                 <asp:CommandField ButtonType="Button" ControlStyle-CssClass="btnEditar" UpdateText="Atualizar" SelectText="Editar" ShowSelectButton="True" HeaderText="Editar" />
                 <asp:CommandField ButtonType="Button" InsertVisible="False" ShowDeleteButton="True" ControlStyle-CssClass="btnExcluir" HeaderText="Excluir" />

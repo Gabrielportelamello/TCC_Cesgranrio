@@ -136,69 +136,12 @@ namespace ProjetoSemearTurismo.Views
             //continnuar daqui.
             foreach (DataRow r in ds.Tables["SEMEAR_HOSPEDAGEM_TEMP"].Rows)
             {
-
-
-
                 TbxNomePopupHospedagemCadastro.Text = r["NOME"].ToString();
-
-                //TbxTel1PopupHospedagemCadastro.Text = r["Telefone"].ToString();
-
-                //TbxEmailPopupHospedagemCadastro.Text = r["Email"].ToString();
-
-                //if (r["Data_Nascimento"].ToString() != "")
-                //{
-                //    TbxNascimentoPopupHospedagemCadastro.Text = r["Data_Nascimento"].ToString().Substring(6, 4) + "-" + r["Data_Nascimento"].ToString().Substring(3, 2) + "-" + r["Data_Nascimento"].ToString().Substring(0, 2);
-
-                //}
-
-                //TbxCPFPopupHospedagemCadastro.Text = r["CPF"].ToString();
-                //TbxNumPassPopupHospedagemCadastro.Text = r["Passaporte"].ToString();
-
-                //if (r["emissao_passaporte"].ToString() != "")
-                //{
-                //    TbxDataEmissPassPopupHospedagemCadastro.Text = r["emissao_passaporte"].ToString().Substring(6, 4) + "-" + r["emissao_passaporte"].ToString().Substring(3, 2) + "-" + r["emissao_passaporte"].ToString().Substring(0, 2);
-
-                //}
-                //if (r["Validade_Passaporte"].ToString() != "")
-                //{
-                //    TbxDataValiPassPopupHospedagemCadastro.Text = r["Validade_Passaporte"].ToString().Substring(6, 4) + "-" + r["Validade_Passaporte"].ToString().Substring(3, 2) + "-" + r["Validade_Passaporte"].ToString().Substring(0, 2);
-
-                //}
-
-                //TbxNumRGPopupHospedagemCadastro.Text = r["RG"].ToString();
-                ////,[orgao_emissor_RG]
-                ////,[data_emissao_RG]
-                ////,[Perfil_Acesso]
-                ////,[salario]
-                ////,[Saldo]
-                ////,[FL_FUNCIONARIO]
-                ////,[FL_EXCLUIDO]
-                ////,[bairro_endereco]
-                ////,[cidade_endereco]
-                ////,[uf_endereco]
-                ////,[rua_endereco]
-                ////,[CEP]
-                ////,[SQ_Hospedagem]
-                ////          FROM[tailandia].[dbo].[SEMEAR_HOSPEDAGEM_TEMP]
-                //TbxOrgaoEmissorPopupHospedagemCadastro.Text = r["orgao_emissor_RG"].ToString();
-                //string resulta = r["data_emissao_RG"].ToString();
-
-                //if (r["data_emissao_RG"].ToString() != "")
-                //{
-                //    TbxDataEmissRGPopupHospedagemCadastro.Text = r["data_emissao_RG"].ToString().Substring(6, 4) + "-" + r["data_emissao_RG"].ToString().Substring(3, 2) + "-" + r["data_emissao_RG"].ToString().Substring(0, 2);
-                //}
-
-                ////TbxNumRGPopupHospedagemCadastro.Text = r["Saldo"].ToString();
-                //DropDownListFuncionarioPopupHospedagemCadastro.SelectedValue = r["FL_FUNCIONARIO"].ToString();
-                ////.Text = r["FL_EXCLUIDO"].ToString();
                 TbxBairroPopupHospedagemCadastro.Text = r["bairro_endereco"].ToString();
                 TbxCidadePopupHospedagemCadastro.Text = r["cidade_endereco"].ToString();
                 TbxUFPopupHospedagemCadastro.Text = r["uf_endereco"].ToString();
                 TbxRuaPopupHospedagemCadastro.Text = r["rua_endereco"].ToString();
                 TbxCEPPopupHospedagemCadastro.Text = r["CEP"].ToString();
-
-
-
             }
 
 
@@ -292,22 +235,7 @@ namespace ProjetoSemearTurismo.Views
         }
         private void RealizaEdicaoCadastroHospedagem(string indiceRegistro)
         {
-            //          UPDATE[dbo].[SEMEAR_HOSPEDAGEM_TEMP]
-            // SET[SEQ_HOSPEDAGEM] = < SEQ_HOSPEDAGEM, bigint,>
-            //    ,[Nome] = < Nome, varchar(250),>
-            //    ,[Endereco] = < Endereco, varchar(max),>
-            //    ,[CNPJ] = < CNPJ, varchar(50),>
-            //    ,[Telefones] = < Telefones, varchar(50),>
-            //    ,[Email] = < Email, varchar(max),>
-            //    ,[CEP] = < CEP, varchar(50),>
-            //    ,[qtd_quartos] = < qtd_quartos, int,>
-            //    ,[qtd_camas] = < qtd_camas, int,>
-            //    ,[tipo_cama] = < tipo_cama, smallint,>
-            //    ,[pacote_incluso] = < pacote_incluso, varchar(max),>
-            //    ,[data_checkin] = < data_checkin, datetime,>
-            //    ,[data_checkout] = < data_checkout, datetime,>
-            //    ,[preco] = < preco, float,>
-            //WHERE < Critérios de Pesquisa,,>
+          
             using (SqlConnection openCon = new SqlConnection(connectionString))
             {
                 string saveStaff = "UPDATE[dbo].[SEMEAR_HOSPEDAGEM_TEMP] " +
@@ -453,6 +381,9 @@ namespace ProjetoSemearTurismo.Views
             TbxRuaPopupHospedagemCadastro.Text = "";
             TbxCEPPopupHospedagemCadastro.Text = "";
             GridViewHospedagems.SelectedIndex = -1;
+            MPEHospedagemsGRID.Show();
+
+
 
 
         }
