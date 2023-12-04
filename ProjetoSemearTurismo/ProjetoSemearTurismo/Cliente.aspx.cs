@@ -193,20 +193,7 @@ namespace ProjetoSemearTurismo
                  TbxUFPopupClienteCadastro.Text = r["uf_endereco"].ToString();
                  TbxRuaPopupClienteCadastro.Text = r["rua_endereco"].ToString();
                  TbxCEPPopupClienteCadastro.Text = r["CEP"].ToString();
-                 
-
-
-                //DropDownListOrgaos.SelectedValue = r["CO_ORGAO"].ToString() + " - " + r["DE_ORGAO"].ToString();
-                //DropDownListSistemas.SelectedValue = r["NU_APLICATIVO"].ToString() + " - " + r["DE_APLICATIVO"].ToString();
-                //tbxPergunta.Text = r["DE_PERGUNTA"].ToString();
-                //tbxResposta.Text = r["DE_RESPOSTA"].ToString();
-                //lblNumeroRegistro.Text = r["SQ_FAQ"].ToString();
-                //DropDownListFLExcluidos.SelectedValue = r["FL_EXCLUIDO"].ToString();
-
-
-                //imgBanner1.ImageUrl = GetImage((byte[])r["IM_FAQ1"]);
-                //imgBanner2.ImageUrl = GetImage((byte[])r["IM_FAQ2"]);
-                //imgBanner3.ImageUrl = GetImage((byte[])r["IM_FAQ3"]);
+        
             }
 
 
@@ -440,7 +427,7 @@ namespace ProjetoSemearTurismo
 
             if (BtnEditarCadastroPopupClienteCadastro.Visible == true)
             {
-                limparCadastro();
+                limparCadastroCancelar();
 
             }
         }
@@ -470,9 +457,33 @@ namespace ProjetoSemearTurismo
             TbxCEPPopupClienteCadastro.Text = "";
             GridViewClientes.SelectedIndex = -1;
             MPEClientesGRID.Show();
+        }  private void limparCadastroCancelar()
+        {
+           TbxNomePopupClienteCadastro.Text = "";
+            TbxTel1PopupClienteCadastro.Text = "";
+            TbxEmailPopupClienteCadastro.Text = "";
+            TbxNascimentoPopupClienteCadastro.Text = "";
+            TbxCPFPopupClienteCadastro.Text = "";
+            TbxNumPassPopupClienteCadastro.Text = "";
+            TbxDataEmissPassPopupClienteCadastro.Text = "";
+            TbxDataValiPassPopupClienteCadastro.Text = "";
+            TbxNumRGPopupClienteCadastro.Text = "";
+            TbxOrgaoEmissorPopupClienteCadastro.Text = "";
+            TbxDataEmissRGPopupClienteCadastro.Text = "";
+            DropDownListFuncionarioPopupClienteCadastro.SelectedValue = "0";
+            TbxSalarioFuncionaroPopupClienteCadastro.Text = "1750.50";
+            TbxSaldoPopupClienteCadastro.Text = "1750.50";
+            DropDownListFuncionarioPopupClienteCadastro.SelectedValue = "0";
+            DropDownListFlagExcluidoPopupClienteCadastro.SelectedValue = "0";
+            TbxBairroPopupClienteCadastro.Text = "";
+            TbxCidadePopupClienteCadastro.Text = "";
+            TbxUFPopupClienteCadastro.Text = "";
+            TbxRuaPopupClienteCadastro.Text = "";
+            TbxCEPPopupClienteCadastro.Text = "";
+            GridViewClientes.SelectedIndex = -1;
         }
-
-        protected void btnLimparPopupClienteCadastro_Click(object sender, EventArgs e)
+       
+            protected void btnLimparPopupClienteCadastro_Click(object sender, EventArgs e)
         {
             limparCadastro();
         }

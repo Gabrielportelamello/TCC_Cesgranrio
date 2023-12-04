@@ -84,7 +84,7 @@
 
         <br />
                         <br />
-        <asp:Label ID="LblTel1PopupTransporteCadastro" runat="server" Text="Telefone 1"></asp:Label>
+        <asp:Label ID="LblTel1PopupTransporteCadastro" runat="server" Text="Telefone"></asp:Label>
         <asp:TextBox ID="TbxTel1PopupTransporteCadastro" runat="server"></asp:TextBox>
 
 

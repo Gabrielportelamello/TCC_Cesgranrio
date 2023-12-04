@@ -72,24 +72,63 @@ namespace ProjetoSemearTurismo.Views
 
         protected void GridViewReservas_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
-            //if (TbxPesquisarGridReservas.Text != "")
-            //{
-            //    GVBingSearch();
-            //    GridViewReservas.PageIndex = e.NewPageIndex;
-            //    GridViewReservas.DataBind();
-            //}
-            //else
-            //{
-            //    GVBing();
-            //    GridViewReservas.PageIndex = e.NewPageIndex;
-            //    GridViewReservas.DataBind();
-            //}
+            if (!string.IsNullOrEmpty(TbxPesquisarGridReservas.Text))
+            {
+                GVBingSearch(TbxPesquisarGridReservas.Text);
+                GridViewReservas.PageIndex = e.NewPageIndex;
+                GridViewReservas.DataBind();
+            }
+            else
+            {
+                GVBing();
+                GridViewReservas.PageIndex = e.NewPageIndex;
+                GridViewReservas.DataBind();
+            }
 
         }
 
         protected void GridViewReservas_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
+            // Obtém o índice da linha sendo deletada
+            string indiceRegistro = GridViewReservas.DataKeys[e.RowIndex].Value.ToString();
 
+            // Obtém a data atual
+            DateTime dataExclusao = DateTime.Now;
+
+            // Atualiza o banco de dados com a data de exclusão
+            AtualizarDataExclusao(indiceRegistro, dataExclusao);
+
+            if (!string.IsNullOrEmpty(TbxPesquisarGridReservas.Text))
+            {
+                GVBingSearch(TbxPesquisarGridReservas.Text);
+
+
+            }
+            else
+            {
+                GVBing();
+
+            }
+            // Resto do seu código para a exclusão da linha no GridView
+        }
+
+        private void AtualizarDataExclusao(string indiceRegistro, DateTime dataExclusao)
+        {
+            using (SqlConnection openCon = new SqlConnection(connectionString))
+            {
+                string updateQuery = "UPDATE [dbo].[SEMEAR_ASSOCIATIVA_VPR] " +
+                                     "SET [DT_EXCLUSAO] = @DataExclusao " +
+                                     "WHERE SQ_HPR_PK = " + indiceRegistro;
+
+                using (SqlCommand queryUpdate = new SqlCommand(updateQuery))
+                {
+                    queryUpdate.Connection = openCon;
+                    queryUpdate.Parameters.AddWithValue("@DataExclusao", dataExclusao);
+
+                    openCon.Open();
+                    queryUpdate.ExecuteNonQuery();
+                }
+            }
         }
 
         protected void GridViewReservas_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -131,7 +170,7 @@ namespace ProjetoSemearTurismo.Views
                     DropDownListViagemPopupReservaCadastro.SelectedValue = "0";
                 BtnCadastrarPopupReservaCadastro.Visible = false;
                 BtnEditarCadastroPopupReservaCadastro.Visible = true;
-               
+
             }
         }
         public string GetImage(object img)
@@ -209,7 +248,7 @@ namespace ProjetoSemearTurismo.Views
 
             using (SqlConnection openCon = new SqlConnection(connectionString))
             {
-                string saveStaff = "UPDATE [dbo].[SEMEAR_ASSOCIATIVA_VPR]   SET [SQ_VIAGEM_FK] = " + viagemID + " ,[SQ_CLIENTE_FK] = " + clienteID + "  ,[DT_EDICAO] = " + viagemID + "    ,[SQ_HOSPEDAGEM_FK] = " + hospedagemID + "      ,[SQ_TRANSPORTE_FK] = " + transporteID + "  WHERE <Critérios de Pesquisa,,>  WHERE SQ_HPR_PK = " + indiceRegistro;
+                string saveStaff = "UPDATE [dbo].[SEMEAR_ASSOCIATIVA_VPR]   SET [SQ_VIAGEM_FK] = " + viagemID + " ,[SQ_CLIENTE_FK] = " + clienteID + "  ,[DT_EDICAO] = " + viagemID + "    ,[SQ_HOSPEDAGEM_FK] = " + hospedagemID + "      ,[SQ_TRANSPORTE_FK] = " + transporteID + " WHERE SQ_HPR_PK = " + indiceRegistro;
 
 
                 using (SqlCommand querySaveStaff = new SqlCommand(saveStaff))
@@ -226,9 +265,9 @@ namespace ProjetoSemearTurismo.Views
             }
 
 
-            if (TbxPesquisarGridReservas.Text != "")
+            if (!string.IsNullOrEmpty(TbxPesquisarGridReservas.Text))
             {
-                GVBingSearch();
+                GVBingSearch(TbxPesquisarGridReservas.Text);
             }
             else
             {
@@ -247,22 +286,44 @@ namespace ProjetoSemearTurismo.Views
             //    GVBing();
             //}
         }
-        protected void GVBingSearch()
+        protected void GVBingSearch(string txtPesquisa)
         {
 
-            //SqlConnection conn = new SqlConnection(connectionString);
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
 
-            //SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA where Nome LIKE '%" + TbxPesquisarGridReservas.Text + "%' ORDER BY Nome", conn);
-            //conn.Open();
-            //SqlCommandBuilder builder = new SqlCommandBuilder(a);
-            //DataSet ds = new DataSet();
-            //a.Fill(ds);
+                string query = "SELECT V.NOME_VIAGEM, P.Nome, P.CPF, H.Nome as Nome_Hospedagem, T.NOME as Nome_Transporte, R.SQ_HPR_PK, SQ_TRANSPORTE_FK, SQ_HOSPEDAGEM_FK, SQ_VIAGEM_FK, SQ_CLIENTE_FK, V.DT_InicialPeriodo_viagem " +
+                    "FROM SEMEAR_VIAGEM V " +
+                    "JOIN SEMEAR_ASSOCIATIVA_VPR R ON V.SQ_VIAGEM = R.SQ_VIAGEM_FK " +
+                    "JOIN SEMEAR_PESSOA P ON P.SQ_PESSOA = R.SQ_CLIENTE_FK " +
+                    "LEFT JOIN SEMEAR_HOSPEDAGEM_TEMP H ON R.SQ_HOSPEDAGEM_FK = H.SEQ_HOSPEDAGEM " +
+                    "LEFT JOIN SEMEAR_TRANSPORTE_TEMP T ON R.SQ_TRANSPORTE_FK = T.SQ_TRANSPORTE " +
+                    "LEFT JOIN SEMEAR_HOSPEDAGEM_TEMP H_NULL ON R.SQ_TRANSPORTE_FK IS NOT NULL AND R.SQ_HOSPEDAGEM_FK IS NULL " +
+                    "LEFT JOIN SEMEAR_TRANSPORTE_TEMP T_NULL ON R.SQ_HOSPEDAGEM_FK IS NOT NULL AND R.SQ_TRANSPORTE_FK IS NULL " +
+                    "WHERE R.DT_EXCLUSAO IS NULL AND (H.SEQ_HOSPEDAGEM IS NOT NULL OR T.SQ_TRANSPORTE IS NOT NULL OR (H_NULL.SEQ_HOSPEDAGEM IS NULL AND T_NULL.SQ_TRANSPORTE IS NULL))";
 
-            //GridViewReservas.DataSource = ds;
-            //GridViewReservas.DataBind();
+                if (!string.IsNullOrEmpty(txtPesquisa))
+                {
+                    query += " AND (V.NOME_VIAGEM LIKE '%' + @Pesquisa + '%' OR P.Nome LIKE '%' + @Pesquisa + '%' OR P.CPF LIKE '%' + @Pesquisa + '%')";
+                }
 
-            //conn.Close();
-            //conn.Dispose();
+                SqlCommand cmd = new SqlCommand(query, conn);
+
+                if (!string.IsNullOrEmpty(txtPesquisa))
+                {
+                    cmd.Parameters.AddWithValue("@Pesquisa", txtPesquisa);
+                }
+
+                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                DataSet ds = new DataSet();
+                adapter.Fill(ds);
+
+                GridViewReservas.DataSource = ds;
+                GridViewReservas.DataBind();
+            }
+
+
 
         }
 
@@ -298,20 +359,56 @@ namespace ProjetoSemearTurismo.Views
         protected void BtnEditarCadastroPopupReservaCadastro_Click(object sender, EventArgs e)
         {
 
-            if (GridViewReservas.SelectedIndex >= 0)
+            if (GridViewReservas.SelectedIndex >= 0 && DropDownListViagemPopupReservaCadastro.SelectedValue != "0"
+                && DropDownListClientePopupReservaCadastro.SelectedValue != "0")
             {
                 string sIndiceRegistro = GridViewReservas.SelectedDataKey.Value.ToString();
+                string transporteID = "null";
+                string hospedagemID = "null";
+                string clienteID = "null";
+                string viagemID = "null";
+
                 // Obtém os valores dos campos da linha selecionada
-                string transporteID = GridViewReservas.SelectedRow.Cells[5].Text;
-                string hospedagemID = GridViewReservas.SelectedRow.Cells[6].Text;
-                string clienteID = GridViewReservas.SelectedRow.Cells[8].Text;
-                string viagemID = GridViewReservas.SelectedRow.Cells[7].Text;
+                if (DropDownListTransportePopupReservaCadastro.SelectedValue != "0" && DropDownListTransportePopupReservaCadastro.SelectedValue != "-1"
+                    && !string.IsNullOrEmpty(DropDownListTransportePopupReservaCadastro.SelectedValue))
+                {
+                    transporteID = DropDownListTransportePopupReservaCadastro.SelectedValue;
+
+                }
+
+                if (DropDownListHospedagemPopupReservaCadastro.SelectedValue != "0" && DropDownListHospedagemPopupReservaCadastro.SelectedValue != "-1"
+                    && !string.IsNullOrEmpty(DropDownListHospedagemPopupReservaCadastro.SelectedValue))
+                {
+                    hospedagemID = DropDownListHospedagemPopupReservaCadastro.SelectedValue;
+
+                }
+
+                if (DropDownListClientePopupReservaCadastro.SelectedValue != "0" && DropDownListClientePopupReservaCadastro.SelectedValue != "-1"
+                    && !string.IsNullOrEmpty(DropDownListClientePopupReservaCadastro.SelectedValue))
+                {
+                    clienteID = DropDownListClientePopupReservaCadastro.SelectedValue;
+
+                }
+
+                if (DropDownListViagemPopupReservaCadastro.SelectedValue != "0" && DropDownListViagemPopupReservaCadastro.SelectedValue != "-1"
+                    && !string.IsNullOrEmpty(DropDownListViagemPopupReservaCadastro.SelectedValue))
+                {
+                    viagemID = DropDownListViagemPopupReservaCadastro.SelectedValue;
+
+                }
+
+
                 RealizaEdicaoCadastroReserva(sIndiceRegistro, clienteID, viagemID, transporteID, hospedagemID);
             }
-
-            if (TbxPesquisarGridReservas.Text != "")
+            else
             {
-                GVBingSearch();
+                //alert
+            }
+
+
+            if (!string.IsNullOrEmpty(TbxPesquisarGridReservas.Text))
+            {
+                GVBingSearch(TbxPesquisarGridReservas.Text);
             }
             else
             {
@@ -556,5 +653,16 @@ namespace ProjetoSemearTurismo.Views
 
         }
 
+        protected void ImgBtnPesquisarGridReservas_Click1(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TbxPesquisarGridReservas.Text))
+            {
+                GVBingSearch(TbxPesquisarGridReservas.Text);
+            }
+            else
+            {
+                GVBing();
+            }
+        }
     }
 }

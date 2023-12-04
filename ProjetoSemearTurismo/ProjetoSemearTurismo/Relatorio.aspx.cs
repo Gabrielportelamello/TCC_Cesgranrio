@@ -52,7 +52,7 @@ namespace ProjetoSemearTurismo
                 // Consulta SQL para obter dados do banco de dados
                 string query = "SELECT NOME_VIAGEM, COUNT(*) AS QtdReservas FROM SEMEAR_ASSOCIATIVA_VPR " +
                                "INNER JOIN SEMEAR_VIAGEM ON SEMEAR_ASSOCIATIVA_VPR.SQ_VIAGEM_FK = SEMEAR_VIAGEM.SQ_VIAGEM " +
-                               "WHERE DT_INCLUSAO BETWEEN @DataInicial AND @DataFinal " +
+                               "WHERE dt_exclusao is null and DT_INCLUSAO BETWEEN @DataInicial AND @DataFinal " +
                                "GROUP BY NOME_VIAGEM";
 
                 // Lista para armazenar os resultados da consulta

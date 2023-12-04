@@ -6,7 +6,7 @@
     <div id="DivRelatorioReservas" class="row">
         <div class="col-md-6">
             
-            <asp:DropDownList ID="ddlSelectTipoRelatorio" runat="server">
+            <asp:DropDownList ID="ddlSelectTipoRelatorio" runat="server" OnSelectedIndexChanged="ddlSelectTipoRelatorio_SelectedIndexChanged" OnTextChanged="ddlSelectTipoRelatorio_TextChanged">
                 <asp:ListItem Value="0" Text="Selecione uma opção..."></asp:ListItem>
                 <asp:ListItem Value="1" Text="Viagem"></asp:ListItem>
                 <asp:ListItem Value="2" Text="Cliente"></asp:ListItem>
@@ -50,8 +50,7 @@
                            
                             <asp:BoundField DataField="OBSERVACAO" HeaderText="Observação">
                                 
-                            </asp:BoundField>
-                         
+                            </asp:BoundField>                 
                   
 
                         </Columns>
@@ -66,7 +65,6 @@
                         <SortedDescendingCellStyle BackColor="#FFFDF8" />
                         <SortedDescendingHeaderStyle BackColor="#6F8DAE" />
                     </asp:GridView>
-
 
             <asp:Button ID="btnGenerateExcelClientes" runat="server" Text="Gerar Excel" OnClick="btnGenerateExcel_Click" CssClass="btn btn-default w-100" />
             <asp:Button ID="btnGeneratePDFClientes" runat="server" Text="Gerar PDF" OnClick="btnGeneratePDF_Click" CssClass="btn btn-default w-100" />

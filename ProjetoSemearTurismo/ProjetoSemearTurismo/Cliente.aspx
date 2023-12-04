@@ -78,12 +78,7 @@
         <br />      
         <br />      
        
-        <asp:Label ID="LblNomePaiPopupClienteCadastro" runat="server" Text="Nome PAI"></asp:Label>
-        <asp:TextBox ID="TbxNomePaiPopupClienteCadastro" runat="server"></asp:TextBox>
-        <asp:Label ID="LblNomeMaePopupClienteCadastro" runat="server" Text="Nome MÃE" Style="margin-left: 15px"></asp:Label>
-        <asp:TextBox ID="TbxNomeMaePopupClienteCadastro" runat="server"></asp:TextBox>
-        <br />          
-        <br />          
+               
         
         <asp:Label ID="LblNumRGPopupClienteCadastro" runat="server" Text="Numeração RG" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxNumRGPopupClienteCadastro" runat="server" Width="99px"></asp:TextBox>
@@ -133,8 +128,8 @@
       
         <br />
         <br />
-        <asp:Label ID="lblFuncao" runat="server" Text="É funcionário? "></asp:Label>
-        <asp:DropDownList ID="DropDownListFuncionarioPopupClienteCadastro" runat="server" OnSelectedIndexChanged="DropDownListFuncionarioPopupClienteCadastro_SelectedIndexChanged" OnTextChanged="DropDownListFuncionarioPopupClienteCadastro_TextChanged">
+        <asp:Label ID="lblFuncao" runat="server" Text="É funcionário?" Visible="false"></asp:Label>
+        <asp:DropDownList ID="DropDownListFuncionarioPopupClienteCadastro" Visible="false" runat="server" OnSelectedIndexChanged="DropDownListFuncionarioPopupClienteCadastro_SelectedIndexChanged" OnTextChanged="DropDownListFuncionarioPopupClienteCadastro_TextChanged">
             <asp:ListItem Value="0" Text="NÃO"></asp:ListItem>
             <asp:ListItem Value="1" Text="SIM"></asp:ListItem>
 
@@ -142,8 +137,8 @@
 
         <cc1:FilteredTextBoxExtender ID="FilteredTextBoxExtender2" runat="server" Enabled="True" TargetControlID="TbxSalarioFuncionaroPopupClienteCadastro" FilterMode="ValidChars" ValidChars="1234567890.," />
 
-        <asp:Label ID="LblSalarioFuncionaroPopupClienteCadastro" runat="server" Text="Salário" Style="margin-left: 15px"></asp:Label>
-        <asp:TextBox ID="TbxSalarioFuncionaroPopupClienteCadastro" ToolTip="1750.50" runat="server">1750.50</asp:TextBox>
+        <asp:Label ID="LblSalarioFuncionaroPopupClienteCadastro" runat="server" Text="Salário" Style="margin-left: 15px" Visible="false"></asp:Label>
+        <asp:TextBox ID="TbxSalarioFuncionaroPopupClienteCadastro" ToolTip="1750.50" runat="server" Visible="false">1750.50</asp:TextBox>
         <br />
         <br />
         <asp:Label ID="Label1" runat="server" Text="EXCLUIR ? "></asp:Label>

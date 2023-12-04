@@ -45,7 +45,7 @@ namespace ProjetoSemearTurismo
 
             SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString);
 
-           
+
             SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_VIAGEM ORDER BY NOME_VIAGEM", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
@@ -60,7 +60,7 @@ namespace ProjetoSemearTurismo
             conn.Dispose();
 
         }
-       
+
         private DataTable GridViewToDataTable(GridView gridView)
         {
             DataTable dt = new DataTable();
@@ -95,7 +95,7 @@ namespace ProjetoSemearTurismo
 
             return dt;
         }
-        
+
 
 
         protected void btnGenerateExcel_Click(object sender, EventArgs e)
@@ -243,5 +243,54 @@ namespace ProjetoSemearTurismo
             }
         }
 
+        protected void ddlSelectTipoRelatorio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            switch (ddlSelectTipoRelatorio.SelectedValue)
+            {
+                case "0":
+                    GVBing();
+                    break;
+                case "1":
+                    GVBing();
+                    break;
+                case "2":
+                    GVBing();
+                    break;
+                case "3":
+                    GVBing();
+                    break;
+                case "4":
+                    GVBing();
+                    break;
+                case "5":
+                    GVBing();
+                    break;
+            }
+        }
+
+        protected void ddlSelectTipoRelatorio_TextChanged(object sender, EventArgs e)
+        {
+            switch (ddlSelectTipoRelatorio.SelectedValue)
+            {
+                case "0":
+                    GVBing();
+                    break;
+                case "1":
+                    GVBing();
+                    break;
+                case "2":
+                    GVBing();
+                    break;
+                case "3":
+                    GVBing();
+                    break;
+                case "4":
+                    GVBing();
+                    break;
+                case "5":
+                    GVBing();
+                    break;
+            }
+        }
     }
 }
