@@ -80,9 +80,9 @@
         <!-- Campos de pesquisa e botão de pesquisa -->
         <div>
             <h4>Pesquisar Reserva</h4>
-            <asp:TextBox ID="TbxPesquisarGridReservas" runat="server" CssClass="form-control" placeholder="Digite para pesquisar"></asp:TextBox>
-            <br>
-            <asp:Button ID="ImgBtnPesquisarGridReservas" runat="server" CssClass="btn btn-primary action-btn" Text="Pesquisar" />
+            <asp:TextBox ID="TbxPesquisarGridReservas" runat="server" CssClass="form-control" placeholder="Digite para pesquisar"/>
+             <br />
+            <asp:Button ID="ImgBtnPesquisarGridReservas" runat="server" CssClass="btn btn-primary action-btn" Text="Pesquisar" OnClick="ImgBtnPesquisarGridReservas_Click1" />
         </div>
 
         <br />

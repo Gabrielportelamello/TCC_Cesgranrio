@@ -55,7 +55,7 @@ namespace ProjetoSemearTurismo.Views
             SqlConnection conn = new SqlConnection(connectionString);
 
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_HOSPEDAGEM_TEMP ORDER BY NOME", conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_HOSPEDAGEM_TEMP WHERE (fl_excluido != 1 OR fl_excluido IS NULL)  ORDER BY NOME", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
@@ -89,6 +89,43 @@ namespace ProjetoSemearTurismo.Views
         protected void GridViewHospedagems_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
+
+            // Obtém o índice da linha sendo deletada
+            string indiceRegistro = GridViewHospedagems.DataKeys[e.RowIndex].Value.ToString();
+
+            // Atualiza o banco de dados com a data de exclusão
+            AtualizarDataExclusao(indiceRegistro);
+
+            if (!string.IsNullOrEmpty(TbxPesquisarGridHospedagems.Text))
+            {
+                GVBingSearch();
+
+
+            }
+            else
+            {
+                GVBing();
+
+            }
+            // Resto do seu código para a exclusão da linha no GridView
+        }
+
+        private void AtualizarDataExclusao(string indiceRegistro)
+        {
+            using (SqlConnection openCon = new SqlConnection(connectionString))
+            {
+                string updateQuery = "UPDATE [dbo].[SEMEAR_HOSPEDAGEM_TEMP] " +
+                                     "SET [FL_EXCLUIDO] = 1 " +
+                                     "WHERE SEQ_HOSPEDAGEM = " + indiceRegistro;
+
+                using (SqlCommand queryUpdate = new SqlCommand(updateQuery))
+                {
+                    queryUpdate.Connection = openCon;
+
+                    openCon.Open();
+                    queryUpdate.ExecuteNonQuery();
+                }
+            }
         }
 
         protected void GridViewHospedagems_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -137,11 +174,29 @@ namespace ProjetoSemearTurismo.Views
             foreach (DataRow r in ds.Tables["SEMEAR_HOSPEDAGEM_TEMP"].Rows)
             {
                 TbxNomePopupHospedagemCadastro.Text = r["NOME"].ToString();
-                TbxBairroPopupHospedagemCadastro.Text = r["bairro_endereco"].ToString();
-                TbxCidadePopupHospedagemCadastro.Text = r["cidade_endereco"].ToString();
-                TbxUFPopupHospedagemCadastro.Text = r["uf_endereco"].ToString();
-                TbxRuaPopupHospedagemCadastro.Text = r["rua_endereco"].ToString();
+                TbxRuaPopupHospedagemCadastro.Text = r["Endereco"].ToString();
+               
                 TbxCEPPopupHospedagemCadastro.Text = r["CEP"].ToString();
+                TbxCNPJPopupHospedagemCadastro.Text = r["CNPJ"].ToString();
+
+                if (!string.IsNullOrEmpty(r["data_checkin"].ToString()))
+                {
+                    TbxChekinPopupHospedagemCadastro.Text = r["data_checkin"].ToString().Substring(6, 4) + "-" + r["data_checkin"].ToString().Substring(3, 2) + "-" + r["data_checkin"].ToString().Substring(0, 2);
+
+                }
+
+
+                if (!string.IsNullOrEmpty(r["data_checkout"].ToString()))
+                {
+                    TbxChekoutPopupHospedagemCadastro.Text = r["data_checkout"].ToString().Substring(6, 4) + "-" + r["data_checkout"].ToString().Substring(3, 2) + "-" + r["data_checkout"].ToString().Substring(0, 2);
+
+                }
+                
+               
+                TbxTel1PopupHospedagemCadastro.Text = r["Telefones"].ToString();
+                TbxEmailPopupHospedagemCadastro.Text = r["Email"].ToString();
+                TbxPrecoPopupHospedagemCadastro.Text = r["preco"].ToString();
+                TbxQTDQuartosPopupHospedagemCadastro.Text = r["qtd_quartos"].ToString();
             }
 
 
@@ -246,7 +301,7 @@ namespace ProjetoSemearTurismo.Views
                                        ",[Telefones] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
                                       ",[Email] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
                                       ",[CEP] = '" + TbxNomePopupHospedagemCadastro.Text + "' " +
-                                      ",[qtd_quartos] = " + TbxQTDQuartosPopupHospedagemCadastro +
+                                      ",[qtd_quartos] = " + TbxQTDQuartosPopupHospedagemCadastro.Text +
                                        ",[data_checkin] = (Select CONVERT(datetime,'" + TbxChekinPopupHospedagemCadastro.Text + "',20)) " +
                                        ",[data_checkout] = (Select CONVERT(datetime,'" + TbxChekoutPopupHospedagemCadastro.Text + "',20)) " +
                                        ",[preco] = " + TbxPrecoPopupHospedagemCadastro.Text +
@@ -303,7 +358,7 @@ namespace ProjetoSemearTurismo.Views
 
             SqlConnection conn = new SqlConnection(connectionString);
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_HOSPEDAGEM_TEMP where Nome LIKE '%" + TbxPesquisarGridHospedagems.Text + "%' ORDER BY Nome", conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_HOSPEDAGEM_TEMP where (fl_excluido != 1 OR fl_excluido IS NULL) AND Nome LIKE '%" + TbxPesquisarGridHospedagems.Text + "%' ORDER BY Nome", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
@@ -356,11 +411,10 @@ namespace ProjetoSemearTurismo.Views
         {
             GridViewHospedagems.SelectedIndex = -1;
 
-            if (BtnEditarCadastroPopupHospedagemCadastro.Visible == true)
-            {
+            
                 limparCadastro();
 
-            }
+            
         }
 
         private void limparCadastro()
@@ -375,13 +429,12 @@ namespace ProjetoSemearTurismo.Views
 
             TbxPrecoPopupHospedagemCadastro.Text = "";
             DropDownListFlagExcluidoPopupHospedagemCadastro.SelectedValue = "0";
-            TbxBairroPopupHospedagemCadastro.Text = "";
-            TbxCidadePopupHospedagemCadastro.Text = "";
-            TbxUFPopupHospedagemCadastro.Text = "";
+          
             TbxRuaPopupHospedagemCadastro.Text = "";
             TbxCEPPopupHospedagemCadastro.Text = "";
             GridViewHospedagems.SelectedIndex = -1;
-            MPEHospedagemsGRID.Show();
+            TbxCNPJPopupHospedagemCadastro.Text = "";
+           
 
 
 

@@ -42,7 +42,7 @@ namespace ProjetoSemearTurismo
             SqlConnection conn = new SqlConnection(connectionString);
 
         
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA ORDER BY NOME", conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA WHERE [FL_EXCLUIDO] = 0 ORDER BY NOME", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
@@ -76,8 +76,44 @@ namespace ProjetoSemearTurismo
         protected void GridViewClientes_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
+
+            // Obtém o índice da linha sendo deletada
+            string indiceRegistro = GridViewClientes.DataKeys[e.RowIndex].Value.ToString();
+
+            // Atualiza o banco de dados com a data de exclusão
+            AtualizarDataExclusao(indiceRegistro);
+
+            if (!string.IsNullOrEmpty(TbxPesquisarGridClientes.Text))
+            {
+                GVBingSearch();
+
+
+            }
+            else
+            {
+                GVBing();
+
+            }
+            // Resto do seu código para a exclusão da linha no GridView
         }
 
+        private void AtualizarDataExclusao(string indiceRegistro)
+        {
+            using (SqlConnection openCon = new SqlConnection(connectionString))
+            {
+                string updateQuery = "UPDATE [dbo].[SEMEAR_PESSOA] " +
+                                     "SET [FL_EXCLUIDO] = 1 " +
+                                     "WHERE SQ_PESSOA = " + indiceRegistro;
+
+                using (SqlCommand queryUpdate = new SqlCommand(updateQuery))
+                {
+                    queryUpdate.Connection = openCon;
+
+                    openCon.Open();
+                    queryUpdate.ExecuteNonQuery();
+                }
+            }
+        }
         protected void GridViewClientes_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
         {
 
@@ -354,7 +390,7 @@ namespace ProjetoSemearTurismo
 
             SqlConnection conn = new SqlConnection(connectionString);
         
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA where Nome LIKE '%"+TbxPesquisarGridClientes.Text+"%' ORDER BY Nome", conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_PESSOA where [FL_EXCLUIDO] = 0 AND Nome LIKE '%" + TbxPesquisarGridClientes.Text+"%' ORDER BY Nome", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();

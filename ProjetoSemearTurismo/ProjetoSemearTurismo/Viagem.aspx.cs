@@ -42,7 +42,7 @@ namespace ProjetoSemearTurismo
             SqlConnection conn = new SqlConnection(connectionString);
 
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_VIAGEM where fl_status = 0 ORDER BY NOME_VIAGEM ", conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_VIAGEM where fl_status != 1 ORDER BY NOME_VIAGEM ", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
@@ -76,6 +76,43 @@ namespace ProjetoSemearTurismo
         protected void GridViewViagens_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
+       
+            // Obtém o índice da linha sendo deletada
+            string indiceRegistro = GridViewViagens.DataKeys[e.RowIndex].Value.ToString();           
+
+            // Atualiza o banco de dados com a data de exclusão
+            AtualizarDataExclusao(indiceRegistro);
+
+            if (!string.IsNullOrEmpty(TbxPesquisarGridViagens.Text))
+            {
+                GVBingSearch();
+
+
+            }
+            else
+            {
+                GVBing();
+
+            }
+            // Resto do seu código para a exclusão da linha no GridView
+        }
+
+        private void AtualizarDataExclusao(string indiceRegistro)
+        {
+            using (SqlConnection openCon = new SqlConnection(connectionString))
+            {
+                string updateQuery = "UPDATE [dbo].[SEMEAR_VIAGEM] " +
+                                     "SET [FL_STATUS] = 1 " +
+                                     "WHERE SQ_VIAGEM = " + indiceRegistro;
+
+                using (SqlCommand queryUpdate = new SqlCommand(updateQuery))
+                {
+                    queryUpdate.Connection = openCon;
+
+                    openCon.Open();
+                    queryUpdate.ExecuteNonQuery();
+                }
+            }
         }
 
         protected void GridViewViagens_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -295,20 +332,28 @@ namespace ProjetoSemearTurismo
         }
         protected void GVBingSearch()
         {
+            if (!string.IsNullOrEmpty(TbxPesquisarGridViagens.Text))
+            {
+                SqlConnection conn = new SqlConnection(connectionString);
 
-            SqlConnection conn = new SqlConnection(connectionString);
+                SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_VIAGEM where fl_status != 1 and NOME_VIAGEM LIKE '%" + TbxPesquisarGridViagens.Text + "%' ORDER BY NOME_VIAGEM", conn);
+                conn.Open();
+                SqlCommandBuilder builder = new SqlCommandBuilder(a);
+                DataSet ds = new DataSet();
+                a.Fill(ds);
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_VIAGEM where NOME_VIAGEM LIKE '%" + TbxPesquisarGridViagens.Text + "%' ORDER BY NOME_VIAGEM", conn);
-            conn.Open();
-            SqlCommandBuilder builder = new SqlCommandBuilder(a);
-            DataSet ds = new DataSet();
-            a.Fill(ds);
+                GridViewViagens.DataSource = ds;
+                GridViewViagens.DataBind();
 
-            GridViewViagens.DataSource = ds;
-            GridViewViagens.DataBind();
+                conn.Close();
+                conn.Dispose();
 
-            conn.Close();
-            conn.Dispose();
+            }
+            else
+            {
+                GVBing();
+            }
+            
 
         }
 

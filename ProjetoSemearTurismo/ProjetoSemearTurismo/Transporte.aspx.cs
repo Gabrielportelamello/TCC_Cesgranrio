@@ -22,7 +22,7 @@ namespace ProjetoSemearTurismo
 
                 GridViewTransporte.SelectedIndex = -1;
 
-                if (TbxPesquisarGridTransporte.Text != "")
+                if (!string.IsNullOrEmpty(TbxPesquisarGridTransporte.Text))
                 {
                     GVBingSearch();
                 }
@@ -40,7 +40,7 @@ namespace ProjetoSemearTurismo
             SqlConnection conn = new SqlConnection(connectionString);
 
 
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE_TEMP ORDER BY SQ_TRANSPORTE", conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE_TEMP WHERE (fl_excluido != 1 OR fl_excluido IS NULL)   ORDER BY SQ_TRANSPORTE", conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
@@ -74,6 +74,42 @@ namespace ProjetoSemearTurismo
         protected void GridViewTransporte_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
 
+            // Obtém o índice da linha sendo deletada
+            string indiceRegistro = GridViewTransporte.DataKeys[e.RowIndex].Value.ToString();
+
+            // Atualiza o banco de dados com a data de exclusão
+            AtualizarDataExclusao(indiceRegistro);
+
+            if (!string.IsNullOrEmpty(TbxPesquisarGridTransporte.Text))
+            {
+                GVBingSearch();
+
+
+            }
+            else
+            {
+                GVBing();
+
+            }
+            // Resto do seu código para a exclusão da linha no GridView
+        }
+
+        private void AtualizarDataExclusao(string indiceRegistro)
+        {
+            using (SqlConnection openCon = new SqlConnection(connectionString))
+            {
+                string updateQuery = "UPDATE [dbo].[SEMEAR_TRANSPORTE_TEMP] " +
+                                     "SET [FL_EXCLUIDO] = 1 " +
+                                     "WHERE SQ_TRANSPORTE = " + indiceRegistro;
+
+                using (SqlCommand queryUpdate = new SqlCommand(updateQuery))
+                {
+                    queryUpdate.Connection = openCon;
+
+                    openCon.Open();
+                    queryUpdate.ExecuteNonQuery();
+                }
+            }
         }
 
         protected void GridViewTransporte_SelectedIndexChanging(object sender, GridViewSelectEventArgs e)
@@ -113,7 +149,7 @@ namespace ProjetoSemearTurismo
             string oradb = ConfigurationManager.ConnectionStrings["MinhaConnectionString"].ConnectionString;
 
             SqlConnection conn = new SqlConnection(oradb);
-            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE_TEMP where SQ_TRANSPORTE = " + sIndiceRegistro, conn);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE_TEMP where  SQ_TRANSPORTE = " + sIndiceRegistro, conn);
             conn.Open();
             SqlCommandBuilder builder = new SqlCommandBuilder(a);
             DataSet ds = new DataSet();
@@ -333,19 +369,19 @@ namespace ProjetoSemearTurismo
         protected void GVBingSearch()
         {
 
-            //SqlConnection conn = new SqlConnection(connectionString);
+            SqlConnection conn = new SqlConnection(connectionString);
 
-            //SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE_TEMP where Nome LIKE '%" + TbxPesquisarGridTransporte.Text + "%' ORDER BY Nome", conn);
-            //conn.Open();
-            //SqlCommandBuilder builder = new SqlCommandBuilder(a);
-            //DataSet ds = new DataSet();
-            //a.Fill(ds);
+            SqlDataAdapter a = new SqlDataAdapter("SELECT * FROM SEMEAR_TRANSPORTE_TEMP where (fl_excluido != 1 OR fl_excluido IS NULL)  and Nome LIKE '%" + TbxPesquisarGridTransporte.Text + "%' ORDER BY Nome", conn);
+            conn.Open();
+            SqlCommandBuilder builder = new SqlCommandBuilder(a);
+            DataSet ds = new DataSet();
+            a.Fill(ds);
 
-            //GridViewTransporte.DataSource = ds;
-            //GridViewTransporte.DataBind();
+            GridViewTransporte.DataSource = ds;
+            GridViewTransporte.DataBind();
 
-            //conn.Close();
-            //conn.Dispose();
+            conn.Close();
+            conn.Dispose();
 
         }
 

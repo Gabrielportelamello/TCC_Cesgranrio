@@ -98,67 +98,129 @@ namespace ProjetoSemearTurismo
 
 
 
+        //protected void btnGenerateExcel_Click(object sender, EventArgs e)
+        //{
+        //    try
+        //    {
+        //        using (ExcelPackage package = new ExcelPackage())
+        //        {
+        //            ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Dados");
+
+        //            // Adicione manualmente o cabeçalho
+        //            int headerIndex = 1;
+        //            foreach (TableCell cell in gridViewExcel.HeaderRow.Cells)
+        //            {
+        //                worksheet.Cells[1, headerIndex].Value = DecodeHtmlEntities(cell.Text); // Decodifique entidades HTML
+        //                headerIndex++;
+        //            }
+
+        //            // Defina o formato de célula para as colunas de data
+        //            using (ExcelRange dateColumn = worksheet.Cells["B2:B" + (gridViewExcel.Rows.Count + 1)])
+        //            {
+        //                dateColumn.Style.Numberformat.Format = "dd/MM/yyyy HH:mm:ss";
+        //            }
+
+        //            // Preencha a planilha do Excel com os dados da GridView
+        //            int rowIndex = 2;
+
+        //            // Loop pelas linhas da GridView
+        //            foreach (GridViewRow row in gridViewExcel.Rows)
+        //            {
+        //                int cellIndex = 1;
+
+        //                // Loop pelas células da linha
+        //                foreach (TableCell cell in row.Cells)
+        //                {
+        //                    string cellText = DecodeHtmlEntities(cell.Text); // Decodifique entidades HTML
+
+        //                    // Remova os espaços não quebráveis (&nbsp;)
+        //                    cellText = cellText.Replace("&nbsp;", " ");
+
+        //                    worksheet.Cells[rowIndex, cellIndex].Value = cellText;
+        //                    cellIndex++;
+        //                }
+
+        //                rowIndex++;
+        //            }
+
+        //            // Configuração do tipo de resposta e nome do arquivo Excel
+        //            Response.Clear();
+        //            Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+        //            Response.ContentEncoding = System.Text.Encoding.UTF8; // Configuração do charset
+        //            Response.AddHeader("Content-Disposition", "attachment; filename=sample.xlsx");
+
+        //            // Envie o arquivo Excel como resposta para o cliente
+        //            Response.BinaryWrite(package.GetAsByteArray());
+        //            Response.End();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        // Lide com qualquer exceção aqui
+        //        Response.Write("Erro ao gerar o arquivo Excel: " + ex.Message);
+        //    }
+        //}
         protected void btnGenerateExcel_Click(object sender, EventArgs e)
         {
-            try
-            {
-                using (ExcelPackage package = new ExcelPackage())
-                {
-                    ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Dados");
+            //try
+            //{
+            //    using (ExcelPackage package = new ExcelPackage())
+            //    {
+            //        ExcelWorksheet worksheet = package.Workbook.Worksheets.Add("Dados");
 
-                    // Adicione manualmente o cabeçalho
-                    int headerIndex = 1;
-                    foreach (TableCell cell in gridViewExcel.HeaderRow.Cells)
-                    {
-                        worksheet.Cells[1, headerIndex].Value = DecodeHtmlEntities(cell.Text); // Decodifique entidades HTML
-                        headerIndex++;
-                    }
+            //        // Adicione manualmente o cabeçalho
+            //        int headerIndex = 1;
+            //        foreach (TableCell cell in gridViewExcel.HeaderRow.Cells)
+            //        {
+            //            worksheet.Cells[1, headerIndex].Value = DecodeHtmlEntities(cell.Text); // Decodifique entidades HTML
+            //            headerIndex++;
+            //        }
 
-                    // Defina o formato de célula para as colunas de data
-                    using (ExcelRange dateColumn = worksheet.Cells["B2:B" + (gridViewExcel.Rows.Count + 1)])
-                    {
-                        dateColumn.Style.Numberformat.Format = "dd/MM/yyyy HH:mm:ss";
-                    }
+            //        // Defina o formato de célula para as colunas de data
+            //        using (ExcelRange dateColumn = worksheet.Cells["B2:B" + (gridViewExcel.Rows.Count + 1)])
+            //        {
+            //            dateColumn.Style.Numberformat.Format = "dd/MM/yyyy HH:mm:ss";
+            //        }
 
-                    // Preencha a planilha do Excel com os dados da GridView
-                    int rowIndex = 2;
+            //        // Preencha a planilha do Excel com os dados da GridView
+            //        int rowIndex = 2;
 
-                    // Loop pelas linhas da GridView
-                    foreach (GridViewRow row in gridViewExcel.Rows)
-                    {
-                        int cellIndex = 1;
+            //        // Loop pelas linhas da GridView
+            //        foreach (GridViewRow row in gridViewExcel.Rows)
+            //        {
+            //            int cellIndex = 1;
 
-                        // Loop pelas células da linha
-                        foreach (TableCell cell in row.Cells)
-                        {
-                            string cellText = DecodeHtmlEntities(cell.Text); // Decodifique entidades HTML
+            //            // Loop pelas células da linha
+            //            foreach (TableCell cell in row.Cells)
+            //            {
+            //                string cellText = DecodeHtmlEntities(cell.Text); // Decodifique entidades HTML
 
-                            // Remova os espaços não quebráveis (&nbsp;)
-                            cellText = cellText.Replace("&nbsp;", " ");
+            //                // Remova os espaços não quebráveis (&nbsp;)
+            //                cellText = cellText.Replace("&nbsp;", " ");
 
-                            worksheet.Cells[rowIndex, cellIndex].Value = cellText;
-                            cellIndex++;
-                        }
+            //                worksheet.Cells[rowIndex, cellIndex].Value = cellText;
+            //                cellIndex++;
+            //            }
 
-                        rowIndex++;
-                    }
+            //            rowIndex++;
+            //        }
 
-                    // Configuração do tipo de resposta e nome do arquivo Excel
-                    Response.Clear();
-                    Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                    Response.ContentEncoding = System.Text.Encoding.UTF8; // Configuração do charset
-                    Response.AddHeader("Content-Disposition", "attachment; filename=sample.xlsx");
+            //        // Configuração do tipo de resposta e nome do arquivo Excel
+            //        Response.Buffer = true;
+            //        Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+            //        Response.Charset = "";
+            //        Response.AddHeader("Content-Disposition", "attachment; filename=sample_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".xlsx");
 
-                    // Envie o arquivo Excel como resposta para o cliente
-                    Response.BinaryWrite(package.GetAsByteArray());
-                    Response.End();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Lide com qualquer exceção aqui
-                Response.Write("Erro ao gerar o arquivo Excel: " + ex.Message);
-            }
+            //        // Envie o arquivo Excel como resposta para o cliente
+            //        Response.BinaryWrite(package.GetAsByteArray());
+            //        Response.Flush();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    // Lide com qualquer exceção aqui
+            //    Response.Write("Erro ao gerar o arquivo Excel: " + ex.Message);
+            //}
         }
 
 

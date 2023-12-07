@@ -433,11 +433,9 @@ namespace ProjetoSemearTurismo.Views
         {
             GridViewReservas.SelectedIndex = -1;
 
-            if (BtnEditarCadastroPopupReservaCadastro.Visible == true)
-            {
                 limparCadastro();
 
-            }
+            
         }
 
         protected void PopularDropdownList()

@@ -72,8 +72,9 @@
 
     <asp:Panel ID="PNLViagensGRID" runat="server" CssClass="PopupViagensGRID w-100 text-center center-block" align="center" Style="display: none; border-width: 3px; border-radius: 10px;">
         <h2>
-            <asp:Label ID="LblViagensPopupViagemCadastro" runat="server" Text="Viagens"></asp:Label>
+            <asp:Label ID="LblViagensPopupViagemCadastro" runat="server" Text="Viagem"></asp:Label>
         </h2>   
+        <br />
         <br />
         <asp:Label ID="LblNomePopupViagemCadastro" runat="server" Text="Nome viagem "></asp:Label>
         <asp:TextBox ID="TbxNomePopupViagemCadastro" runat="server"></asp:TextBox>
@@ -85,6 +86,7 @@
         <asp:TextBox ID="TbxDataFinalPopupViagemCadastro" runat="server" Style="margin-left: 15px" CssClass="tbx" TextMode="Date" Width="105px"></asp:TextBox>
 
         <br />
+        <br />
 
         <asp:Label ID="LblDescPopupViagemCadastro" runat="server" Text="Descrição"></asp:Label>     
         <asp:TextBox ID="TbxDescPopupViagemCadastro" runat="server" TextMode="MultiLine"></asp:TextBox>       
@@ -94,12 +96,13 @@
      
         <asp:TextBox ID="TbxOBSViagemPopupViagemCadastro" runat="server" TextMode="MultiLine"></asp:TextBox>
         <br />
+        <br />
           <asp:Label ID="lblStatus" runat="server" Text="Status "></asp:Label>
         <asp:DropDownList ID="DropDownListViagemPopupViagemCadastro" runat="server">
             <asp:ListItem Value="0" Text="Ativa"></asp:ListItem>
-            <asp:ListItem Value="1" Text="Em andamento"></asp:ListItem>
-            <asp:ListItem Value="2" Text="Finalizada"></asp:ListItem>
-            <asp:ListItem Value="2" Text="Inativa"></asp:ListItem>
+            <asp:ListItem Value="2" Text="Em andamento"></asp:ListItem>
+            <asp:ListItem Value="3" Text="Finalizada"></asp:ListItem>
+            <asp:ListItem Value="1" Text="Inativa"></asp:ListItem>
 
         </asp:DropDownList>
 
@@ -110,6 +113,7 @@
 
 
 
+        <br />
         <br />
 
         <asp:Button ID="BtnCadastrarPopupViagemCadastro" CssClass="btn btn-primary btn-lg" runat="server" Text="Cadastrar Viagem" OnClick="BtnCadastrarViagemModal_Click" />

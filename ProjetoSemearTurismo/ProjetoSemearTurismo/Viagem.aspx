@@ -100,9 +100,9 @@
           <asp:Label ID="lblStatus" runat="server" Text="Status "></asp:Label>
         <asp:DropDownList ID="DropDownListViagemPopupViagemCadastro" runat="server">
             <asp:ListItem Value="0" Text="Ativa"></asp:ListItem>
-            <asp:ListItem Value="1" Text="Em andamento"></asp:ListItem>
-            <asp:ListItem Value="2" Text="Finalizada"></asp:ListItem>
-            <asp:ListItem Value="2" Text="Inativa"></asp:ListItem>
+            <asp:ListItem Value="2" Text="Em andamento"></asp:ListItem>
+            <asp:ListItem Value="3" Text="Finalizada"></asp:ListItem>
+            <asp:ListItem Value="1" Text="Inativa"></asp:ListItem>
 
         </asp:DropDownList>
 

@@ -82,7 +82,7 @@
         <br />
         <br />
        
-        <asp:Label ID="LblTel1PopupHospedagemCadastro" runat="server" Text="Telefone 1"></asp:Label>
+        <asp:Label ID="LblTel1PopupHospedagemCadastro" runat="server" Text="Telefone"></asp:Label>
         <asp:TextBox ID="TbxTel1PopupHospedagemCadastro" runat="server"></asp:TextBox>
 
 
@@ -94,14 +94,7 @@
         <asp:Label ID="LblRuaPopupHospedagemCadastro" runat="server" Text="Rua"></asp:Label>
         <asp:TextBox ID="TbxRuaPopupHospedagemCadastro" runat="server"></asp:TextBox>
 
-        <asp:Label ID="LblBairroPopupHospedagemCadastro" runat="server" Text="Bairro" Style="margin-left: 15px"></asp:Label>
-        <asp:TextBox ID="TbxBairroPopupHospedagemCadastro" runat="server" Width="103px"></asp:TextBox>
-
-        <asp:Label ID="LblCidadePopupHospedagemCadastro" runat="server" Text="Cidade" Style="margin-left: 15px"></asp:Label>
-        <asp:TextBox ID="TbxCidadePopupHospedagemCadastro" runat="server" Width="107px"></asp:TextBox>
-
-        <asp:Label ID="LblUFPopupHospedagemCadastro" runat="server" Text="UF" Style="margin-left: 15px"></asp:Label>
-        <asp:TextBox ID="TbxUFPopupHospedagemCadastro" runat="server" Width="39px"></asp:TextBox>
+      
         <asp:Label ID="LblCEPPopupHospedagemCadastro" runat="server" Text="CEP" Style="margin-left: 15px"></asp:Label>
         <asp:TextBox ID="TbxCEPPopupHospedagemCadastro" runat="server" Width="96px"></asp:TextBox>
 

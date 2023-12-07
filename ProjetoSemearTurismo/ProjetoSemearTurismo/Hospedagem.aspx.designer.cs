@@ -168,60 +168,6 @@ namespace ProjetoSemearTurismo.Views
         protected global::System.Web.UI.WebControls.TextBox TbxRuaPopupHospedagemCadastro;
 
         /// <summary>
-        /// Controle LblBairroPopupHospedagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblBairroPopupHospedagemCadastro;
-
-        /// <summary>
-        /// Controle TbxBairroPopupHospedagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxBairroPopupHospedagemCadastro;
-
-        /// <summary>
-        /// Controle LblCidadePopupHospedagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblCidadePopupHospedagemCadastro;
-
-        /// <summary>
-        /// Controle TbxCidadePopupHospedagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxCidadePopupHospedagemCadastro;
-
-        /// <summary>
-        /// Controle LblUFPopupHospedagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblUFPopupHospedagemCadastro;
-
-        /// <summary>
-        /// Controle TbxUFPopupHospedagemCadastro.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Para modificar, mova a declaração de campo do arquivo de designer a um arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TbxUFPopupHospedagemCadastro;
-
-        /// <summary>
         /// Controle LblCEPPopupHospedagemCadastro.
         /// </summary>
         /// <remarks>
